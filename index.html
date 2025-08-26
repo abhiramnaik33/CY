@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the B.Tech in Computer Science - Cybersecurity program at GMU. Learn about the curriculum, faculty, alumni, and career opportunities.">
-    <meta name="keywords" content="B.Tech Cybersecurity, GMU, Computer Science, Cybersecurity Education, Engineering Courses">
+    <meta name="description" content="Explore GMU's B.Tech in Computer Science - Cybersecurity program, including curriculum, faculty, and career opportunities.">
+    <meta name="keywords" content="B.Tech Cybersecurity, GMU, Computer Science, Cybersecurity Education">
     <meta name="author" content="GMU">
     <title>B.Tech Cybersecurity - GMU</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
         :root {
-            --primary-color: #1e40af;
+            --primary: #1e40af;
             --primary-dark: #172554;
             --primary-light: #60a5fa;
-            --secondary-color: #facc15;
+            --secondary: #facc15;
             --secondary-light: #fef9c3;
-            --text-color: #1f2937;
+            --text: #1f2937;
             --text-light: #6b7280;
-            --light-bg: #f9fafb;
-            --white: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
-            --gradient: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            --transition: all 0.2s ease;
-            --border-radius: 10px;
-            --border-radius-sm: 6px;
+            --bg-light: #f9fafb;
+            --white: #fff;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-hover: 0 6px 20px rgba(0,0,0,0.12);
+            --gradient: linear-gradient(135deg, var(--primary), var(--primary-light));
+            --radius: 10px;
+            --radius-sm: 6px;
             --font-base: 16px;
             --font-scale: 1.2;
+            --transition: .2s ease;
         }
 
         * {
@@ -37,11 +37,11 @@
 
         body {
             font-family: 'Inter', system-ui, sans-serif;
-            color: var(--text-color);
+            color: var(--text);
             line-height: 1.6;
-            background: var(--light-bg);
-            scroll-behavior: smooth;
+            background: var(--bg-light);
             font-size: var(--font-base);
+            scroll-behavior: smooth;
         }
 
         h1 { font-size: calc(var(--font-base) * var(--font-scale) * 2.5); }
@@ -54,12 +54,11 @@
             color: var(--white);
             text-align: center;
             padding: clamp(3rem, 8vw, 6rem) 1rem;
-            min-height: 60vh;
+            min-height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
         }
 
         .hero::before {
@@ -73,37 +72,34 @@
         .hero-content {
             max-width: 900px;
             padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: var(--border-radius);
+            background: rgba(0,0,0,0.1);
+            border-radius: var(--radius);
             backdrop-filter: blur(4px);
         }
 
         .hero h1 {
             font-weight: 800;
             margin-bottom: 1rem;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .hero p {
             font-size: calc(var(--font-base) * 1.1);
-            margin-bottom: 2rem;
             max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 2rem;
         }
 
         .cta-button {
             display: inline-flex;
-            align-items: center;
             gap: 0.5rem;
             padding: 0.9rem 2rem;
-            background: var(--secondary-color);
+            background: var(--secondary);
             color: var(--primary-dark);
             text-decoration: none;
-            border-radius: var(--border-radius-sm);
+            border-radius: var(--radius-sm);
             font-weight: 600;
-            transition: var(--transition);
             box-shadow: var(--shadow);
+            transition: var(--transition);
         }
 
         .cta-button:hover {
@@ -121,7 +117,7 @@
         .section {
             background: var(--white);
             padding: clamp(1.5rem, 3vw, 2.5rem);
-            border-radius: var(--border-radius);
+            border-radius: var(--radius);
             box-shadow: var(--shadow);
             margin-bottom: 2rem;
         }
@@ -150,14 +146,9 @@
 
         .accordion-item {
             margin-bottom: 1rem;
-            border-radius: var(--border-radius);
+            border-radius: var(--radius);
             box-shadow: var(--shadow);
             background: var(--white);
-            transition: var(--transition);
-        }
-
-        .accordion-item:hover {
-            box-shadow: var(--shadow-hover);
         }
 
         .accordion-header {
@@ -172,7 +163,7 @@
         }
 
         .accordion-header:hover {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
         }
 
         .toggle-icon {
@@ -182,8 +173,7 @@
             display: grid;
             place-items: center;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
+            background: rgba(255,255,255,0.2);
         }
 
         .accordion-item.active .toggle-icon {
@@ -196,36 +186,36 @@
             transition: max-height 0.3s ease-out;
         }
 
-        .accordion-content-inner {
-            padding: 1.5rem;
-        }
-
         .accordion-item.active .accordion-content {
             max-height: 2500px;
         }
 
-        .faculty-grid {
+        .accordion-content-inner {
+            padding: 1.5rem;
+        }
+
+        .faculty-grid, .alumni-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1rem;
         }
 
-        .faculty-card {
-            background: var(--light-bg);
-            border-radius: var(--border-radius);
+        .faculty-card, .alumni-card {
+            background: var(--bg-light);
+            border-radius: var(--radius);
             padding: 1.5rem;
             box-shadow: var(--shadow);
             text-align: center;
             transition: var(--transition);
         }
 
-        .faculty-card:hover {
+        .faculty-card:hover, .alumni-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-hover);
             background: var(--white);
         }
 
-        .faculty-avatar {
+        .faculty-avatar, .alumni-avatar {
             width: 80px;
             height: 80px;
             border-radius: 50%;
@@ -237,56 +227,51 @@
             color: var(--white);
             font-weight: 600;
             box-shadow: var(--shadow);
-            transition: var(--transition);
         }
 
-        .faculty-card:hover .faculty-avatar {
-            transform: scale(1.1);
-        }
-
-        .faculty-avatar img {
+        .faculty-avatar img, .alumni-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
         }
 
-        .faculty-avatar.has-image {
+        .faculty-avatar.has-image, .alumni-avatar.has-image {
             background: none;
         }
 
-        .faculty-name {
+        .faculty-name, .alumni-name {
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--primary-dark);
             margin-bottom: 0.5rem;
         }
 
-        .faculty-role {
-            color: var(--primary-color);
+        .faculty-role, .alumni-role {
+            color: var(--primary);
             font-size: 0.95rem;
             margin-bottom: 0.5rem;
         }
 
-        .faculty-specialization {
+        .faculty-specialization, .alumni-specialization {
             font-size: 0.9rem;
             color: var(--text-light);
         }
 
-        .faculty-specialization a {
-            color: var(--primary-color);
+        .faculty-specialization a, .alumni-specialization a {
+            color: var(--primary);
             text-decoration: none;
             font-weight: 500;
         }
 
-        .faculty-specialization a:hover {
+        .faculty-specialization a:hover, .alumni-specialization a:hover {
             text-decoration: underline;
             color: var(--primary-dark);
         }
 
         .video-showcase {
-            padding: clamp(2rem, 5vw, 3rem) 0;
-            background: var(--light-bg);
+            padding: clamp(2rem, 5vw, 3rem) 1rem;
+            background: var(--bg-light);
         }
 
         .video-grid {
@@ -295,19 +280,12 @@
             gap: 1.5rem;
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 1rem;
         }
 
         .video-card {
-            border-radius: var(--border-radius);
+            border-radius: var(--radius);
             box-shadow: var(--shadow);
             overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
         }
 
         .video-container {
@@ -331,7 +309,7 @@
         }
 
         footer a {
-            color: var(--secondary-color);
+            color: var(--secondary);
             text-decoration: none;
             font-weight: 500;
         }
@@ -341,13 +319,13 @@
         }
 
         @media (max-width: 768px) {
-            .hero { min-height: 50vh; padding: 2rem 1rem; }
+            .hero { min-height: 40vh; padding: 2rem 1rem; }
             .hero h1 { font-size: calc(var(--font-base) * 1.8); }
             .hero p { font-size: var(--font-base); }
             .cta-button { padding: 0.8rem 1.5rem; }
             .section { padding: 1.5rem; }
             .video-grid { grid-template-columns: 1fr; }
-            .faculty-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+            .faculty-grid, .alumni-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -355,27 +333,22 @@
         }
 
         @media (prefers-contrast: high) {
-            :root {
-                --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.4);
-            }
+            :root { --shadow: 0 4px 12px rgba(0,0,0,0.3); --shadow-hover: 0 6px 20px rgba(0,0,0,0.4); }
         }
 
-        :focus {
-            outline: 2px solid var(--secondary-color);
+        :focus-visible {
+            outline: 2px solid var(--secondary);
             outline-offset: 2px;
         }
     </style>
 </head>
+
 <body>
     <section class="hero">
         <div class="hero-content">
             <h1>B.Tech in Computer Science - Cybersecurity</h1>
             <p>Join GMU's cutting-edge program to become a cybersecurity expert, equipped with innovative skills to protect the digital world.</p>
-            <a href="#apply" class="cta-button">
-                <span>Apply Now</span>
-                <span>→</span>
-            </a>
+   
         </div>
     </section>
 
@@ -384,41 +357,15 @@
         <div class="video-grid">
             <div class="video-card">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/ACX9O7zL9nc" title="GMU Campus Preview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/ACX9O7zL9nc" title="GMU Campus Preview" frameborder="10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="container">
-        <section class="section" id="overview">
-            <h2 class="section-title">Course Overview</h2>
-            <div class="section-content">
-                <p>GM University's B.Tech in Computer Science - Cybersecurity is a four-year program designed to develop skilled professionals in digital security. Accredited and globally recognized, it offers flexible learning, career enhancement, and preparation for certifications like CEH and CISSP.</p>
-                <p>With industry-aligned training, students gain hands-on experience in advanced labs, mentorship, and internships, ensuring readiness for global cybersecurity challenges.</p>
-            </div>
-        </section>
-
-        <section class="section" id="eligibility">
-            <h2 class="section-title">Eligibility Criteria</h2>
-            <div class="section-content">
-                <p>Candidates need 10+2 with Physics, Mathematics, and one of Chemistry/Biotechnology/Biology/Computer Science/Electronics, with a minimum of 45% marks (40% for SC/ST/OBC from Karnataka). A valid KCET or JEE Main score is required. International students need IELTS 6.0 or TOEFL 80. Lateral entry is available for Diploma holders with 50% marks.</p>
-            </div>
-        </section>
-
-        <section class="section" id="curriculum">
-            <h2 class="section-title">Curriculum Highlights</h2>
-            <div class="section-content">
-                <p>The curriculum blends Computer Science fundamentals with cybersecurity practices, covering ethical hacking, cryptography, and AI-driven security. Students engage in hands-on labs, CTF competitions, and internships with top firms, preparing them for cutting-edge areas like Quantum Cryptography and Zero Trust Architecture.</p>
-            </div>
-        </section>
-
-        <section class="section" id="fees">
-            <h2 class="section-title">Fee Structure</h2>
-            <div class="section-content">
-                <p>Annual tuition is ₹2,25,000, with a one-time admission fee of ₹25,000. Total program cost is ₹9,25,000, with flexible payment options and scholarships up to 50% for eligible students.</p>
-            </div>
-        </section>
+     
+  <section class="video-showcase">
+        
 
         <div class="accordion">
             <div class="accordion-item">
@@ -466,7 +413,7 @@
                 </div>
             </div>
 
-            <div class="accordion-item">
+    <div class="accordion-item">
                 <div class="accordion-header" role="button" aria-expanded="false" aria-controls="objectives-content">
                     <span>Program Objectives</span>
                     <span class="toggle-icon">+</span>
@@ -482,211 +429,230 @@
                 </div>
             </div>
 
-           <div class="accordion-item">
-    <div class="accordion-header" role="button" aria-expanded="false" aria-controls="faculty-content">
-        <span>Faculty Excellence</span>
-        <span class="toggle-icon">+</span>
-    </div>
-    <div class="accordion-content" id="faculty-content">
-        <div class="accordion-content-inner">
-            <p>Meet our distinguished faculty members of the Department of CS-Cyber Security and CS-Information Security at GM University, Davanagere, Karnataka, who bring extensive industry experience and academic excellence to guide students in their cybersecurity and information security journey.</p>
-            <div class="faculty-grid">
-                <div class="faculty-card">
-                    <div class="faculty-avatar">
-                        <img src="Picture2.jpg" alt="Dr. Aruna Kumar B T" loading="lazy">
-                    </div>
-                    <div class="faculty-name">Dr. Aruna Kumar B T</div>
-                    <div class="faculty-role">Assistant Professor & HOD</div>
-                    <div class="faculty-specialization">
-                        <strong>Qualifications:</strong> B.E., M.Tech, Ph.D.<br>
-                        <strong>Experience:</strong> 19 years<br>
-                        
-                        <strong>Contact:</strong> <a href="mailto:hod.cyiy@gmu.ac.in">hod.cyiy@gmu.ac.in</a><br>
-                        <strong>Phone:</strong> 9945221208
-                    </div>
-                </div>
-                <div class="faculty-card">
-                    <div class="faculty-avatar">
-                        <img src="Picture1.JPG" alt="Dr. K Prakash" loading="lazy">
-                    </div>
-                    <div class="faculty-name">Dr. K Prakash</div>
-                    <div class="faculty-role">Professor</div>
-                    <div class="faculty-specialization">
-                        <strong>Qualifications:</strong> MCA, M.Phil, Ph.D.<br>
-                        <strong>Experience:</strong> 26 years<br>
-                       
-                        <strong>Contact:</strong> <a href="mailto:kprakash.cyiy@gmu.ac.in">kprakash.cyiy@gmu.ac.in</a><br>
-                        <strong>Phone:</strong> 6385359970
-                    </div>
-                </div>
-                <div class="faculty-card">
-                    <div class="faculty-avatar">
-                        <img src="Picture3.jpg" alt="Kotreshi S N" loading="lazy">
-                    </div>
-                    <div class="faculty-name">Kotreshi S N</div>
-                    <div class="faculty-role">Assistant Professor</div>
-                    <div class="faculty-specialization">
-                        <strong>Qualifications:</strong> B.E., M.Tech, (Ph.D.)<br>
-                        <strong>Experience:</strong> 20 years<br>
-                       
-                        <strong>Contact:</strong> <a href="mailto:kotreshisn@gmit.ac.in">kotreshisn@gmit.ac.in</a><br>
-                        <strong>Phone:</strong> 8553336419
-                    </div>
-                </div>
-                <div class="faculty-card">
-                    <div class="faculty-avatar">
-                        <img src="Picture4.JPG" alt="Dr. Rachana P G" loading="lazy">
-                    </div>
-                    <div class="faculty-name">Dr. Rachana P G</div>
-                    <div class="faculty-role">Assistant Professor</div>
-                    <div class="faculty-specialization">
-                        <strong>Qualifications:</strong> B.E., M.Tech, Ph.D.<br>
-                        <strong>Experience:</strong> 4 years<br>
-                      
-                        <strong>Contact:</strong> <a href="mailto:rachanapg@gmit.ac.in">rachanapg@gmit.ac.in</a><br>
-                        <strong>Phone:</strong> 6360601253
-                    </div>
-                </div>
-                <div class="faculty-card">
-                    <div class="faculty-avatar">
-                        <img src="Picture5.JPG" alt="Kumar S" loading="lazy">
-                    </div>
-                    <div class="faculty-name">Kumar S</div>
-                    <div class="faculty-role">Assistant Professor</div>
-                    <div class="faculty-specialization">
-                        <strong>Qualifications:</strong> B.E., M.Tech<br>
-                        <strong>Experience:</strong> 4 years<br>
 
-                        <strong>Contact:</strong> <a href="mailto:kumars.fet.scst.cse@gmu.ac.in">kumars.fet.scst.cse@gmu.ac.in</a><br>
-                        <strong>Phone:</strong> 9901904054
-                    </div>
+            <div class="accordion-item">
+                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="objectives-content" tabindex="0">
+                    <span>Program Objectives</span>
+                    <span class="toggle-icon">+</span>
                 </div>
-                <div class="faculty-card">
-                    <div class="faculty-avatar">
-                        <img src="Picture6.JPG" alt="Nayana M R" loading="lazy">
-                    </div>
-                    <div class="faculty-name">Nayana M R</div>
-                    <div class="faculty-role">Assistant Professor</div>
-                    <div class="faculty-specialization">
-                        <strong>Qualifications:</strong> MCA<br>
-                        <strong>Experience:</strong> 1 year<br>
-                       
-                        <strong>Contact:</strong> <a href="mailto:nayanamr.fet.scst.cse@gmu.ac.in">nayanamr.fet.scst.cse@gmu.ac.in</a><br>
-                        <strong>Phone:</strong> 6364588766
-                    </div>
-                </div>
-                <div class="faculty-card">
-                    <div class="faculty-avatar">
-                        <img src="Picture7.jpg" alt="Rakshitha G B" loading="lazy">
-                    </div>
-                    <div class="faculty-name">Rakshitha G B</div>
-                    <div class="faculty-role">Tutor</div>
-                    <div class="faculty-specialization">
-                        <strong>Qualifications:</strong> B.E.<br>
-                        <strong>Experience:</strong> 0 years<br>
-                        <strong>Contact:</strong> <a href="mailto:rakshithagb.fet.scst@gmu.ac.in">rakshithagb.fet.scst@gmu.ac.in</a><br>
-                        <strong>Phone:</strong> 9980437345
-                    </div>
-                </div>
-                <div class="faculty-card">
-                    <div class="faculty-avatar">
-                        <img src="Picture8.jpg" alt="Swathi A" loading="lazy">
-                    </div>
-                    <div class="faculty-name">Swathi A</div>
-                    <div class="faculty-role">Tutor</div>
-                    <div class="faculty-specialization">
-                        <strong>Qualifications:</strong> B.E.<br>
-                        <strong>Experience:</strong> 0 years<br>
-                        <strong>Contact:</strong> Not provided<br>
-                        <strong>Phone:</strong> 9019635272
+                <div class="accordion-content" id="objectives-content">
+                    <div class="accordion-content-inner">
+                        <p>The program equips students with knowledge, skills, and ethical values to excel in cybersecurity. It emphasizes problem-solving, teamwork, and continuous learning to address industry challenges.</p>
+                        <p>Students are trained in programming, ethical hacking, and digital forensics, preparing them for leadership roles and contributions to global cybersecurity infrastructure.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
             <div class="accordion-item">
-                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="alumni-content">
-                    <span>Alumni Success Stories</span>
+                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="faculty-content" tabindex="0">
+                    <span>Faculty Excellence</span>
                     <span class="toggle-icon">+</span>
                 </div>
-                <div class="accordion-content" id="alumni-content">
+                <div class="accordion-content" id="faculty-content">
                     <div class="accordion-content-inner">
-                        <p>Our graduates are making their mark in the cybersecurity industry, working with leading companies and contributing to digital security worldwide.</p>
+                        <p>Our faculty at GM University bring industry experience and academic excellence to guide students in cybersecurity.</p>
                         <div class="faculty-grid">
                             <div class="faculty-card">
-                                <div class="faculty-avatar">AN</div>
-                                <div class="faculty-name">Abhiram Girish Naik</div>
-                                <div class="faculty-role">Cybersecurity Analyst</div>
+                                <div class="faculty-avatar" data-initials="AK">
+                                    <img src="Picture2.jpg" alt="Dr. Aruna Kumar B T" loading="lazy">
+                                </div>
+                                <div class="faculty-name">Dr. Aruna Kumar B T</div>
+                                <div class="faculty-role">Assistant Professor & HOD</div>
                                 <div class="faculty-specialization">
-                                    <strong>ID:</strong> U23E01CY001<br>
-                                    <strong>Contact:</strong> <a href="mailto:abhiramgirishnaik@gmail.com">abhiramgirishnaik@gmail.com</a><br>
-                                    <strong>Phone:</strong> 6363962653<br>
-                                    <a href="https://www.linkedin.com/in/abhiramgirishnaik/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+                                    <strong>Qualifications:</strong> B.E., M.Tech, Ph.D.<br>
+                                    <strong>Experience:</strong> 19 years<br>
+                                    <strong>Contact:</strong> <a href="mailto:hod.cyiy@gmu.ac.in">hod.cyiy@gmu.ac.in</a><br>
+                                    <strong>Phone:</strong> 9945221208
                                 </div>
                             </div>
                             <div class="faculty-card">
-                                <div class="faculty-avatar">SV</div>
-                                <div class="faculty-name">Sudarshana V D</div>
-                                <div class="faculty-role">Cybersecurity Analyst</div>
+                                <div class="faculty-avatar" data-initials="KP">
+                                    <img src="Picture1.jpg" alt="Dr. K Prakash" loading="lazy">
+                                </div>
+                                <div class="faculty-name">Dr. K Prakash</div>
+                                <div class="faculty-role">Professor</div>
                                 <div class="faculty-specialization">
-                                    <strong>ID:</strong> U23E01CY028<br>
-                                    <strong>Contact:</strong> <a href="mailto:sudarshannaikru@gmail.com">sudarshannaikru@gmail.com</a><br>
-                                    <strong>Phone:</strong> 9380593011<br>
-                                    <a href="https://www.linkedin.com/in/sudarshana-v-d" target="_blank" rel="noopener">Connect on LinkedIn</a>
+                                    <strong>Qualifications:</strong> MCA, M.Phil, Ph.D.<br>
+                                    <strong>Experience:</strong> 26 years<br>
+                                    <strong>Contact:</strong> <a href="mailto:kprakash.cyiy@gmu.ac.in">kprakash.cyiy@gmu.ac.in</a><br>
+                                    <strong>Phone:</strong> 6385359970
                                 </div>
                             </div>
                             <div class="faculty-card">
-                                <div class="faculty-avatar">SP</div>
-                                <div class="faculty-name">Sanjana N Patel D</div>
-                                <div class="faculty-role">Cybersecurity Analyst</div>
+                                <div class="faculty-avatar" data-initials="KS">
+                                    <img src="Picture3.jpg" alt="Kotreshi S N" loading="lazy">
+                                </div>
+                                <div class="faculty-name">Kotreshi S N</div>
+                                <div class="faculty-role">Assistant Professor</div>
                                 <div class="faculty-specialization">
-                                    <strong>ID:</strong> U23E01CY025<br>
-                                    <strong>Contact:</strong> <a href="mailto:sanjanan1035@gmail.com">sanjanan1035@gmail.com</a><br>
-                                    <strong>Phone:</strong> 9535357552<br>
-                                    <a href="https://www.linkedin.com/in/sanjana-n-patel-d-67b6b6298" target="_blank" rel="noopener">Connect on LinkedIn</a>
+                                    <strong>Qualifications:</strong> B.E., M.Tech, (Ph.D.)<br>
+                                    <strong>Experience:</strong> 20 years<br>
+                                    <strong>Contact:</strong> <a href="mailto:kotreshisn@gmit.ac.in">kotreshisn@gmit.ac.in</a><br>
+                                    <strong>Phone:</strong> 8553336419
                                 </div>
                             </div>
                             <div class="faculty-card">
-                                <div class="faculty-avatar">SH</div>
-                                <div class="faculty-name">Shraddha Hiremath</div>
-                                <div class="faculty-role">Cybersecurity Analyst</div>
+                                <div class="faculty-avatar" data-initials="RP">
+                                    <img src="Picture4.jpg" alt="Dr. Rachana P G" loading="lazy">
+                                </div>
+                                <div class="faculty-name">Dr. Rachana P G</div>
+                                <div class="faculty-role">Assistant Professor</div>
                                 <div class="faculty-specialization">
-                                    <strong>ID:</strong> U23E01CY027<br>
-                                    <strong>Contact:</strong> <a href="mailto:hiremathshraddha01@gmail.com">hiremathshraddha01@gmail.com</a><br>
-                                    <strong>Phone:</strong> 8904696780<br>
-                                    <a href="https://www.linkedin.com/in/shraddha-hiremath-27b080299" target="_blank" rel="noopener">Connect on LinkedIn</a>
+                                    <strong>Qualifications:</strong> B.E., M.Tech, Ph.D.<br>
+                                    <strong>Experience:</strong> 4 years<br>
+                                    <strong>Contact:</strong> <a href="mailto:rachanapg@gmit.ac.in">rachanapg@gmit.ac.in</a><br>
+                                    <strong>Phone:</strong> 6360601253
                                 </div>
                             </div>
                             <div class="faculty-card">
-                                <div class="faculty-avatar">PD</div>
-                                <div class="faculty-name">Prithvi Parashuram Davanageri</div>
-                                <div class="faculty-role">Cybersecurity Analyst</div>
+                                <div class="faculty-avatar" data-initials="KS">
+                                    <img src="Picture5.jpg" alt="Kumar S" loading="lazy">
+                                </div>
+                                <div class="faculty-name">Kumar S</div>
+                                <div class="faculty-role">Assistant Professor</div>
                                 <div class="faculty-specialization">
-                                    <strong>ID:</strong> U23E01IY001<br>
-                                    <strong>Contact:</strong> <a href="mailto:prithvirajdavanageri@gmail.com">prithvirajdavanageri@gmail.com</a><br>
-                                    <strong>Phone:</strong> 6362060834<br>
-                                    <a href="https://www.linkedin.com/in/prithviraj-davanageri-a016b9298" target="_blank" rel="noopener">Connect on LinkedIn</a>
+                                    <strong>Qualifications:</strong> B.E., M.Tech<br>
+                                    <strong>Experience:</strong> 4 years<br>
+                                    <strong>Contact:</strong> <a href="mailto:kumars.fet.scst.cse@gmu.ac.in">kumars.fet.scst.cse@gmu.ac.in</a><br>
+                                    <strong>Phone:</strong> 9901904054
                                 </div>
                             </div>
                             <div class="faculty-card">
-                                <div class="faculty-avatar">SP</div>
-                                <div class="faculty-name">Sharmila P</div>
-                                <div class="faculty-role">Cybersecurity Analyst</div>
+                                <div class="faculty-avatar" data-initials="NM">
+                                    <img src="Picture6.jpg" alt="Nayana M R" loading="lazy">
+                                </div>
+                                <div class="faculty-name">Nayana M R</div>
+                                <div class="faculty-role">Assistant Professor</div>
                                 <div class="faculty-specialization">
-                                    <strong>ID:</strong> U23E01IY002<br>
-                                    <strong>Contact:</strong> <a href="mailto:prabhakarsharmila10a26@gmail.com">prabhakarsharmila10a26@gmail.com</a><br>
-                                    <strong>Phone:</strong> 7349056159<br>
-                                    <a href="https://www.linkedin.com/in/sharmila-prabhakar-aa9a11298" target="_blank" rel="noopener">Connect on LinkedIn</a>
+                                    <strong>Qualifications:</strong> MCA<br>
+                                    <strong>Experience:</strong> 1 year<br>
+                                    <strong>Contact:</strong> <a href="mailto:nayanamr.fet.scst.cse@gmu.ac.in">nayanamr.fet.scst.cse@gmu.ac.in</a><br>
+                                    <strong>Phone:</strong> 6364588766
+                                </div>
+                            </div>
+                            <div class="faculty-card">
+                                <div class="faculty-avatar" data-initials="RG">
+                                    <img src="Picture7.jpg" alt="Rakshitha G B" loading="lazy">
+                                </div>
+                                <div class="faculty-name">Rakshitha G B</div>
+                                <div class="faculty-role">Tutor</div>
+                                <div class="faculty-specialization">
+                                    <strong>Qualifications:</strong> B.E.<br>
+                                    <strong>Experience:</strong> 0 years<br>
+                                    <strong>Contact:</strong> <a href="mailto:rakshithagb.fet.scst@gmu.ac.in">rakshithagb.fet.scst@gmu.ac.in</a><br>
+                                    <strong>Phone:</strong> 9980437345
+                                </div>
+                            </div>
+                            <div class="faculty-card">
+                                <div class="faculty-avatar" data-initials="SA">
+                                    <img src="Picture8.jpg" alt="Swathi A" loading="lazy">
+                                </div>
+                                <div class="faculty-name">Swathi A</div>
+                                <div class="faculty-role">Tutor</div>
+                                <div class="faculty-specialization">
+                                    <strong>Qualifications:</strong> B.E.<br>
+                                    <strong>Experience:</strong> 0 years<br>
+                                    <strong>Contact:</strong> Not provided<br>
+                                    <strong>Phone:</strong> 9019635272
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+<div class="accordion-item">
+    <div class="accordion-header" role="button" aria-expanded="false" aria-controls="alumni-content" tabindex="0">
+        <span>Alumni Success Stories</span>
+        <span class="toggle-icon">+</span>
+    </div>
+    <div class="accordion-content" id="alumni-content">
+        <div class="accordion-content-inner">
+            <p>Our graduates excel in the cybersecurity industry, contributing to digital security worldwide.</p>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-avatar" data-initials="AN">
+                        <img src="ABHIRAM.jpg" alt="Abhiram Girish Naik" loading="lazy">
+                    </div>
+                    <div class="alumni-name">Abhiram Girish Naik</div>
+               
+                    <div class="alumni-specialization">
+                        <strong>ID:</strong> U23E01CY001<br>
+                        <strong>Contact:</strong> <a href="mailto:abhiramgirishnaik@gmail.com">abhiramgirishnaik@gmail.com</a><br>
+                        <strong>Phone:</strong> 6363962653<br>
+                        <a href="https://www.linkedin.com/in/abhiramgirishnaik/" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-avatar" data-initials="SV">
+                        <img src="sudu.jpg" alt="Sudarshana V D" loading="lazy">
+                    </div>
+                    <div class="alumni-name">Sudarshana V D</div>
+              
+                    <div class="alumni-specialization">
+                        <strong>ID:</strong> U23E01CY028<br>
+                        <strong>Contact:</strong> <a href="mailto:sudarshannaikru@gmail.com">sudarshannaikru@gmail.com</a><br>
+                        <strong>Phone:</strong> 9380593011<br>
+                        <a href="https://www.linkedin.com/in/sudarshana-v-d" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-avatar" data-initials="SP">
+                        <img src="sanjana.png" alt="Sanjana N Patel D" loading="lazy">
+                    </div>
+                    <div class="alumni-name">Sanjana N Patel D</div>
+           
+                    <div class="alumni-specialization">
+                        <strong>ID:</strong> U23E01CY025<br>
+                        <strong>Contact:</strong> <a href="mailto:sanjanan1035@gmail.com">sanjanan1035@gmail.com</a><br>
+                        <strong>Phone:</strong> 9535357552<br>
+                        <a href="https://www.linkedin.com/in/sanjana-n-patel-d-67b6b6298" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-avatar" data-initials="SH">
+                        <img src="sharadha.png" alt="Shraddha Hiremath" loading="lazy">
+                    </div>
+                    <div class="alumni-name">Shraddha Hiremath</div>
+
+                    <div class="alumni-specialization">
+                        <strong>ID:</strong> U23E01CY027<br>
+                        <strong>Contact:</strong> <a href="mailto:hiremathshraddha01@gmail.com">hiremathshraddha01@gmail.com</a><br>
+                        <strong>Phone:</strong> 8904696780<br>
+                        <a href="https://www.linkedin.com/in/shraddha-hiremath-27b080299" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-avatar" data-initials="PD">
+                        <img src="prithvi.png" alt="Prithvi Parashuram Davanageri" loading="lazy">
+                    </div>
+                    <div class="alumni-name">Prithvi Parashuram Davanageri</div>
+
+                    <div class="alumni-specialization">
+                        <strong>ID:</strong> U23E01IY001<br>
+                        <strong>Contact:</strong> <a href="mailto:prithvirajdavanageri@gmail.com">prithvirajdavanageri@gmail.com</a><br>
+                        <strong>Phone:</strong> 6362060834<br>
+                        <a href="https://www.linkedin.com/in/prithviraj-davanageri-a016b9298" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-avatar" data-initials="SP">
+                        <img src="sharmilla.png" alt="Sharmila P" loading="lazy">
+                    </div>
+                    <div class="alumni-name">Sharmila P</div>
+                    <div class="alumni-specialization">
+                        <strong>ID:</strong> U23E01IY002<br>
+                        <strong>Contact:</strong> <a href="mailto:prabhakarsharmila10a26@gmail.com">prabhakarsharmila10a26@gmail.com</a><br>
+                        <strong>Phone:</strong> 7349056159<br>
+                        <a href="https://www.linkedin.com/in/sharmila-prabhakar-aa9a11298" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+</section>
+    </main>
 
     <footer>
         <p>&copy; 2025 GM University. All rights reserved. | <a href="#contact">Contact</a> | <a href="#admissions">Admissions</a></p>
@@ -694,12 +660,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Accordion
-            document.querySelectorAll('.accordion-header').forEach(header => {
+            const accordions = document.querySelectorAll('.accordion-item');
+            accordions.forEach(item => {
+                const header = item.querySelector('.accordion-header');
                 header.addEventListener('click', () => {
-                    const item = header.parentElement;
                     const isActive = item.classList.contains('active');
-                    document.querySelectorAll('.accordion-item').forEach(i => {
+                    accordions.forEach(i => {
                         i.classList.remove('active');
                         i.querySelector('.toggle-icon').textContent = '+';
                         i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
@@ -710,20 +676,23 @@
                         header.setAttribute('aria-expanded', 'true');
                     }
                 });
+                header.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        header.click();
+                    }
+                });
             });
 
-            // Image Fallback
-            document.querySelectorAll('.faculty-avatar img').forEach(img => {
+            document.querySelectorAll('.faculty-avatar img, .alumni-avatar img').forEach(img => {
                 img.addEventListener('error', () => {
                     const avatar = img.parentElement;
-                    const name = avatar.parentElement.querySelector('.faculty-name')?.textContent || '';
-                    avatar.innerHTML = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+                    avatar.textContent = avatar.dataset.initials || '';
                     avatar.classList.remove('has-image');
                 });
                 img.addEventListener('load', () => img.parentElement.classList.add('has-image'));
             });
 
-            // Smooth Scroll
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', e => {
                     e.preventDefault();
@@ -731,17 +700,16 @@
                 });
             });
 
-            // Debounced Scroll for Animations
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('animate-on-scroll');
-                        observer.unobserve(entry.target);
+                        obs.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.section, .faculty-card').forEach(el => observer.observe(el));
+            document.querySelectorAll('.section, .faculty-card, .alumni-card').forEach(el => observer.observe(el));
         });
     </script>
 </body>
