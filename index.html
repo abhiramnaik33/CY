@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore GMU's B.Tech in Computer Science - Cybersecurity program, including curriculum, faculty, and career opportunities.">
+    <meta name="description" content="Explore GMU's B.Tech in Computer Science - Cybersecurity0 program, including curriculum, faculty, and career opportunities.">
     <meta name="keywords" content="B.Tech Cybersecurity, GMU, Computer Science, Cybersecurity Education">
     <meta name="author" content="GMU">
     <title>B.Tech Cybersecurity - GMU</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
         :root {
-            --primary: #1e40af;
-            --primary-dark: #172554;
-            --primary-light: #60a5fa;
-            --secondary: #facc15;
-            --secondary-light: #fef9c3;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg-light: #f9fafb;
+            --primary: #5b2322;              /* Deep maroon */
+            --primary-dark: #3a1514;         /* Darker maroon */
+            --primary-light: #7a3b38;        /* Lighter maroon */
+            --secondary: #f6e7a1;            /* Gold/yellow */
+            --secondary-light: #fffbe6;      /* Lighter gold */
+            --text: #222;
+            --text-light: #555;
+            --bg-light: #fff;
             --white: #fff;
-            --shadow: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-hover: 0 6px 20px rgba(0,0,0,0.12);
+            --shadow: 0 2px 8px rgba(91,35,34,0.06);
+            --shadow-hover: 0 4px 16px rgba(91,35,34,0.10);
             --gradient: linear-gradient(135deg, var(--primary), var(--primary-light));
-            --radius: 10px;
-            --radius-sm: 6px;
+            --radius: 8px;
+            --radius-sm: 5px;
             --font-base: 16px;
             --font-scale: 1.2;
-            --transition: .2s ease;
+            --transition: .2s cubic-bezier(.4,0,.2,1);
         }
 
         * {
@@ -35,13 +35,16 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', system-ui, sans-serif;
             color: var(--text);
             line-height: 1.6;
             background: var(--bg-light);
             font-size: var(--font-base);
-            scroll-behavior: smooth;
         }
 
         h1 { font-size: calc(var(--font-base) * var(--font-scale) * 2.5); }
@@ -59,6 +62,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            overflow: hidden;
         }
 
         .hero::before {
@@ -67,6 +71,7 @@
             inset: 0;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
             opacity: 0.15;
+            z-index: 0;
         }
 
         .hero-content {
@@ -75,6 +80,9 @@
             background: rgba(0,0,0,0.1);
             border-radius: var(--radius);
             backdrop-filter: blur(4px);
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1.2s cubic-bezier(.4,0,.2,1);
         }
 
         .hero h1 {
@@ -100,11 +108,12 @@
             font-weight: 600;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            animation: fadeIn 1.2s 0.3s backwards;
         }
 
         .cta-button:hover {
             background: var(--secondary-light);
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.03);
             box-shadow: var(--shadow-hover);
         }
 
@@ -120,6 +129,7 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             margin-bottom: 2rem;
+            animation: fadeInUp 1.2s cubic-bezier(.4,0,.2,1);
         }
 
         .section-title {
@@ -127,6 +137,8 @@
             margin-bottom: 1.5rem;
             color: var(--primary-dark);
             font-weight: 700;
+            letter-spacing: 0.5px;
+            animation: fadeInDown 1.1s cubic-bezier(.4,0,.2,1);
         }
 
         .section-title::after {
@@ -144,11 +156,21 @@
             color: var(--text-light);
         }
 
+        .accordion {
+            animation: fadeIn 1.2s 0.2s backwards;
+        }
+
         .accordion-item {
             margin-bottom: 1rem;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             background: var(--white);
+            overflow: hidden;
+            transition: box-shadow .3s, transform .3s;
+        }
+
+        .accordion-item.animate-on-scroll {
+            animation: fadeInUp 1.1s cubic-bezier(.4,0,.2,1);
         }
 
         .accordion-header {
@@ -160,6 +182,7 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
+            transition: background .2s;
         }
 
         .accordion-header:hover {
@@ -167,31 +190,39 @@
         }
 
         .toggle-icon {
-            font-size: 1.2rem;
-            width: 24px;
-            height: 24px;
-            display: grid;
-            place-items: center;
+            font-size: 1.5rem;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 50%;
             background: rgba(255,255,255,0.2);
+            transition: transform .3s;
+            text-align: center;
+            line-height: 1;
+            font-weight: 700;
         }
 
         .accordion-item.active .toggle-icon {
-            transform: rotate(45deg);
+            transform: rotate(45deg) scale(1.1);
         }
 
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
+            background: var(--secondary-light);
         }
 
         .accordion-item.active .accordion-content {
             max-height: 2500px;
+            transition: max-height 0.5s cubic-bezier(.4,0,.2,1);
         }
 
         .accordion-content-inner {
             padding: 1.5rem;
+            animation: fadeIn 0.7s;
         }
 
         .faculty-grid, .alumni-grid {
@@ -206,11 +237,12 @@
             padding: 1.5rem;
             box-shadow: var(--shadow);
             text-align: center;
-            transition: var(--transition);
+            transition: var(--transition), box-shadow .3s;
+            animation: fadeInUp 1.1s cubic-bezier(.4,0,.2,1);
         }
 
         .faculty-card:hover, .alumni-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.03);
             box-shadow: var(--shadow-hover);
             background: var(--white);
         }
@@ -227,6 +259,8 @@
             color: var(--white);
             font-weight: 600;
             box-shadow: var(--shadow);
+            overflow: hidden;
+            animation: fadeIn 1.1s;
         }
 
         .faculty-avatar img, .alumni-avatar img {
@@ -272,6 +306,7 @@
         .video-showcase {
             padding: clamp(2rem, 5vw, 3rem) 1rem;
             background: var(--bg-light);
+            animation: fadeIn 1.2s;
         }
 
         .video-grid {
@@ -286,6 +321,7 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             overflow: hidden;
+            animation: fadeInUp 1.1s cubic-bezier(.4,0,.2,1);
         }
 
         .video-container {
@@ -306,6 +342,7 @@
             color: var(--white);
             padding: 2rem 1rem;
             text-align: center;
+            animation: fadeIn 1.2s;
         }
 
         footer a {
@@ -318,6 +355,29 @@
             text-decoration: underline;
         }
 
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container, .video-grid {
+                max-width: 98vw;
+            }
+            .faculty-grid, .alumni-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+        }
         @media (max-width: 768px) {
             .hero { min-height: 40vh; padding: 2rem 1rem; }
             .hero h1 { font-size: calc(var(--font-base) * 1.8); }
@@ -325,13 +385,19 @@
             .cta-button { padding: 0.8rem 1.5rem; }
             .section { padding: 1.5rem; }
             .video-grid { grid-template-columns: 1fr; }
-            .faculty-grid, .alumni-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+            .faculty-grid, .alumni-grid { grid-template-columns: 1fr 1fr; }
+            .accordion-content-inner { padding: 1rem; }
         }
-
+        @media (max-width: 600px) {
+            .hero-content { padding: 1rem; }
+            .section-title { font-size: 1.2rem; }
+            .faculty-grid, .alumni-grid { grid-template-columns: 1fr; }
+            .video-grid { grid-template-columns: 1fr; }
+            .section { padding: 1rem; }
+        }
         @media (prefers-reduced-motion: reduce) {
-            * { transition-duration: 0.01ms !important; }
+            * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
         }
-
         @media (prefers-contrast: high) {
             :root { --shadow: 0 4px 12px rgba(0,0,0,0.3); --shadow-hover: 0 6px 20px rgba(0,0,0,0.4); }
         }
@@ -346,7 +412,7 @@
 <body>
     <section class="hero">
         <div class="hero-content">
-            <h1>B.Tech in Computer Science - Cybersecurity</h1>
+            <h1>B.Tech in Computer Science - Cybersecurity & Information security</h1>
             <p>Join GMU's cutting-edge program to become a cybersecurity expert, equipped with innovative skills to protect the digital world.</p>
    
         </div>
@@ -399,51 +465,100 @@
             </div>
 
             <div class="accordion-item">
+                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="program-overview-content">
+                    <span>Program Overviews</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="accordion-content" id="program-overview-content">
+                    <div class="accordion-content-inner">
+                        <h3>Cyber Security – Program Overview</h3>
+                        <p>The Cyber Security program is designed to prepare graduates with the knowledge, skills, and professional values required to address the complex challenges of securing digital infrastructure. With a strong foundation in computer science, networking, and cryptography, the program equips students to identify vulnerabilities, mitigate risks, and develop robust security solutions against evolving cyber threats. Emphasis is placed on hands-on training, industry-relevant tools, and exposure to real-world attack and defense mechanisms. Students are encouraged to apply their knowledge to protect national and organizational assets, ensuring resilience in critical systems and services. The curriculum integrates research, innovation, and ethical practices, fostering responsible professionals who can contribute to society and industry alike. By preparing students for higher education, advanced certifications, and lifelong learning, the program nurtures leaders and experts capable of strengthening cyber defense globally and addressing the growing need for security professionals.</p>
+                        <h3>Information Security – Program Overview</h3>
+                        <p>The Information Security program is structured to develop graduates with expertise in securing data, applications, and communication systems across organizational and societal contexts. It provides a balance of theoretical foundations and practical skills in areas such as encryption, access control, compliance, governance, and risk management. Students gain hands-on experience with advanced tools and frameworks, enabling them to design and implement effective strategies for data protection and trust assurance. The program emphasizes the ethical, legal, and professional aspects of security, ensuring graduates understand the responsibilities of safeguarding sensitive information. Through research-driven learning and innovation, students are encouraged to explore new frontiers in areas such as cloud security, digital forensics, and secure software development. The curriculum also promotes leadership, collaboration, and continuous learning, preparing graduates for careers in academia, industry, or government. Ultimately, the program develops skilled professionals who contribute to secure digital ecosystems locally and globally.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
                 <div class="accordion-header" role="button" aria-expanded="false" aria-controls="vision-content">
                     <span>Vision & Mission</span>
                     <span class="toggle-icon">+</span>
                 </div>
                 <div class="accordion-content" id="vision-content">
                     <div class="accordion-content-inner">
-                        <h3>Vision</h3>
-                        <p>Excellence and leadership in the educational, professional and research field of cyber security and Information security at the regional and global levels. Ethically capable of proactively safeguarding the digital future and commitment to effectively meet the needs of society and the labor market.</p>
-                        <h3>Mission</h3>
-                        <p>Preparing professional cadres in cybersecurity and information security in both the academic and professional fields capable of leading, designing and developing various projects in the various fields of cybersecurity and information security, by providing a distinguished and high-quality program that focuses on integrating scientific theories and practical training to develop programs and applications and innovation in scientific research and provide the required security services to individuals and public and private institutions in India and contribute to the development of society.</p>
+                        <h3>Vision Statement – Cyber Security</h3>
+                        <p>To achieve excellence and leadership in education, professional practice, and research in the field of Cyber Security at regional and global levels, by preparing ethically responsible graduates capable of proactively safeguarding the digital future and addressing the evolving needs of society and the labour market.</p>
+                        <h3>Vision Statement – Information Security</h3>
+                        <p>To attain excellence and leadership in education, research, and professional engagement in the field of Information Security at regional and global levels, by fostering ethically competent professionals committed to protecting information assets and effectively meeting the security needs of society and industry.</p>
+                        <h3>Mission Statement – Cyber Security</h3>
+                        <p>To prepare professional cadres in Cyber Security capable of leading, designing, and developing advanced projects in the diverse domains of Cyber Security. The program delivers high-quality education by integrating scientific foundations with practical training to develop secure systems, innovative applications, and cutting-edge research, while providing essential security services to individuals, organizations, and public institutions in India, thereby contributing to national digital resilience and societal development.</p>
+                        <h3>Mission Statement – Information Security</h3>
+                        <p>To prepare professional cadres in Information Security who are competent in protecting, managing, and securing information assets across academic and professional domains. The program emphasizes high-quality education by integrating theoretical knowledge with hands-on practice to design, implement, and innovate security solutions, conduct impactful research, and provide essential information security services to individuals, enterprises, and institutions in India, thereby supporting organizational trust, societal well-being, and sustainable development.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="program-outcomes-content">
+                    <span>Program Outcomes & Objectives</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="accordion-content" id="program-outcomes-content">
+                    <div class="accordion-content-inner">
+                        <h3>Cyber Security (Computer Science Engineering)</h3>
+                        <ul>
+                            <li><strong>PO1. Engineering Knowledge:</strong> Apply the knowledge of mathematics, science, computer science fundamentals, and cybersecurity specialization to the solution of complex security and engineering problems.</li>
+                            <li><strong>PO2. Problem Analysis:</strong> Identify, formulate, review research literature, and analyze complex cybersecurity and computer engineering problems to reach substantiated conclusions using first principles of mathematics, computing, and engineering sciences.</li>
+                            <li><strong>PO3. Design/Development of Solutions:</strong> Design solutions for complex cybersecurity problems, and design secure system components, processes, or protocols that meet specified needs with due consideration for public health and safety, as well as cultural, societal, and environmental factors.</li>
+                            <li><strong>PO4. Conduct Investigations of Complex Problems:</strong> Use research-based knowledge and research methods, including experiment design, penetration testing, forensic analysis, data interpretation, and synthesis of information, to provide valid conclusions in cybersecurity.</li>
+                            <li><strong>PO5. Modern Tool Usage:</strong> Create, select, and apply appropriate techniques, resources, and modern IT/cybersecurity tools, including prediction, simulation, cryptography, and modeling, to complex engineering activities, while understanding their limitations.</li>
+                            <li><strong>PO6. The Engineer and Society:</strong> Apply reasoning informed by contextual knowledge to assess societal, health, safety, legal, and cultural issues, and recognize responsibilities relevant to professional cybersecurity and engineering practice.</li>
+                            <li><strong>PO7. Environment and Sustainability:</strong> Understand the impact of cybersecurity solutions in societal, organizational, and environmental contexts, and demonstrate the need for secure, sustainable digital ecosystems.</li>
+                            <li><strong>PO8. Ethics:</strong> Apply ethical principles and commit to professional ethics, responsibilities, and norms of engineering and cybersecurity practice.</li>
+                            <li><strong>PO9. Individual and Team Work:</strong> Function effectively as an individual, and as a member or leader in diverse cybersecurity and engineering teams, and in multidisciplinary settings.</li>
+                            <li><strong>PO10. Communication:</strong> Communicate effectively on complex cybersecurity and engineering activities with the professional community and with society at large, such as being able to write effective technical reports, prepare security documentation, deliver impactful presentations, and give/receive clear instructions.</li>
+                            <li><strong>PO11. Project Management and Finance:</strong> Demonstrate knowledge and understanding of cybersecurity, engineering, and management principles and apply these to one’s own work, as a member and leader in a team, to manage security projects and function effectively in multidisciplinary environments.</li>
+                            <li><strong>PO12. Life-long Learning:</strong> Recognize the need for, and have the preparation and ability to engage in, independent and life-long learning in the context of rapid technological advances in cybersecurity and allied areas.</li>
+                        </ul>
+                        <h4>Program Specific Objectives</h4>
+                        <ul>
+                            <li><strong>PSO1. Secure Systems and Network Design:</strong> Apply principles of computer science, engineering, and cybersecurity to design, implement, and manage secure systems, networks, and applications that protect digital assets against evolving threats.</li>
+                            <li><strong>PSO2. Cyber Threat Analysis and Defense:</strong> Demonstrate expertise in identifying vulnerabilities, analyzing risks, and applying advanced tools and techniques such as ethical hacking, cryptography, intrusion detection, and digital forensics to provide effective security solutions.</li>
+                            <li><strong>PSO3. Professional Excellence and Lifelong Learning in Cybersecurity:</strong> Exhibit leadership, teamwork, communication, and project management skills in cybersecurity practice, while engaging in continuous learning, research, and innovation to adapt to emerging technologies and global security challenges.</li>
+                        </ul>
+                        <h3>Information Security</h3>
+                        <h4>Program Educational Objectives:</h4>
+                        <ul>
+                            <li><strong>PEO1:</strong> To enable graduates of the program to build a globally competent professional career in the field of Information Security with strong ethical values and responsibility.</li>
+                            <li><strong>PEO2:</strong> To prepare students with the technical expertise and problem-solving skills necessary to secure information systems, protect digital assets, and provide innovative solutions to societal and organizational security challenges.</li>
+                            <li><strong>PEO3:</strong> To empower graduates to pursue higher education, research, and continuous learning in Information Security, thereby contributing to technological advancement and supporting national and global economic growth.</li>
+                        </ul>
+                        <h4>Program Objectives</h4>
+                        <ul>
+                            <li><strong>PO1. Engineering Knowledge:</strong> Apply knowledge of mathematics, computer science, and information security fundamentals to analyze and solve complex security problems.</li>
+                            <li><strong>PO2. Problem Analysis:</strong> Identify, formulate, and analyze information security problems using principles of science, engineering, and computing to reach substantiated conclusions.</li>
+                            <li><strong>PO3. Design/Development of Solutions:</strong> Design secure computing systems, processes, and network architectures that meet organizational and societal needs with due consideration for health, safety, culture, and environment.</li>
+                            <li><strong>PO4. Conduct Investigations of Complex Problems:</strong> Use research-based methods, threat modeling, penetration testing, digital forensics, and data interpretation to investigate and draw valid conclusions about security challenges.</li>
+                            <li><strong>PO5. Modern Tool Usage:</strong> Select, adapt, and apply appropriate information security tools, frameworks, and IT resources (such as cryptography, firewalls, intrusion detection systems, cloud security platforms) for effective solutions.</li>
+                            <li><strong>PO6. The Engineer and Society:</strong> Apply contextual knowledge to assess the societal, legal, ethical, and cultural implications of information security practices, and assume professional responsibility for protecting digital systems.</li>
+                            <li><strong>PO7. Environment and Sustainability:</strong> Understand the role of information security in sustainable digital development, ensuring secure and resilient systems that contribute positively to organizations and society.</li>
+                            <li><strong>PO8. Ethics:</strong> Commit to ethical principles, professional integrity, and adherence to security regulations, standards, and codes of practice in the field of information security.</li>
+                            <li><strong>PO9. Individual and Team Work:</strong> Function effectively as an individual and as a member or leader in multidisciplinary and cross-functional teams to solve complex information security challenges.</li>
+                            <li><strong>PO10. Communication:</strong> Communicate effectively with technical and non-technical stakeholders, including writing technical reports, preparing documentation, delivering presentations, and providing clear instructions on information security matters.</li>
+                            <li><strong>PO11. Project Management and Finance:</strong> Demonstrate knowledge of project management and organizational principles, and apply them to manage and deliver secure information systems and solutions within financial and resource constraints.</li>
+                            <li><strong>PO12. Life-long Learning:</strong> Recognize the importance of continuous learning and acquire the ability to update knowledge and skills in response to evolving technologies, threats, and global information security challenges.</li>
+                        </ul>
+                        <h4>Program Specific Objectives</h4>
+                        <ul>
+                            <li><strong>PSO1. Secure System Design and Implementation:</strong> Graduates will be able to design, implement, and manage secure computer systems, networks, and applications using modern security standards, cryptographic techniques, and defense mechanisms against evolving cyber threats.</li>
+                            <li><strong>PSO2. Cyber Defense, Analysis, and Forensics:</strong> Graduates will be capable of applying advanced tools and methodologies in threat detection, penetration testing, malware analysis, and digital forensics to investigate and mitigate cybersecurity incidents effectively.</li>
+                            <li><strong>PSO3. Research, Innovation, and Continuous Learning in Information Security:</strong> Graduates will demonstrate the ability to engage in research, innovation, and life-long learning in emerging areas such as cloud security, blockchain, artificial intelligence for security, and national/international cyber laws to provide sustainable and globally relevant solutions.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
     <div class="accordion-item">
-                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="objectives-content">
-                    <span>Program Objectives</span>
-                    <span class="toggle-icon">+</span>
-                </div>
-                <div class="accordion-content" id="objectives-content">
-                    <div class="accordion-content-inner">
-                        <p>The Cyber Security and Information Security program is carefully structured to equip students with the necessary knowledge, technical skills, and professional values required to succeed in the rapidly evolving field of cybersecurity. The program emphasizes knowledge and problem-solving by providing a strong theoretical foundation and practical expertise to analyze, assess, and address cybersecurity challenges through innovative, effective, and industry-relevant solutions. By fostering professional excellence, it prepares graduates to qualify for and excel in leading positions within cybersecurity, information security, and related technology-driven sectors, ensuring they are highly competitive in the labor market.</p>
-                        <p>An important component of the program is the promotion of ethical and legal awareness, ensuring that students understand professional responsibilities, legal frameworks, and ethical practices while addressing security challenges responsibly and sustainably. The curriculum also develops teamwork and collaboration, training students to work efficiently within multidisciplinary teams while fostering leadership, communication, and interpersonal problem-solving skills essential for professional success.</p>
-                        <p>To address the dynamic nature of cybersecurity, the program introduces the practice of continuous learning, enabling students to stay updated with emerging technologies, tools, and methodologies, thereby preparing them to adapt to industry shifts and advancements. Through a strong focus on research and innovation, students are encouraged to explore and contribute to advancements in areas such as ethical hacking, digital forensics, encryption, cyber warfare, cloud security, and network defense, thereby enhancing both academic and practical contributions to the field.</p>
-                        <p>The program also emphasizes programming and technical competence, with particular focus on languages like Python and other cybersecurity-relevant tools that enable students to develop, test, and deploy advanced security solutions. By ensuring graduate readiness, the curriculum creates pathways for higher education, specialized research, and advanced professional training. Furthermore, it prepares graduates to provide community and industry support, contributing to the strengthening of cybersecurity infrastructure, mitigating risks, and offering expertise to national and international organizations.</p>
-                        <p>Finally, the program ensures global and local relevance by aligning its curriculum with the evolving demands of the labor market and addressing both regional and global cybersecurity challenges. In doing so, it nurtures professionals capable of strengthening digital resilience and contributing meaningfully to securing the future of cyberspace.</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="accordion-item">
-                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="objectives-content" tabindex="0">
-                    <span>Program Objectives</span>
-                    <span class="toggle-icon">+</span>
-                </div>
-                <div class="accordion-content" id="objectives-content">
-                    <div class="accordion-content-inner">
-                        <p>The program equips students with knowledge, skills, and ethical values to excel in cybersecurity. It emphasizes problem-solving, teamwork, and continuous learning to address industry challenges.</p>
-                        <p>Students are trained in programming, ethical hacking, and digital forensics, preparing them for leadership roles and contributions to global cybersecurity infrastructure.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item">
                 <div class="accordion-header" role="button" aria-expanded="false" aria-controls="faculty-content" tabindex="0">
                     <span>Faculty Excellence</span>
                     <span class="toggle-icon">+</span>
