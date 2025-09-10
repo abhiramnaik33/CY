@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Discover GMU's B.Tech in Computer Science - Cybersecurity program, featuring cutting-edge curriculum, expert faculty, and vibrant campus life.">
+    <meta name="keywords"
+        content="B.Tech Cybersecurity, GMU, Computer Science, Cybersecurity Education, Information Security">
+    <meta name="author" content="GM University">
+    <title>Program Outcomes - GM University Cybersecurity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b1413;
+            --primary-dark: #250d0c;
+            --primary-light: #5c2221;
+            --secondary: #f6e8b1;
+            --secondary-light: #fffce6;
+            --accent: #ff6b33;
+            --accent-light: #ff8c5a;
+            --text: #111827;
+            --text-light: #374151;
+            --text-muted: #6b7280;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 3px 8px rgba(59, 20, 19, 0.12);
+            --shadow-md: 0 6px 16px rgba(59, 20, 19, 0.18);
+            --shadow-lg: 0 10px 28px rgba(59, 20, 19, 0.25);
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            --gradient-hero: linear-gradient(145deg, var(--primary-dark) 0%, var(--primary) 40%, var(--accent) 100%);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-lg: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: clamp(14px, 2.5vw, 16px);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            color: var(--text);
+            line-height: 1.75;
+            background: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-dark);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: clamp(2rem, 5.5vw, 3.5rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+        h3 { font-size: clamp(1.2rem, 2.8vw, 1.6rem); font-weight: 600; }
+
+        p {
+            font-size: clamp(0.9rem, 1.7vw, 1.1rem);
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            width: clamp(40px, 6vw, 50px);
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .logo img:hover { transform: scale(1.1); }
+
+        .nav-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.6vw, 1rem);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover { color: var(--primary); }
+        .nav-link:hover::after { width: 100%; }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary-dark);
+            cursor: pointer;
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: clamp(3rem, 7vw, 5rem) 1.5rem;
+        }
+
+        .section {
+            padding: clamp(3rem, 6vw, 4rem) 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 150px;
+            height: 6px;
+            background: var(--gradient-primary);
+            margin: 1rem auto;
+            border-radius: 4px;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-content h3 {
+            margin: 2rem 0 1rem;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+        }
+
+        th, td {
+            border: 1px solid var(--text-muted);
+            padding: 0.75rem;
+            text-align: center;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        }
+
+        th {
+            background: var(--primary-light);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        td {
+            background: var(--bg-card);
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gradient-primary);
+            color: #ffffff;
+            padding: clamp(3rem, 6vw, 4rem) 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover { color: var(--secondary); }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-list { gap: 1.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-list {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.95);
+                padding: 1rem;
+                box-shadow: var(--shadow-sm);
+            }
+            .nav-list.active { display: flex; }
+            table { font-size: clamp(0.8rem, 1.4vw, 0.9rem); }
+        }
+
+        @media (max-width: 480px) {
+            th, td { padding: 0.5rem; font-size: clamp(0.75rem, 1.3vw, 0.85rem); }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="image.png" alt="GMU Logo" loading="lazy">
+            </div>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                    <li><a href="index.html#hod-message" class="nav-link">HoD Message</a></li>
+                    <li><a href="index.html#vision-mission" class="nav-link">Vision & Mission</a></li>
+                    <li><a href="index.html#programs" class="nav-link">Programs</a></li>
+                    <li><a href="index.html#faculty" class="nav-link">Faculty</a></li>
+                    <li><a href="index.html#admissions" class="nav-link">Admissions</a></li>
+                    <li><a href="index.html#achievements" class="nav-link">Achievements</a></li>
+                    <li><a href="index.html#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="index.html#alumni" class="nav-link">Alumni</a></li>
+                    <li><a href="#pos-peos-psos" class="nav-link">Program Outcomes</a></li>
+                </ul>
+                <button class="hamburger" aria-label="Toggle navigation">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section fade-in-up" id="pos-peos-psos">
+            <h2 class="section-title">Program Outcomes (POs), Program Educational Objectives (PEOs) & Program Specific Outcomes (PSOs)</h2>
+            <div class="section-content">
+                <h3>Program Outcomes (POs) – Cyber Security</h3>
+                <p>
+                    <strong>PO1 – Engineering Knowledge</strong><br>
+                    Apply the knowledge of mathematics, science, engineering fundamentals, and cybersecurity principles to solve complex information security problems.<br><br>
+                    <strong>PO2 – Problem Analysis</strong><br>
+                    Identify, analyze, and interpret security threats and vulnerabilities using domain-specific tools to provide effective solutions.<br><br>
+                    <strong>PO3 – Design & Development of Solutions</strong><br>
+                    Design and implement secure systems, processes, and applications that meet specified requirements while considering public health, safety, cultural, societal, and environmental factors.<br><br>
+                    <strong>PO4 – Conduct Investigations of Complex Problems</strong><br>
+                    Use research-based knowledge and methods, including data collection, analysis, and experiments, to draw valid conclusions in cybersecurity.<br><br>
+                    <strong>PO5 – Modern Tool Usage</strong><br>
+                    Select, adapt, and apply appropriate modern tools, open-source platforms, and emerging technologies for secure data management and cyber defense.<br><br>
+                    <strong>PO6 – The Engineer and Society</strong><br>
+                    Apply contextual knowledge to assess societal, legal, and cultural issues and responsibilities related to cybersecurity and ethical hacking practices.<br><br>
+                    <strong>PO7 – Environment and Sustainability</strong><br>
+                    Understand the impact of cybersecurity solutions on sustainable digital development and demonstrate the need for green and energy-efficient technologies.<br><br>
+                    <strong>PO8 – Ethics</strong><br>
+                    Commit to professional ethics, responsibilities, and cyber laws, adhering to global standards and values in information security practices.<br><br>
+                    <strong>PO9 – Individual and Team Work</strong><br>
+                    Function effectively as an individual, and as a member or leader in diverse teams and multidisciplinary environments for secure digital ecosystem development.<br><br>
+                    <strong>PO10 – Communication Skills</strong><br>
+                    Communicate effectively on complex cybersecurity activities with the technical community and society, including effective documentation, reports, design documentation, and presentations.<br><br>
+                    <strong>PO11 – Project Management and Finance</strong><br>
+                    Demonstrate knowledge of management principles and apply them to one’s own work as a member or leader in a team to manage cybersecurity projects in multidisciplinary environments.<br><br>
+                    <strong>PO12 – Life-long Learning</strong><br>
+                    Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change in cybersecurity and information security.
+                </p>
+
+                <h3>Program Educational Objectives (PEOs) – Cyber Security</h3>
+                <p>
+                    <strong>PEO1 – Professional Excellence</strong><br>
+                    Graduates will acquire strong knowledge and practical skills in cybersecurity to solve complex real-world problems at national and global levels.<br><br>
+                    <strong>PEO2 – Ethical and Social Responsibility</strong><br>
+                    Graduates will uphold ethical values, cyber laws, and societal responsibilities while ensuring secure digital practices and data protection.<br><br>
+                    <strong>PEO3 – Innovation and Lifelong Learning</strong><br>
+                    Graduates will engage in continuous learning, research, and innovation to develop automated and advanced solutions in digital security systems.
+                </p>
+
+                <h3>Program Specific Outcomes (PSOs) – Cyber Security</h3>
+                <p>
+                    <strong>PSO1 – Secure System Development</strong><br>
+                    Graduates will design, implement, and manage secure computer networks, applications, and digital infrastructures against cyber threats.<br><br>
+                    <strong>PSO2 – Threat Analysis and Forensics</strong><br>
+                    Graduates will analyze, investigate, and mitigate cybersecurity incidents using modern tools, forensic methods, and risk assessment strategies.<br><br>
+                    <strong>PSO3 – Ethical Hacking and Compliance</strong><br>
+                    Graduates will apply ethical hacking techniques, penetration testing, and comply with cybersecurity laws, standards, and international frameworks.
+                </p>
+
+                <h3>Program Outcomes (POs) – Information Security</h3>
+                <p>
+                    <strong>PO1 – Engineering & Security Knowledge</strong><br>
+                    Apply knowledge of mathematics, science, and information security principles to solve complex security problems.<br><br>
+                    <strong>PO2 – Problem Analysis</strong><br>
+                    Identify, analyze, and interpret information security risks, vulnerabilities, and threats using appropriate methodologies.<br><br>
+                    <strong>PO3 – Design & Development of Solutions</strong><br>
+                    Design secure frameworks, protocols, and systems to meet organizational and societal information security needs.<br><br>
+                    <strong>PO4 – Conduct Investigations of Complex Problems</strong><br>
+                    Use research methods, data analysis, and security testing to investigate and provide valid conclusions for information security issues.<br><br>
+                    <strong>PO5 – Modern Tool Usage</strong><br>
+                    Select, adapt, and apply appropriate modern IT tools, open-source platforms, and emerging technologies for secure data management.<br><br>
+                    <strong>PO6 – The Engineer and Society</strong><br>
+                    Apply contextual knowledge to assess societal, legal, and cultural issues and responsibilities in ensuring safe information practices.<br><br>
+                    <strong>PO7 – Environment and Sustainability</strong><br>
+                    Understand the impact of information security practices on sustainability and promote eco-friendly digital technologies.<br><br>
+                    <strong>PO8 – Ethics</strong><br>
+                    Demonstrate professional ethics, compliance with cyber laws, and commitment to integrity in securing organizational and personal data.<br><br>
+                    <strong>PO9 – Individual and Team Work</strong><br>
+                    Function effectively as an individual, team member, or leader in multidisciplinary environments for developing secure information systems.<br><br>
+                    <strong>PO10 – Communication Skills</strong><br>
+                    Communicate effectively with professionals and society on complex information security topics through clear documentation and presentations.<br><br>
+                    <strong>PO11 – Project Management and Finance</strong><br>
+                    Apply management principles and financial understanding to lead projects and deliver cost-effective information security solutions.<br><br>
+                    <strong>PO12 – Lifelong Learning</strong><br>
+                    Recognize the importance of continuous learning and adapt to evolving tools, standards, and technologies in information security.
+                </p>
+
+                <h3>Program Educational Objectives (PEOs) – Information Security</h3>
+                <p>
+                    <strong>PEO1 – Professional Competence</strong><br>
+                    Graduates will acquire strong foundational knowledge and practical expertise in information security to address global challenges.<br><br>
+                    <strong>PEO2 – Ethical and Social Responsibility</strong><br>
+                    Graduates will uphold ethical values, legal compliance, and societal responsibilities while ensuring secure management of information.<br><br>
+                    <strong>PEO3 – Innovation and Lifelong Learning</strong><br>
+                    Graduates will engage in lifelong learning, research, and innovation to design automated and sustainable solutions in information security systems.
+                </p>
+
+                <h3>Program Specific Outcomes (PSOs) – Information Security</h3>
+                <p>
+                    <strong>PSO1 – Secure Framework Development</strong><br>
+                    Graduates will design, develop, and implement secure frameworks, policies, and digital infrastructures for protecting organizational data.<br><br>
+                    <strong>PSO2 – Threat Analysis and Incident Response</strong><br>
+                    Graduates will analyze, investigate, and mitigate information security incidents using forensic methods, risk assessment, and modern security tools.<br><br>
+                    <strong>PSO3 – Compliance and Ethical Hacking</strong><br>
+                    Graduates will apply ethical hacking, penetration testing, and comply with laws, standards, and best practices in information security.
+                </p>
+
+                <h3>PEO–PO–PSO Mapping Matrix</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>PEOs</th>
+                            <th>PO1</th>
+                            <th>PO2</th>
+                            <th>PO3</th>
+                            <th>PO4</th>
+                            <th>PO5</th>
+                            <th>PO6</th>
+                            <th>PO7</th>
+                            <th>PO8</th>
+                            <th>PO9</th>
+                            <th>PO10</th>
+                            <th>PO11</th>
+                            <th>PO12</th>
+                            <th>PSO1</th>
+                            <th>PSO2</th>
+                            <th>PSO3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PEO1 – Professional Competence</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>PEO2 – Ethical & Social Responsibility</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>PEO3 – Innovation & Lifelong Learning</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Legend:</strong><br>
+                    • 3 = High Contribution<br>
+                    • 2 = Medium Contribution<br>
+                    • 1 = Low Contribution</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>GM University</h4>
+                <p>Davanagere, Karnataka, India</p>
+                <p>Phone: +91 8192 233377</p>
+                <p>Email: <a href="mailto:info@gmu.ac.in">info@gmu.ac.in</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="https://gmu.ac.in" target="_blank" rel="noopener noreferrer">GMU Website</a><br>
+                <a href="https://ignitron.gmu.ac.in" target="_blank" rel="noopener noreferrer">Ignitron Tech Fest</a>
+            </div>
+            <div class="footer-section">
+                <h4>Stay Connected</h4>
+                <a href="https://instagram.com/gmu" target="_blank" rel="noopener noreferrer">Instagram</a><br>
+                <a href="https://linkedin.com/company/gmu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Crafted with &hearts; for Department of Cybersecurity & Information Security
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hamburger Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navList = document.querySelector('.nav-list');
+            hamburger.addEventListener('click', () => {
+                navList.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', navList.classList.contains('active'));
+            });
+
+            // Smooth Scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = anchor.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        window.scrollTo({
+                            top: target.getBoundingClientRect().top + window.pageYOffset - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                    navList.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Intersection Observer for Animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>
