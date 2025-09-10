@@ -58,12 +58,14 @@ body {
     line-height: 1.75;
     background: var(--bg-light);
     overflow-x: hidden;
+    text-align: center;
 }
 
 h1, h2, h3 {
     color: var(--primary-dark);
     font-weight: 700;
     line-height: 1.2;
+    text-align: center ;
 }
 
 h1 { font-size: clamp(2rem, 5.5vw, 3.5rem); }
@@ -74,6 +76,7 @@ p {
     font-size: clamp(0.9rem, 1.7vw, 1.1rem);
     color: var(--text-light);
     margin-bottom: 1.5rem;
+    text-align: justify;
 }
 
 /* Header */
@@ -97,7 +100,7 @@ header {
 }
 
 .logo img {
-    width: clamp(40px, 6vw, 50px);
+    width: clamp(80px, 2vw, 60px);
     border-radius: 50%;
     border: 2px solid var(--accent);
     transition: var(--transition);
@@ -110,6 +113,7 @@ header {
     display: flex;
     gap: 2rem;
     list-style: none;
+    justify-content: center;
 }
 
 .nav-link {
@@ -119,6 +123,7 @@ header {
     font-size: clamp(0.9rem, 1.6vw, 1rem);
     position: relative;
     transition: var(--transition);
+    text-align: center;
 }
 
 .nav-link::after {
@@ -235,6 +240,7 @@ header {
     font-size: clamp(0.9rem, 1.6vw, 1rem);
     box-shadow: var(--shadow-md);
     transition: var(--transition);
+    text-align: center;
 }
 
 .cta-button:hover {
@@ -279,11 +285,11 @@ header {
 }
 
 .hod-photo {
-    float: right;
+    display: block;
+    margin: 0 auto 1rem;
     width: clamp(200px, 25vw, 220px);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    margin-left: 20px;
     object-fit: cover;
     border: 3px solid var(--accent-light);
     transition: var(--transition);
@@ -336,6 +342,7 @@ header {
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
     border: 1px solid rgba(59, 20, 19, 0.1);
+    text-align: center;
 }
 
 .vision-mission-item:hover,
@@ -415,11 +422,13 @@ header {
 .alumni-specialization {
     font-size: 0.95rem;
     color: var(--text-light);
+    text-align: center;
 }
 
 .video-showcase {
     padding: clamp(3rem, 7vw, 5rem) 1.5rem;
     background: linear-gradient(135deg, var(--bg-light), rgba(246, 232, 177, 0.3));
+    text-align: center;
 }
 
 .video-grid {
@@ -500,7 +509,6 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
-    text-align: left;
 }
 
 .footer-section h4 {
@@ -515,6 +523,7 @@ footer {
     font-size: 1rem;
     margin-bottom: 0.5rem;
     text-decoration: none;
+    text-align: center;
 }
 
 .footer-section a:hover { color: var(--secondary); }
@@ -522,6 +531,7 @@ footer {
 .newsletter-form {
     display: flex;
     gap: 1rem;
+    justify-content: center;
     margin-top: 1rem;
 }
 
@@ -633,10 +643,11 @@ th {
         background: rgba(255, 255, 255, 0.95);
         padding: 1rem;
         box-shadow: var(--shadow-sm);
+        text-align: center;
     }
     .nav-list.active { display: flex; }
     .hero { min-height: 50vh; padding: clamp(3rem, 10vh, 8rem) 1rem; }
-    .hod-photo { float: none; width: 100%; max-width: 250px; margin: 0 auto 1rem; display: block; }
+    .hod-photo { width: 100%; max-width: 250px; }
     .about-images img { width: 100%; height: 180px; }
 }
 
@@ -651,8 +662,7 @@ th {
     .about-images img { height: 160px; }
     .gallery-grid img { height: 180px; }
     .achievement-card img { height: 180px; }
-}
-    </style>
+}    </style>
 </head>
 
 <body>
@@ -699,7 +709,7 @@ th {
             </div>
             <div class="video-card fade-in-up">
                 <div class="video-container">
-                    <iframe src=" " title="Cybersecurity Program Overview"
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Cybersecurity Program Overview"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen loading="lazy"></iframe>
@@ -940,7 +950,7 @@ th {
                         <div class="faculty-role">Tutor</div>
                         <div class="faculty-specialization">
                             <strong>Qualifications:</strong> B.E.<br>
-                            <strong>Experience:</strong> Fresh Graduate<br>
+                            <!-- <strong>Experience:</strong> Fresh Graduate<br> -->
                             <strong>Contact:</strong> <a
                                 href="mailto:rakshithagb.fet.scst@gmu.ac.in">rakshithagb.fet.scst@gmu.ac.in</a><br>
                             <strong>Phone:</strong> +91 99804 37345
@@ -955,8 +965,8 @@ th {
                         <div class="faculty-role">Tutor</div>
                         <div class="faculty-specialization">
                             <strong>Qualifications:</strong> B.E.<br>
-                            <strong>Experience:</strong> Fresh Graduate<br>
-                            <strong>Contact:</strong> Contact via department<br>
+                            <!-- <strong>Experience:</strong> Fresh Graduate<br> -->
+                            <strong>Contact:</strong> swathia.fet.scst@gmu.ac.in<br>
                             <strong>Phone:</strong> +91 90196 35272
                         </div>
                     </div>
@@ -1194,4 +1204,3 @@ th {
 </body>
 
 </html>
-
