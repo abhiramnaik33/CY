@@ -1,716 +1,1206 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore GMU's B.Tech in Computer Science - Cybersecurity program, including curriculum, faculty, and career opportunities.">
-    <meta name="keywords" content="B.Tech Cybersecurity, GMU, Computer Science, Cybersecurity Education">
-    <meta name="author" content="GMU">
-    <title>B.Tech Cybersecurity - GMU</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="description"
+        content="Discover GMU's B.Tech in Computer Science - Cybersecurity program, featuring cutting-edge curriculum, expert faculty, and vibrant campus life.">
+    <meta name="keywords"
+        content="B.Tech Cybersecurity, GMU, Computer Science, Cybersecurity Education, Information Security">
+    <meta name="author" content="GM University">
+    <title>B.Tech Cybersecurity - GM University</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
-        :root {
-            --primary: #1e40af;
-            --primary-dark: #172554;
-            --primary-light: #60a5fa;
-            --secondary: #facc15;
-            --secondary-light: #fef9c3;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg-light: #f9fafb;
-            --white: #fff;
-            --shadow: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-hover: 0 6px 20px rgba(0,0,0,0.12);
-            --gradient: linear-gradient(135deg, var(--primary), var(--primary-light));
-            --radius: 10px;
-            --radius-sm: 6px;
-            --font-base: 16px;
-            --font-scale: 1.2;
-            --transition: .2s ease;
-        }
+:root {
+    --primary: #3b1413;
+    --primary-dark: #250d0c;
+    --primary-light: #5c2221;
+    --secondary: #f6e8b1;
+    --secondary-light: #fffce6;
+    --accent: #ff6b33;
+    --accent-light: #ff8c5a;
+    --text: #111827;
+    --text-light: #374151;
+    --text-muted: #6b7280;
+    --bg-light: #f8fafc;
+    --bg-card: #ffffff;
+    --white: #ffffff;
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 3px 8px rgba(59, 20, 19, 0.12);
+    --shadow-md: 0 6px 16px rgba(59, 20, 19, 0.18);
+    --shadow-lg: 0 10px 28px rgba(59, 20, 19, 0.25);
+    --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    --gradient-hero: linear-gradient(145deg, var(--primary-dark) 0%, var(--primary) 40%, var(--accent) 100%);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-lg: 16px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background: var(--bg-light);
-            font-size: var(--font-base);
-            scroll-behavior: smooth;
-        }
+html {
+    scroll-behavior: smooth;
+    font-size: clamp(14px, 2.5vw, 16px);
+}
 
-        h1 { font-size: calc(var(--font-base) * var(--font-scale) * 2.5); }
-        h2 { font-size: calc(var(--font-base) * var(--font-scale) * 1.8); }
-        h3 { font-size: calc(var(--font-base) * var(--font-scale)); }
-        p, li { font-size: var(--font-base); }
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    color: var(--text);
+    line-height: 1.75;
+    background: var(--bg-light);
+    overflow-x: hidden;
+    text-align: center;
+}
 
-        .hero {
-            background: var(--gradient);
-            color: var(--white);
-            text-align: center;
-            padding: clamp(3rem, 8vw, 6rem) 1rem;
-            min-height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
+h1, h2, h3 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center ;
+}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            opacity: 0.15;
-        }
+h1 { font-size: clamp(2rem, 5.5vw, 3.5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+h3 { font-size: clamp(1.2rem, 2.8vw, 1.6rem); font-weight: 600; }
 
-        .hero-content {
-            max-width: 900px;
-            padding: 1.5rem;
-            background: rgba(0,0,0,0.1);
-            border-radius: var(--radius);
-            backdrop-filter: blur(4px);
-        }
+p {
+    font-size: clamp(0.9rem, 1.7vw, 1.1rem);
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
 
-        .hero h1 {
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    padding: 1rem 2rem;
+}
 
-        .hero p {
-            font-size: calc(var(--font-base) * 1.1);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
+.header-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-        .cta-button {
-            display: inline-flex;
-            gap: 0.5rem;
-            padding: 0.9rem 2rem;
-            background: var(--secondary);
-            color: var(--primary-dark);
-            text-decoration: none;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
+.logo img {
+    width: clamp(80px, 2vw, 60px);
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    transition: var(--transition);
+    object-fit: cover;
+}
 
-        .cta-button:hover {
-            background: var(--secondary-light);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
+.logo img:hover { transform: scale(1.1); }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: clamp(2rem, 4vw, 3rem) 1rem;
-        }
+.nav-list {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    justify-content: center;
+}
 
-        .section {
-            background: var(--white);
-            padding: clamp(1.5rem, 3vw, 2.5rem);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-        }
+.nav-link {
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+    position: relative;
+    transition: var(--transition);
+    text-align: center;
+}
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary-dark);
-            font-weight: 700;
-        }
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: var(--transition);
+}
 
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: var(--gradient);
-            margin: 0.5rem auto;
-            border-radius: 2px;
-        }
+.nav-link:hover { color: var(--primary); }
+.nav-link:hover::after { width: 100%; }
 
-        .section-content p {
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-        }
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--primary-dark);
+    cursor: pointer;
+}
 
-        .accordion-item {
-            margin-bottom: 1rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            background: var(--white);
-        }
+/* Hero */
+.hero {
+    background: var(--gradient-hero);
+    color: var(--white);
+    text-align: center;
+    padding: clamp(15rem, 15vh, 12rem) 1.5rem;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
 
-        .accordion-header {
-            padding: 1rem;
-            background: var(--gradient);
-            color: var(--white);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-        }
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.2) 2px, transparent 2px);
+    background-size: 50px 50px;
+    animation: float 10s ease-in-out infinite;
+}
 
-        .accordion-header:hover {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-        }
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(0.5deg); }
+}
 
-        .toggle-icon {
-            font-size: 1.2rem;
-            width: 24px;
-            height: 24px;
-            display: grid;
-            place-items: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-        }
+.hero-content {
+    max-width: 1200px;
+    padding: clamp(2rem, 5vw, 3rem);
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1;
+}
 
-        .accordion-item.active .toggle-icon {
-            transform: rotate(45deg);
-        }
+.hero h1 {
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, var(--white), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
 
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
+.hero p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    opacity: 0.9;
+}
 
-        .accordion-item.active .accordion-content {
-            max-height: 2500px;
-        }
+.cta-form {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-        .accordion-content-inner {
-            padding: 1.5rem;
-        }
+.cta-form input {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    transition: var(--transition);
+}
 
-        .faculty-grid, .alumni-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-        }
+.cta-form input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.2);
+}
 
-        .faculty-card, .alumni-card {
-            background: var(--bg-light);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-        }
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 2rem;
+    background: var(--secondary);
+    color: var(--primary-dark);
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    text-align: center;
+}
 
-        .faculty-card:hover, .alumni-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-            background: var(--white);
-        }
+.cta-button:hover {
+    background: var(--accent);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
 
-        .faculty-avatar, .alumni-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            background: var(--gradient);
-            display: grid;
-            place-items: center;
-            font-size: 1.4rem;
-            color: var(--white);
-            font-weight: 600;
-            box-shadow: var(--shadow);
-        }
+/* Sections */
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: clamp(3rem, 7vw, 5rem) 1.5rem;
+}
 
-        .faculty-avatar img, .alumni-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
+.section {
+    padding: clamp(3rem, 6vw, 4rem) 1.5rem;
+    margin-bottom: 4rem;
+}
 
-        .faculty-avatar.has-image, .alumni-avatar.has-image {
-            background: none;
-        }
+.section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+}
 
-        .faculty-name, .alumni-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-        }
+.section-title::after {
+    content: "";
+    display: block;
+    width: 150px;
+    height: 6px;
+    background: var(--gradient-primary);
+    margin: 1rem auto;
+    border-radius: 4px;
+}
 
-        .faculty-role, .alumni-role {
-            color: var(--primary);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
 
-        .faculty-specialization, .alumni-specialization {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
+.hod-photo {
+    display: block;
+    margin: 0 auto 1rem;
+    width: clamp(200px, 25vw, 220px);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    object-fit: cover;
+    border: 3px solid var(--accent-light);
+    transition: var(--transition);
+}
 
-        .faculty-specialization a, .alumni-specialization a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
+.hod-photo:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
 
-        .faculty-specialization a:hover, .alumni-specialization a:hover {
-            text-decoration: underline;
-            color: var(--primary-dark);
-        }
+.about-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
 
-        .video-showcase {
-            padding: clamp(2rem, 5vw, 3rem) 1rem;
-            background: var(--bg-light);
-        }
+.about-images img {
+    width: clamp(45%, 48vw, 48%);
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    filter: brightness(0.95);
+}
 
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
+.about-images img:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+    filter: brightness(1);
+}
 
-        .video-card {
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
+.vision-mission-grid,
+.program-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
 
-        .video-container {
-            position: relative;
-            padding-top: 56.25%;
-            background: #e5e7eb;
-        }
+.vision-mission-item,
+.program-item,
+.faculty-card,
+.alumni-card,
+.achievement-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid rgba(59, 20, 19, 0.1);
+    text-align: center;
+}
 
-        .video-container iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-        }
+.vision-mission-item:hover,
+.program-item:hover,
+.faculty-card:hover,
+.alumni-card:hover,
+.achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
 
-        footer {
-            background: var(--gradient);
-            color: var(--white);
-            padding: 2rem 1rem;
-            text-align: center;
-        }
+.faculty-grid,
+.alumni-grid,
+.gallery-grid,
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
 
-        footer a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 500;
-        }
+.faculty-card,
+.alumni-card,
+.achievement-card {
+    text-align: center;
+}
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+.faculty-avatar,
+.alumni-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    background: var(--gradient-primary);
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    color: var(--white);
+    box-shadow: var(--shadow-md);
+    border: 3px solid var(--accent-light);
+    transition: var(--transition);
+    overflow: hidden;
+}
 
-        @media (max-width: 768px) {
-            .hero { min-height: 40vh; padding: 2rem 1rem; }
-            .hero h1 { font-size: calc(var(--font-base) * 1.8); }
-            .hero p { font-size: var(--font-base); }
-            .cta-button { padding: 0.8rem 1.5rem; }
-            .section { padding: 1.5rem; }
-            .video-grid { grid-template-columns: 1fr; }
-            .faculty-grid, .alumni-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
-        }
+.faculty-avatar img,
+.alumni-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: var(--transition);
+    filter: brightness(0.95);
+}
 
-        @media (prefers-reduced-motion: reduce) {
-            * { transition-duration: 0.01ms !important; }
-        }
+.faculty-avatar:hover img,
+.alumni-avatar:hover img {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
 
-        @media (prefers-contrast: high) {
-            :root { --shadow: 0 4px 12px rgba(0,0,0,0.3); --shadow-hover: 0 6px 20px rgba(0,0,0,0.4); }
-        }
+.faculty-name,
+.alumni-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
 
-        :focus-visible {
-            outline: 2px solid var(--secondary);
-            outline-offset: 2px;
-        }
-    </style>
+.faculty-role,
+.alumni-role {
+    color: var(--accent);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.faculty-specialization,
+.alumni-specialization {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
+.video-showcase {
+    padding: clamp(3rem, 7vw, 5rem) 1.5rem;
+    background: linear-gradient(135deg, var(--bg-light), rgba(246, 232, 177, 0.3));
+    text-align: center;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.video-card {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    background: var(--bg-card);
+    transition: var(--transition);
+}
+
+.video-container {
+    position: relative;
+    padding-top: 56.25%;
+}
+
+.video-container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    filter: brightness(0.95);
+    border: 2px solid var(--accent-light);
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+    filter: brightness(1);
+}
+
+.achievement-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    filter: brightness(0.95);
+    border: 2px solid var(--accent-light);
+}
+
+.achievement-card img:hover {
+    transform: scale(1.03);
+    box-shadow: var(--shadow-md);
+    filter: brightness(1);
+}
+
+/* Footer */
+footer {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding: clamp(3rem, 6vw, 4rem) 1.5rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h4 {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.footer-section p,
+.footer-section a {
+    color: var(--white);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    text-align: center;
+}
+
+.footer-section a:hover { color: var(--secondary); }
+
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.newsletter-form input {
+    padding: 0.8rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.newsletter-form button {
+    padding: 0.8rem 1.5rem;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter-form button:hover { background: var(--accent-light); }
+
+.footer-bottom {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox.active { display: flex; }
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    object-fit: contain;
+    border: 3px solid var(--accent);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: var(--white);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lightbox-close:hover {
+    color: var(--accent);
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    border: 1px solid var(--text-muted);
+    padding: 0.5rem;
+    text-align: center;
+}
+
+th {
+    background: var(--primary-light);
+    color: var(--white);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .nav-list { gap: 1.5rem; }
+    .hero { min-height: 60vh; padding: clamp(4rem, 12vh, 10rem) 1rem; }
+    .faculty-grid,
+    .alumni-grid,
+    .gallery-grid,
+    .achievement-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .about-images img { height: 200px; }
+}
+
+@media (max-width: 768px) {
+    .hamburger { display: block; }
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1rem;
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+    }
+    .nav-list.active { display: flex; }
+    .hero { min-height: 50vh; padding: clamp(3rem, 10vh, 8rem) 1rem; }
+    .hod-photo { width: 100%; max-width: 250px; }
+    .about-images img { width: 100%; height: 180px; }
+}
+
+@media (max-width: 480px) {
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+    .cta-form input,
+    .cta-button { font-size: 0.9rem; padding: 0.7rem 1.2rem; }
+    .faculty-grid,
+    .alumni-grid,
+    .gallery-grid,
+    .achievement-grid { grid-template-columns: 1fr; }
+    .about-images img { height: 160px; }
+    .gallery-grid img { height: 180px; }
+    .achievement-card img { height: 180px; }
+}    </style>
 </head>
 
 <body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="image.png" alt="GMU Logo" loading="lazy">
+            </div>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#hod-message" class="nav-link">HoD Message</a></li>
+                    <li><a href="#vision-mission" class="nav-link">Vision & Mission</a></li>
+                    <li><a href="#programs" class="nav-link">Programs</a></li>
+                    <li><a href="#faculty" class="nav-link">Faculty</a></li>
+                    <li><a href="#admissions" class="nav-link">Admissions</a></li>
+                    <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#alumni" class="nav-link">Alumni</a></li>
+                    <li><a href="PO.html" class="nav-link">Program Outcomes</a></li>
+                </ul>
+                <button class="hamburger" aria-label="Toggle navigation">☰</button>
+            </nav>
+        </div>
+    </header>
+
     <section class="hero">
-        <div class="hero-content">
-            <h1>B.Tech in Computer Science - Cybersecurity</h1>
-            <p>Join GMU's cutting-edge program to become a cybersecurity expert, equipped with innovative skills to protect the digital world.</p>
-   
+        <div class="hero-content fade-in-up">
+            <h1>B.Tech in Computer Science - Cybersecurity & Information Security</h1>
+            <p>Embark on a journey to become a cybersecurity leader with GMU's innovative program, designed to equip you
+                with cutting-edge skills to safeguard the digital world.</p>
         </div>
     </section>
 
     <section class="video-showcase">
-        <h2 class="section-title">Program Videos & Campus Life</h2>
+        <h2 class="section-title fade-in-up">Explore Our Program & Campus</h2>
         <div class="video-grid">
-            <div class="video-card">
+            <div class="video-card fade-in-up">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/ACX9O7zL9nc" title="GMU Campus Preview" frameborder="10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/ACX9O7zL9nc" title="GMU Campus Preview" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="video-card fade-in-up">
+                <div class="video-container">
+                    <iframe src="" title="Cybersecurity Program Overview"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen loading="lazy"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-     
-  <section class="video-showcase">
-        
-
-        <div class="accordion">
-            <div class="accordion-item">
-                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="dept-content">
-                    <span>About the Department</span>
-                    <span class="toggle-icon">+</span>
+    <main class="container">
+        <section class="section fade-in-up" id="about">
+            <h2 class="section-title">About the Department</h2>
+            <div class="section-content">
+                <div class="about-images">
+                    <img src="gmu_top.jpg" alt="GMU Campus" loading="lazy">
+                    <img src="engineering_block.jpeg" alt="Engineering Block" loading="lazy">
                 </div>
-                <div class="accordion-content" id="dept-content">
-                    <div class="accordion-content-inner">
-                        <p>The Department of Cyber Security and Information Security at GM University, Davanagere, Karnataka, was established with the vision of fostering excellence in the rapidly evolving field of digital security. Recognizing the increasing significance of securing data, networks, and digital infrastructure in the modern world, the department is committed to equipping students with advanced technical knowledge, practical skills, and ethical perspectives to meet global cybersecurity challenges.</p>
-                        <p>The department offers two specialized programs i.e Cyber Security and Information Security that blend theoretical foundations with hands-on training in areas such as cryptography, ethical hacking, digital forensics, network defense, artificial intelligence in security, and risk management. With an emphasis on research-driven learning, students are encouraged to engage in innovative projects that address real-world problems in cybercrime prevention, data protection, and secure systems design.</p>
-                        <p>Supported by experienced faculty members, modern laboratories, and collaborations with industry and government organizations, the department provides a platform for holistic learning and professional development. It also actively organizes workshops, seminars, and training programs to bridge the gap between academia and industry.</p>
-                        <p>By promoting skilled cybersecurity professionals, the Department of Cyber Security and Information Security at GM University plays a vital role in strengthening digital resilience and contributing to India’s vision of a secure and technology-driven future.</p>
-                    </div>
+                <br>
+                <p>
+                    The Department of Cyber Security and Information Security at GM University, Davanagere, Karnataka,
+                    was established with the vision of fostering excellence in the rapidly evolving field of digital
+                    security. Recognizing the increasing significance of securing data, networks, and digital
+                    infrastructure in the modern world, the department is committed to equipping students with advanced
+                    technical knowledge, practical skills, and ethical perspectives to meet global cybersecurity
+                    challenges.
+                    The department offers two specialized programs i.e Cyber Security and Information Security that
+                    blend theoretical foundations with hands-on training in areas such as cryptography, ethical hacking,
+                    digital forensics, network defense, artificial intelligence in security, and risk management. With
+                    an emphasis on research-driven learning, students are encouraged to engage in innovative projects
+                    that address real-world problems in cybercrime prevention, data protection, and secure systems
+                    design.
+                    Supported by experienced faculty members, modern laboratories, and collaborations with industry and
+                    government organizations, the department provides a platform for holistic learning and professional
+                    development. It also actively organizes workshops, seminars, and training programs to bridge the gap
+                    between academia and industry.
+                    By promoting skilled cybersecurity professionals, the Department of Cyber Security and Information
+                    Security at GM University plays a vital role in strengthening digital resilience and contributing to
+                    India’s vision of a secure and technology-driven future.
+                </p>
+            </div>
+        </section>
+
+        <section class="section fade-in-up" id="hod-message">
+            <h2 class="section-title">Message from the HoD</h2>
+            <div class="section-content">
+                <img src="hod.jpg" alt="Dr. Aruna Kumar B T" class="hod-photo" loading="lazy">
+                <p>
+                    Welcome to the Department of Cyber Security & Information Security (CY & IY)) at GM University,
+                    Davanagere, Karnataka. I am privileged to have served as Head of the Department since March 2021. In
+                    today’s digital age, our field plays a crucial role in connecting individuals and shaping the
+                    future. In our ever-evolving field, innovation and creativity are at the forefront of technological
+                    advancement. As we embark on this journey together, I encourage each of you to embrace challenges,
+                    think critically, and collaborate with your peers. Our department is committed to fostering an
+                    environment where knowledge thrives and ideas flourish. Our curriculum is crafted to equip students
+                    with the technical skills necessary for success, while also fostering the problem-solving abilities
+                    required to address real-world challenges effectively. Our experienced faculty are passionate about
+                    mentorship and research, guiding students to explore their interests and pursue their aspirations.
+                    We believe in the culture of collaboration, where students can work together on projects that make a
+                    difference. In addition, we are committed to excellence through innovations in the teaching and
+                    learning process, challenging research projects, and developing new technologies that help advance
+                    the society and the country. The infrastructure and laboratory facilities
+                    available at the institute and technical competency of our students are well-known through our
+                    research projects and newly-developed technologies. Faculty and students are encouraged to pursue
+                    their curiosity, which often turns into commercialized innovations.
+                </p>
+                <p><strong>Dr. Aruna Kumar B T</strong><br>Head of Department</p>
+            </div>
+        </section>
+
+        <section class="section fade-in-up" id="vision-mission">
+            <h2 class="section-title">Vision & Mission</h2>
+            <div class="section-content vision-mission-grid">
+                <div class="vision-mission-item">
+                    <h3>Vision Statement – Cyber Security</h3>
+                    <p>• To equip students with the skills to meet global-level cybersecurity challenges.<br>
+                        • To empower graduates to secure digital data while upholding ethical values.<br>
+                        • To build professionals capable of developing automated and innovative digital security
+                        systems.</p>
+                </div>
+                <div class="vision-mission-item">
+                    <h3>Vision Statement – Information Security</h3>
+                    <p>• To equip students with the skills to address global-level information security challenges.<br>
+                        • To empower graduates to protect and manage information while upholding ethical values.<br>
+                        • To develop professionals capable of creating automated and innovative solutions for
+                        information security systems.</p>
+                </div>
+                <div class="vision-mission-item">
+                    <h3>Mission Statement – Cyber Security</h3>
+                    <p>• Understand cybersecurity concepts in real-time applications and problem-solving.<br>
+                        • Design robust tools and applications for secure data management.<br>
+                        • Apply innovative methods for digital security in automation.</p>
+                </div>
+                <div class="vision-mission-item">
+                    <h3>Mission Statement – Information Security</h3>
+                    <p>• Understand information security principles in real-time applications and
+                        organizational problem-solving.<br>
+                        • Design reliable frameworks and solutions for safeguarding information and
+                        managing secure data systems.<br>
+                        • Apply innovative methods and emerging technologies to enhance information security
+                        in automated and digital environments.</p>
                 </div>
             </div>
+        </section>
 
-            <div class="accordion-item">
-                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="hod-content">
-                    <span>HOD’s Message</span>
-                    <span class="toggle-icon">+</span>
+        <section class="section fade-in-up" id="programs">
+            <h2 class="section-title">Program Highlights</h2>
+            <div class="section-content program-grid">
+                <div class="program-item">
+                    <h3>Cyber Security – Program Overview</h3>
+                    <p>The Cyber Security program is designed to prepare graduates with the knowledge, skills, and
+                        professional values required to address the complex challenges of securing digital
+                        infrastructure. With a strong foundation in computer science, networking, and cryptography, the
+                        program equips students to identify vulnerabilities, mitigate risks, and develop robust security
+                        solutions against evolving cyber threats. Emphasis is placed on hands-on training,
+                        industry-relevant tools, and exposure to real-world attack and defense mechanisms. Students are
+                        encouraged to apply their knowledge to protect national and organizational assets, ensuring
+                        resilience in critical systems and services. The curriculum integrates research, innovation, and
+                        ethical practices, fostering responsible professionals who can contribute to society and
+                        industry alike. By preparing students for higher education, advanced certifications, and
+                        lifelong learning, the program nurtures leaders and experts capable of strengthening cyber
+                        defense globally and addressing the growing need for security professionals</p>
                 </div>
-                <div class="accordion-content" id="hod-content">
-                    <div class="accordion-content-inner">
-                        <p>Welcome to the Department of Cyber Security & Information Security (CY & IY) at GM University, Davanagere, Karnataka. I am privileged to have served as Head of the Department since March 2021.</p>
-                        <p>In today’s digital age, our field plays a crucial role in connecting individuals and shaping the future. In our ever-evolving field, innovation and creativity are at the forefront of technological advancement. As we embark on this journey together, I encourage each of you to embrace challenges, think critically, and collaborate with your peers. Our department is committed to fostering an environment where knowledge thrives and ideas flourish.</p>
-                        <p>Our curriculum is crafted to equip students with the technical skills necessary for success, while also fostering the problem-solving abilities required to address real-world challenges effectively. Our experienced faculty are passionate about mentorship and research, guiding students to explore their interests and pursue their aspirations. We believe in the culture of collaboration, where students can work together on projects that make a difference.</p>
-                        <p>In addition, we are committed to excellence through innovations in the teaching and learning process, challenging research projects, and developing new technologies that help advance the society and the country. The infrastructure and laboratory facilities available at the institute and technical competency of our students are well-known through our research projects and newly-developed technologies. Faculty and students are encouraged to pursue their curiosity, which often turns into commercialized innovations.</p>
-                    </div>
+                <div class="program-item">
+                    <h3>Information Security – Program Overview</h3>
+                    <p>The Information Security program is structured to develop graduates with expertise in securing
+                        data, applications, and communication systems across organizational and societal contexts. It
+                        provides a balance of theoretical foundations and practical skills in areas such as encryption,
+                        access control, compliance, governance, and risk management. Students gain hands-on experience
+                        with advanced tools and frameworks, enabling them to design and implement effective strategies
+                        for data protection and trust assurance. The program emphasizes the ethical, legal, and
+                        professional aspects of security, ensuring graduates understand the responsibilities of
+                        safeguarding sensitive information. Through research-driven learning and innovation, students
+                        are encouraged to explore new frontiers in areas such as cloud security, digital forensics, and
+                        secure software development. The curriculum also promotes leadership, collaboration, and
+                        continuous learning, preparing graduates for careers in academia, industry, or government.
+                        Ultimately, the program develops skilled professionals who contribute to secure digital
+                        ecosystems locally and globally</p>
                 </div>
             </div>
-
-            <div class="accordion-item">
-                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="vision-content">
-                    <span>Vision & Mission</span>
-                    <span class="toggle-icon">+</span>
-                </div>
-                <div class="accordion-content" id="vision-content">
-                    <div class="accordion-content-inner">
-                        <h3>Vision</h3>
-                        <p>Excellence and leadership in the educational, professional and research field of cyber security and Information security at the regional and global levels. Ethically capable of proactively safeguarding the digital future and commitment to effectively meet the needs of society and the labor market.</p>
-                        <h3>Mission</h3>
-                        <p>Preparing professional cadres in cybersecurity and information security in both the academic and professional fields capable of leading, designing and developing various projects in the various fields of cybersecurity and information security, by providing a distinguished and high-quality program that focuses on integrating scientific theories and practical training to develop programs and applications and innovation in scientific research and provide the required security services to individuals and public and private institutions in India and contribute to the development of society.</p>
+        </section>
+        <section class="section fade-in-up" id="faculty">
+            <h2 class="section-title">Faculty Excellence</h2>
+            <div class="section-content">
+                <div class="faculty-grid">
+                    <div class="faculty-card fade-in-left">
+                        <div class="faculty-avatar has-image" data-initials="AK">
+                            <img src="Picture2.jpg" alt="Dr. Aruna Kumar B T" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='AK'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="faculty-name">Dr. Aruna Kumar B T</div>
+                        <div class="faculty-role">Assistant Professor & HOD</div>
+                        <div class="faculty-specialization">
+                            <strong>Qualifications:</strong> B.E., M.Tech, Ph.D.<br>
+                            <strong>Experience:</strong> 19 years<br>
+                            <strong>Contact:</strong> <a href="mailto:hod.cyiy@gmu.ac.in">hod.cyiy@gmu.ac.in</a><br>
+                            <strong>Phone:</strong> +91 99452 21208
+                        </div>
                     </div>
-                </div>
-            </div>
-
-    <div class="accordion-item">
-                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="objectives-content">
-                    <span>Program Objectives</span>
-                    <span class="toggle-icon">+</span>
-                </div>
-                <div class="accordion-content" id="objectives-content">
-                    <div class="accordion-content-inner">
-                        <p>The Cyber Security and Information Security program is carefully structured to equip students with the necessary knowledge, technical skills, and professional values required to succeed in the rapidly evolving field of cybersecurity. The program emphasizes knowledge and problem-solving by providing a strong theoretical foundation and practical expertise to analyze, assess, and address cybersecurity challenges through innovative, effective, and industry-relevant solutions. By fostering professional excellence, it prepares graduates to qualify for and excel in leading positions within cybersecurity, information security, and related technology-driven sectors, ensuring they are highly competitive in the labor market.</p>
-                        <p>An important component of the program is the promotion of ethical and legal awareness, ensuring that students understand professional responsibilities, legal frameworks, and ethical practices while addressing security challenges responsibly and sustainably. The curriculum also develops teamwork and collaboration, training students to work efficiently within multidisciplinary teams while fostering leadership, communication, and interpersonal problem-solving skills essential for professional success.</p>
-                        <p>To address the dynamic nature of cybersecurity, the program introduces the practice of continuous learning, enabling students to stay updated with emerging technologies, tools, and methodologies, thereby preparing them to adapt to industry shifts and advancements. Through a strong focus on research and innovation, students are encouraged to explore and contribute to advancements in areas such as ethical hacking, digital forensics, encryption, cyber warfare, cloud security, and network defense, thereby enhancing both academic and practical contributions to the field.</p>
-                        <p>The program also emphasizes programming and technical competence, with particular focus on languages like Python and other cybersecurity-relevant tools that enable students to develop, test, and deploy advanced security solutions. By ensuring graduate readiness, the curriculum creates pathways for higher education, specialized research, and advanced professional training. Furthermore, it prepares graduates to provide community and industry support, contributing to the strengthening of cybersecurity infrastructure, mitigating risks, and offering expertise to national and international organizations.</p>
-                        <p>Finally, the program ensures global and local relevance by aligning its curriculum with the evolving demands of the labor market and addressing both regional and global cybersecurity challenges. In doing so, it nurtures professionals capable of strengthening digital resilience and contributing meaningfully to securing the future of cyberspace.</p>
+                    <div class="faculty-card fade-in-left">
+                        <div class="faculty-avatar has-image" data-initials="KP">
+                            <img src="Picture1.jpg" alt="Dr. K Prakash" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='KP'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="faculty-name">Dr. K Prakash</div>
+                        <div class="faculty-role">Professor</div>
+                        <div class="faculty-specialization">
+                            <strong>Qualifications:</strong> MCA, M.Phil, Ph.D.<br>
+                            <strong>Experience:</strong> 26 years<br>
+                            <strong>Contact:</strong> <a
+                                href="mailto:kprakash.cyiy@gmu.ac.in">kprakash.cyiy@gmu.ac.in</a><br>
+                            <strong>Phone:</strong> +91 63853 59970
+                        </div>
                     </div>
-                </div>
-            </div>
-
-
-            <div class="accordion-item">
-                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="objectives-content" tabindex="0">
-                    <span>Program Objectives</span>
-                    <span class="toggle-icon">+</span>
-                </div>
-                <div class="accordion-content" id="objectives-content">
-                    <div class="accordion-content-inner">
-                        <p>The program equips students with knowledge, skills, and ethical values to excel in cybersecurity. It emphasizes problem-solving, teamwork, and continuous learning to address industry challenges.</p>
-                        <p>Students are trained in programming, ethical hacking, and digital forensics, preparing them for leadership roles and contributions to global cybersecurity infrastructure.</p>
+                    <div class="faculty-card fade-in-left">
+                        <div class="faculty-avatar has-image" data-initials="KS">
+                            <img src="Picture3.jpg" alt="Kotreshi S N" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='KS'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="faculty-name">Kotreshi S N</div>
+                        <div class="faculty-role">Assistant Professor</div>
+                        <div class="faculty-specialization">
+                            <strong>Qualifications:</strong> B.E., M.Tech, (Ph.D.)<br>
+                            <strong>Experience:</strong> 20 years<br>
+                            <strong>Contact:</strong> <a
+                                href="mailto:kotreshisn@gmit.ac.in">kotreshisn@gmit.ac.in</a><br>
+                            <strong>Phone:</strong> +91 85533 36419
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <div class="accordion-header" role="button" aria-expanded="false" aria-controls="faculty-content" tabindex="0">
-                    <span>Faculty Excellence</span>
-                    <span class="toggle-icon">+</span>
-                </div>
-                <div class="accordion-content" id="faculty-content">
-                    <div class="accordion-content-inner">
-                        <p>Our faculty at GM University bring industry experience and academic excellence to guide students in cybersecurity.</p>
-                        <div class="faculty-grid">
-                            <div class="faculty-card">
-                                <div class="faculty-avatar" data-initials="AK">
-                                    <img src="Picture2.jpg" alt="Dr. Aruna Kumar B T" loading="lazy">
-                                </div>
-                                <div class="faculty-name">Dr. Aruna Kumar B T</div>
-                                <div class="faculty-role">Assistant Professor & HOD</div>
-                                <div class="faculty-specialization">
-                                    <strong>Qualifications:</strong> B.E., M.Tech, Ph.D.<br>
-                                    <strong>Experience:</strong> 19 years<br>
-                                    <strong>Contact:</strong> <a href="mailto:hod.cyiy@gmu.ac.in">hod.cyiy@gmu.ac.in</a><br>
-                                    <strong>Phone:</strong> 9945221208
-                                </div>
-                            </div>
-                            <div class="faculty-card">
-                                <div class="faculty-avatar" data-initials="KP">
-                                    <img src="Picture1.jpg" alt="Dr. K Prakash" loading="lazy">
-                                </div>
-                                <div class="faculty-name">Dr. K Prakash</div>
-                                <div class="faculty-role">Professor</div>
-                                <div class="faculty-specialization">
-                                    <strong>Qualifications:</strong> MCA, M.Phil, Ph.D.<br>
-                                    <strong>Experience:</strong> 26 years<br>
-                                    <strong>Contact:</strong> <a href="mailto:kprakash.cyiy@gmu.ac.in">kprakash.cyiy@gmu.ac.in</a><br>
-                                    <strong>Phone:</strong> 6385359970
-                                </div>
-                            </div>
-                            <div class="faculty-card">
-                                <div class="faculty-avatar" data-initials="KS">
-                                    <img src="Picture3.jpg" alt="Kotreshi S N" loading="lazy">
-                                </div>
-                                <div class="faculty-name">Kotreshi S N</div>
-                                <div class="faculty-role">Assistant Professor</div>
-                                <div class="faculty-specialization">
-                                    <strong>Qualifications:</strong> B.E., M.Tech, (Ph.D.)<br>
-                                    <strong>Experience:</strong> 20 years<br>
-                                    <strong>Contact:</strong> <a href="mailto:kotreshisn@gmit.ac.in">kotreshisn@gmit.ac.in</a><br>
-                                    <strong>Phone:</strong> 8553336419
-                                </div>
-                            </div>
-                            <div class="faculty-card">
-                                <div class="faculty-avatar" data-initials="RP">
-                                    <img src="Picture4.jpg" alt="Dr. Rachana P G" loading="lazy">
-                                </div>
-                                <div class="faculty-name">Dr. Rachana P G</div>
-                                <div class="faculty-role">Assistant Professor</div>
-                                <div class="faculty-specialization">
-                                    <strong>Qualifications:</strong> B.E., M.Tech, Ph.D.<br>
-                                    <strong>Experience:</strong> 4 years<br>
-                                    <strong>Contact:</strong> <a href="mailto:rachanapg@gmit.ac.in">rachanapg@gmit.ac.in</a><br>
-                                    <strong>Phone:</strong> 6360601253
-                                </div>
-                            </div>
-                            <div class="faculty-card">
-                                <div class="faculty-avatar" data-initials="KS">
-                                    <img src="Picture5.jpg" alt="Kumar S" loading="lazy">
-                                </div>
-                                <div class="faculty-name">Kumar S</div>
-                                <div class="faculty-role">Assistant Professor</div>
-                                <div class="faculty-specialization">
-                                    <strong>Qualifications:</strong> B.E., M.Tech<br>
-                                    <strong>Experience:</strong> 4 years<br>
-                                    <strong>Contact:</strong> <a href="mailto:kumars.fet.scst.cse@gmu.ac.in">kumars.fet.scst.cse@gmu.ac.in</a><br>
-                                    <strong>Phone:</strong> 9901904054
-                                </div>
-                            </div>
-                            <div class="faculty-card">
-                                <div class="faculty-avatar" data-initials="NM">
-                                    <img src="Picture6.jpg" alt="Nayana M R" loading="lazy">
-                                </div>
-                                <div class="faculty-name">Nayana M R</div>
-                                <div class="faculty-role">Assistant Professor</div>
-                                <div class="faculty-specialization">
-                                    <strong>Qualifications:</strong> MCA<br>
-                                    <strong>Experience:</strong> 1 year<br>
-                                    <strong>Contact:</strong> <a href="mailto:nayanamr.fet.scst.cse@gmu.ac.in">nayanamr.fet.scst.cse@gmu.ac.in</a><br>
-                                    <strong>Phone:</strong> 6364588766
-                                </div>
-                            </div>
-                            <div class="faculty-card">
-                                <div class="faculty-avatar" data-initials="RG">
-                                    <img src="Picture7.jpg" alt="Rakshitha G B" loading="lazy">
-                                </div>
-                                <div class="faculty-name">Rakshitha G B</div>
-                                <div class="faculty-role">Tutor</div>
-                                <div class="faculty-specialization">
-                                    <strong>Qualifications:</strong> B.E.<br>
-                                    <strong>Experience:</strong> 0 years<br>
-                                    <strong>Contact:</strong> <a href="mailto:rakshithagb.fet.scst@gmu.ac.in">rakshithagb.fet.scst@gmu.ac.in</a><br>
-                                    <strong>Phone:</strong> 9980437345
-                                </div>
-                            </div>
-                            <div class="faculty-card">
-                                <div class="faculty-avatar" data-initials="SA">
-                                    <img src="Picture8.jpg" alt="Swathi A" loading="lazy">
-                                </div>
-                                <div class="faculty-name">Swathi A</div>
-                                <div class="faculty-role">Tutor</div>
-                                <div class="faculty-specialization">
-                                    <strong>Qualifications:</strong> B.E.<br>
-                                    <strong>Experience:</strong> 0 years<br>
-                                    <strong>Contact:</strong> Not provided<br>
-                                    <strong>Phone:</strong> 9019635272
-                                </div>
-                            </div>
+                    <div class="faculty-card fade-in-left">
+                        <div class="faculty-avatar has-image" data-initials="RP">
+                            <img src="Picture4.jpg" alt="Dr. Rachana P G" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='RP'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="faculty-name">Dr. Rachana P G</div>
+                        <div class="faculty-role">Assistant Professor</div>
+                        <div class="faculty-specialization">
+                            <strong>Qualifications:</strong> B.E., M.Tech, Ph.D.<br>
+                            <strong>Experience:</strong> 4 years<br>
+                            <strong>Contact:</strong> <a href="mailto:rachanapg@gmit.ac.in">rachanapg@gmit.ac.in</a><br>
+                            <strong>Phone:</strong> +91 63606 01253
+                        </div>
+                    </div>
+                    <div class="faculty-card fade-in-left">
+                        <div class="faculty-avatar has-image" data-initials="KS">
+                            <img src="Picture5.jpg" alt="Kumar S" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='KS'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="faculty-name">Kumar S</div>
+                        <div class="faculty-role">Assistant Professor</div>
+                        <div class="faculty-specialization">
+                            <strong>Qualifications:</strong> B.E., M.Tech<br>
+                            <strong>Experience:</strong> 4 years<br>
+                            <strong>Contact:</strong> <a
+                                href="mailto:kumars.fet.scst.cse@gmu.ac.in">kumars.fet.scst.cse@gmu.ac.in</a><br>
+                            <strong>Phone:</strong> +91 99019 04054
+                        </div>
+                    </div>
+                    <div class="faculty-card fade-in-left">
+                        <div class="faculty-avatar has-image" data-initials="NM">
+                            <img src="Picture6.jpg" alt="Nayana M R" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='NM'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="faculty-name">Nayana M R</div>
+                        <div class="faculty-role">Assistant Professor</div>
+                        <div class="faculty-specialization">
+                            <strong>Qualifications:</strong> MCA<br>
+                            <strong>Experience:</strong> 1 year<br>
+                            <strong>Contact:</strong> <a
+                                href="mailto:nayanamr.fet.scst.cse@gmu.ac.in">nayanamr.fet.scst.cse@gmu.ac.in</a><br>
+                            <strong>Phone:</strong> +91 63645 88766
+                        </div>
+                    </div>
+                    <div class="faculty-card fade-in-left">
+                        <div class="faculty-avatar has-image" data-initials="RG">
+                            <img src="Picture7.jpg" alt="Rakshitha G B" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='RG'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="faculty-name">Rakshitha G B</div>
+                        <div class="faculty-role">Tutor</div>
+                        <div class="faculty-specialization">
+                            <strong>Qualifications:</strong> B.E.<br>
+                            <!-- <strong>Experience:</strong> Fresh Graduate<br> -->
+                            <strong>Contact:</strong> <a
+                                href="mailto:rakshithagb.fet.scst@gmu.ac.in">rakshithagb.fet.scst@gmu.ac.in</a><br>
+                            <strong>Phone:</strong> +91 99804 37345
+                        </div>
+                    </div>
+                    <div class="faculty-card fade-in-left">
+                        <div class="faculty-avatar has-image" data-initials="SA">
+                            <img src="Picture8.jpg" alt="Swathi A" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='SA'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="faculty-name">Swathi A</div>
+                        <div class="faculty-role">Tutor</div>
+                        <div class="faculty-specialization">
+                            <strong>Qualifications:</strong> B.E.<br>
+                            <!-- <strong>Experience:</strong> Fresh Graduate<br> -->
+                            <strong>Contact:</strong> swathia.fet.scst@gmu.ac.in<br>
+                            <strong>Phone:</strong> +91 90196 35272
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-<div class="accordion-item">
-    <div class="accordion-header" role="button" aria-expanded="false" aria-controls="alumni-content" tabindex="0">
-        <span>Alumni Success Stories</span>
-        <span class="toggle-icon">+</span>
-    </div>
-    <div class="accordion-content" id="alumni-content">
-        <div class="accordion-content-inner">
-            <p>Our graduates excel in the cybersecurity industry, contributing to digital security worldwide.</p>
-            <div class="alumni-grid">
-                <div class="alumni-card">
-                    <div class="alumni-avatar" data-initials="AN">
-                        <img src="ABHIRAM.jpg" alt="Abhiram Girish Naik" loading="lazy">
+        <section class="section fade-in-up" id="admissions">
+            <h2 class="section-title">Admissions</h2>
+            <div class="section-content">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+                    <div style="padding: 2.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                        <h3 style="color: var(--primary-dark); margin-bottom: 1.2rem;">Application Process</h3>
+                        <p>Information about the admission process, eligibility criteria, and application deadlines for the B.Tech programs will be available here.</p>
                     </div>
-                    <div class="alumni-name">Abhiram Girish Naik</div>
-               
-                    <div class="alumni-specialization">
-                        <strong>ID:</strong> U23E01CY001<br>
-                        <strong>Contact:</strong> <a href="mailto:abhiramgirishnaik@gmail.com">abhiramgirishnaik@gmail.com</a><br>
-                        <strong>Phone:</strong> 6363962653<br>
-                        <a href="https://www.linkedin.com/in/abhiramgirishnaik/" target="_blank" rel="noopener">LinkedIn</a>
-                    </div>
-                </div>
-                <div class="alumni-card">
-                    <div class="alumni-avatar" data-initials="SV">
-                        <img src="sudu.jpg" alt="Sudarshana V D" loading="lazy">
-                    </div>
-                    <div class="alumni-name">Sudarshana V D</div>
-              
-                    <div class="alumni-specialization">
-                        <strong>ID:</strong> U23E01CY028<br>
-                        <strong>Contact:</strong> <a href="mailto:sudarshannaikru@gmail.com">sudarshannaikru@gmail.com</a><br>
-                        <strong>Phone:</strong> 9380593011<br>
-                        <a href="https://www.linkedin.com/in/sudarshana-v-d" target="_blank" rel="noopener">LinkedIn</a>
-                    </div>
-                </div>
-                <div class="alumni-card">
-                    <div class="alumni-avatar" data-initials="SP">
-                        <img src="sanjana.png" alt="Sanjana N Patel D" loading="lazy">
-                    </div>
-                    <div class="alumni-name">Sanjana N Patel D</div>
-           
-                    <div class="alumni-specialization">
-                        <strong>ID:</strong> U23E01CY025<br>
-                        <strong>Contact:</strong> <a href="mailto:sanjanan1035@gmail.com">sanjanan1035@gmail.com</a><br>
-                        <strong>Phone:</strong> 9535357552<br>
-                        <a href="https://www.linkedin.com/in/sanjana-n-patel-d-67b6b6298" target="_blank" rel="noopener">LinkedIn</a>
-                    </div>
-                </div>
-                <div class="alumni-card">
-                    <div class="alumni-avatar" data-initials="SH">
-                        <img src="sharadha.png" alt="Shraddha Hiremath" loading="lazy">
-                    </div>
-                    <div class="alumni-name">Shraddha Hiremath</div>
-
-                    <div class="alumni-specialization">
-                        <strong>ID:</strong> U23E01CY027<br>
-                        <strong>Contact:</strong> <a href="mailto:hiremathshraddha01@gmail.com">hiremathshraddha01@gmail.com</a><br>
-                        <strong>Phone:</strong> 8904696780<br>
-                        <a href="https://www.linkedin.com/in/shraddha-hiremath-27b080299" target="_blank" rel="noopener">LinkedIn</a>
-                    </div>
-                </div>
-                <div class="alumni-card">
-                    <div class="alumni-avatar" data-initials="PD">
-                        <img src="prithvi.png" alt="Prithvi Parashuram Davanageri" loading="lazy">
-                    </div>
-                    <div class="alumni-name">Prithvi Parashuram Davanageri</div>
-
-                    <div class="alumni-specialization">
-                        <strong>ID:</strong> U23E01IY001<br>
-                        <strong>Contact:</strong> <a href="mailto:prithvirajdavanageri@gmail.com">prithvirajdavanageri@gmail.com</a><br>
-                        <strong>Phone:</strong> 6362060834<br>
-                        <a href="https://www.linkedin.com/in/prithviraj-davanageri-a016b9298" target="_blank" rel="noopener">LinkedIn</a>
-                    </div>
-                </div>
-                <div class="alumni-card">
-                    <div class="alumni-avatar" data-initials="SP">
-                        <img src="sharmilla.png" alt="Sharmila P" loading="lazy">
-                    </div>
-                    <div class="alumni-name">Sharmila P</div>
-                    <div class="alumni-specialization">
-                        <strong>ID:</strong> U23E01IY002<br>
-                        <strong>Contact:</strong> <a href="mailto:prabhakarsharmila10a26@gmail.com">prabhakarsharmila10a26@gmail.com</a><br>
-                        <strong>Phone:</strong> 7349056159<br>
-                        <a href="https://www.linkedin.com/in/sharmila-prabhakar-aa9a11298" target="_blank" rel="noopener">LinkedIn</a>
+                    <div style="padding: 2.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                        <h3 style="color: var(--primary-dark); margin-bottom: 1.2rem;">Eligibility Criteria</h3>
+                        <p>Detailed eligibility requirements and entrance exam information for prospective students will be updated here.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-</section>
+        </section>
+
+        <section class="section fade-in-up" id="achievements">
+            <h2 class="section-title">Achievements & Recognition</h2>
+            <div class="section-content">
+                <div class="achievement-grid">
+                    <div class="achievement-card fade-in-up">
+                        <img src="ACHIVEMENT2.jpeg" alt="Ignitron Tech Fest">
+                        <p><b>Abhiram Girish Naik</b> from the Department of Cybersecurity, GM University, secured 2nd place at the National-level Vyoma Hackathon – TechSurge 2K25 in Hyderabad. As part of a talented team, he contributed to building a Generative AI solution for health and well-being, showcasing innovation, technical expertise, and problem-solving skills
+                        </div>
+                    <div class="achievement-card fade-in-up">
+                        <img src="ACHIVEMENT1.jpg" alt="Cybersecurity Hackathon Award" >
+                        <p><b>Sanjana N Patel </b>from the Department of Cybersecurity, GM University, achieved 3rd place at the National-level Research Poster Making Competition under the Jigyasa 2.0 program, organized by the Ministry of Science and Technology and the Ministry of Earth Sciences during IISF at CSIR–CRRI, New Delhi. Her poster highlighted “Green Transport Technologies".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section fade-in-up" id="gallery">
+            <h2 class="section-title">Campus Gallery</h2>
+            <div class="section-content">
+                <div class="gallery-grid">
+                    <img src="DSC_3109.JPG" alt="Campus Event 1" loading="lazy">
+                    <img src="DSC_3114.JPG" alt="Campus Event 2" loading="lazy">
+                    <img src="_AN74460.jpg" alt="Lab Session" loading="lazy">
+                </div>
+            </div>
+        </section>
+        <section class="section fade-in-up" id="alumni">
+            <h2 class="section-title">Alumni Success Stories</h2>
+            <div class="section-content">
+                <div class="alumni-grid">
+                    <div class="alumni-card fade-in-left">
+                        <div class="alumni-avatar has-image" data-initials="AN">
+                            <img src="ABHIRAM.jpg" alt="Abhiram Girish Naik" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='AN'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="alumni-name">Abhiram Girish Naik</div>
+                        <div class="alumni-specialization">
+                            <strong>ID:</strong> U23E01CY001<br>
+                            <strong>Contact:</strong> <a href="mailto:abhiramgirishnaik@gmail.com">abhiramgirishnaik@gmail.com</a><br>
+                            <strong>Phone:</strong> +91 63639 62653<br>
+                            <a href="https://www.linkedin.com/in/abhiramgirishnaik/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                        </div>
+                    </div>
+                    <div class="alumni-card fade-in-left">
+                        <div class="alumni-avatar has-image" data-initials="SV">
+                            <img src="sudu.jpg" alt="Sudarshana V D" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='SV'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="alumni-name">Sudarshana V D</div>
+                        <div class="alumni-specialization">
+                            <strong>ID:</strong> U23E01CY028<br>
+                            <strong>Contact:</strong> <a href="mailto:sudarshannaikru@gmail.com">sudarshannaikru@gmail.com</a><br>
+                            <strong>Phone:</strong> +91 93805 93011<br>
+                            <a href="https://www.linkedin.com/in/sudarshana-v-d" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                        </div>
+                    </div>
+                    <div class="alumni-card fade-in-left">
+                        <div class="alumni-avatar has-image" data-initials="SP">
+                            <img src="sanjana.png" alt="Sanjana N Patel D" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='SP'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="alumni-name">Sanjana N Patel D</div>
+                        <div class="alumni-specialization">
+                            <strong>ID:</strong> U23E01CY025<br>
+                            <strong>Contact:</strong> <a href="mailto:sanjanan1035@gmail.com">sanjanan1035@gmail.com</a><br>
+                            <strong>Phone:</strong> +91 95353 57552<br>
+                            <a href="https://www.linkedin.com/in/sanjana-n-patel-d-67b6b6298" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                        </div>
+                    </div>
+                    <div class="alumni-card fade-in-left">
+                        <div class="alumni-avatar has-image" data-initials="SH">
+                            <img src="sharadha.png" alt="Shraddha Hiremath" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='SH'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="alumni-name">Shraddha Hiremath</div>
+                        <div class="alumni-specialization">
+                            <strong>ID:</strong> U23E01CY027<br>
+                            <strong>Contact:</strong> <a href="mailto:hiremathshraddha01@gmail.com">hiremathshraddha01@gmail.com</a><br>
+                            <strong>Phone:</strong> +91 89046 96780<br>
+                            <a href="https://www.linkedin.com/in/shraddha-hiremath-27b080299" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                        </div>
+                    </div>
+                    <div class="alumni-card fade-in-left">
+                        <div class="alumni-avatar has-image" data-initials="PD">
+                            <img src="prithvi.png" alt="Prithvi Parashuram Davanageri" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='PD'; this.parentElement.classList.remove('has-image');">
+                        </div>
+                        <div class="alumni-name">Prithvi Parashuram Davanageri</div>
+                        <div class="alumni-specialization">
+                            <strong>ID:</strong> U23E01IY001<br>
+                            <strong>Contact:</strong> <a href="mailto:prithvirajdavanageri@gmail.com">prithvirajdavanageri@gmail.com</a><br>
+                            <strong>Phone:</strong> +91 63620 60834<br>
+                            <a href="https://www.linkedin.com/in/prithviraj-davanageri-a016b9298" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 GM University. All rights reserved. | <a href="#contact">Contact</a> | <a href="#admissions">Admissions</a></p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>GM University</h4>
+                <p>Davanagere, Karnataka, India</p>
+                <p>Phone: +91 8192 233377</p>
+                <p>Email: <a href="mailto:info@gmu.ac.in">info@gmu.ac.in</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="https://gmu.ac.in" target="_blank" rel="noopener noreferrer">GMU Website</a><br>
+                <a href="https://ignitron.gmu.ac.in" target="_blank" rel="noopener noreferrer">Ignitron Tech Fest</a>
+            </div>
+            <div class="footer-section">
+                <h4>Stay Connected</h4>
+                <a href="https://instagram.com/gmu" target="_blank" rel="noopener noreferrer">Instagram</a><br>
+                <a href="https://linkedin.com/company/gmu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Crafted with &hearts; for Department of Cybersecurity & Information Security
+        </div>
     </footer>
+
+    <div class="lightbox">
+        <span class="lightbox-close" aria-label="Close lightbox">✖</span>
+        <img src="" alt="Gallery Image">
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const accordions = document.querySelectorAll('.accordion-item');
-            accordions.forEach(item => {
-                const header = item.querySelector('.accordion-header');
-                header.addEventListener('click', () => {
-                    const isActive = item.classList.contains('active');
-                    accordions.forEach(i => {
-                        i.classList.remove('active');
-                        i.querySelector('.toggle-icon').textContent = '+';
-                        i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
-                    });
-                    if (!isActive) {
-                        item.classList.add('active');
-                        header.querySelector('.toggle-icon').textContent = '×';
-                        header.setAttribute('aria-expanded', 'true');
-                    }
-                });
-                header.addEventListener('keydown', e => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        header.click();
-                    }
-                });
+            // Hamburger Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navList = document.querySelector('.nav-list');
+            hamburger.addEventListener('click', () => {
+                navList.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', navList.classList.contains('active'));
             });
 
-            document.querySelectorAll('.faculty-avatar img, .alumni-avatar img').forEach(img => {
-                img.addEventListener('error', () => {
-                    const avatar = img.parentElement;
-                    avatar.textContent = avatar.dataset.initials || '';
-                    avatar.classList.remove('has-image');
-                });
-                img.addEventListener('load', () => img.parentElement.classList.add('has-image'));
-            });
-
+            // Smooth Scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', e => {
+                anchor.addEventListener('click', (e) => {
                     e.preventDefault();
-                    document.querySelector(anchor.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+                    const targetId = anchor.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        window.scrollTo({
+                            top: target.getBoundingClientRect().top + window.pageYOffset - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                    navList.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
                 });
             });
 
-            const observer = new IntersectionObserver((entries, obs) => {
+            // Form Submission
+            const ctaForm = document.querySelector('.cta-form');
+            ctaForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = ctaForm.querySelector('input').value;
+                if (email) {
+                    alert('Thank you for your interest! We will contact you soon.');
+                    ctaForm.reset();
+                }
+            });
+
+            // Newsletter Form
+            const newsletterForm = document.querySelector('.newsletter-form');
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = newsletterForm.querySelector('input').value;
+                if (email) {
+                    alert('Subscribed successfully!');
+                    newsletterForm.reset();
+                }
+            });
+
+            // Lightbox for Gallery
+            const galleryImages = document.querySelectorAll('.gallery-grid img');
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxImg = lightbox.querySelector('img');
+            const lightboxClose = document.querySelector('.lightbox-close');
+
+            galleryImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImg.src = img.src;
+                    lightbox.classList.add('active');
+                });
+            });
+
+            lightboxClose.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                }
+            });
+
+            // Intersection Observer for Animations
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-on-scroll');
-                        obs.unobserve(entry.target);
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.2 });
 
-            document.querySelectorAll('.section, .faculty-card, .alumni-card').forEach(el => observer.observe(el));
+            document.querySelectorAll('.fade-in-up, .fade-in-left').forEach(el => {
+                observer.observe(el);
+            });
         });
     </script>
 </body>
+
 </html>
