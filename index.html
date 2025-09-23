@@ -40,7 +40,22 @@
     --radius-lg: 16px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.program-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: var(--transition);
+}
 
+.program-item-link:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.program-item-link .cta-button {
+    margin-top: 1rem;
+    display: inline-flex;
+}
 * {
     margin: 0;
     padding: 0;
@@ -719,37 +734,25 @@ th {
     </section>
 
     <main class="container">
-        <section class="section fade-in-up" id="about">
-            <h2 class="section-title">About the Department</h2>
-            <div class="section-content">
-                <div class="about-images">
-                    <img src="gmu_top.jpg" alt="GMU Campus" loading="lazy">
-                    <img src="engineering_block.jpeg" alt="Engineering Block" loading="lazy">
-                </div>
-                <br>
-                <p>
-                    The Department of Cyber Security and Information Security at GM University, Davanagere, Karnataka,
-                    was established with the vision of fostering excellence in the rapidly evolving field of digital
-                    security. Recognizing the increasing significance of securing data, networks, and digital
-                    infrastructure in the modern world, the department is committed to equipping students with advanced
-                    technical knowledge, practical skills, and ethical perspectives to meet global cybersecurity
-                    challenges.
-                    The department offers two specialized programs i.e Cyber Security and Information Security that
-                    blend theoretical foundations with hands-on training in areas such as cryptography, ethical hacking,
-                    digital forensics, network defense, artificial intelligence in security, and risk management. With
-                    an emphasis on research-driven learning, students are encouraged to engage in innovative projects
-                    that address real-world problems in cybercrime prevention, data protection, and secure systems
-                    design.
-                    Supported by experienced faculty members, modern laboratories, and collaborations with industry and
-                    government organizations, the department provides a platform for holistic learning and professional
-                    development. It also actively organizes workshops, seminars, and training programs to bridge the gap
-                    between academia and industry.
-                    By promoting skilled cybersecurity professionals, the Department of Cyber Security and Information
-                    Security at GM University plays a vital role in strengthening digital resilience and contributing to
-                    India’s vision of a secure and technology-driven future.
-                </p>
+        <section class="section fade-in-up" id="programs">
+    <h2 class="section-title">Program Highlights</h2>
+    <div class="section-content program-grid">
+        <a href="cybersecurity.html" class="program-item-link">
+            <div class="program-item">
+                <h3>Cyber Security</h3>
+                <p>Explore the program designed to equip you with the skills to identify vulnerabilities, mitigate risks, and develop robust security solutions against evolving cyber threats.</p>
+                <span class="cta-button">Learn More →</span>
             </div>
-        </section>
+        </a>
+        <a href="informationsecurity.html" class="program-item-link">
+            <div class="program-item">
+                <h3>Information Security</h3>
+                <p>Learn about the program structured to develop expertise in securing data, applications, and communication systems across organizational and societal contexts.</p>
+                <span class="cta-button">Learn More →</span>
+            </div>
+        </a>
+    </div>
+</section>
 
         <section class="section fade-in-up" id="hod-message">
             <h2 class="section-title">Message from the HoD</h2>
