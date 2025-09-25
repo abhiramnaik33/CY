@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<button id="darkModeToggle">🌙</button>
 
 <head>
     <meta charset="UTF-8">
@@ -15,6 +16,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <style>
+        body.dark {
+    background: #0d0d0d;
+    color: #f5f5f5;
+}
+body.dark .program-item,
+body.dark .faculty-card-inner {
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+}
+
+        /* === EXTRA EXCITING EFFECTS === */
+
+/* Header glow when scrolling */
+header.scrolled {
+    box-shadow: 0 4px 20px rgba(255, 107, 51, 0.4);
+    border-bottom: 2px solid var(--accent);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hero glowing border */
+.hero-content {
+    animation: glow 3s infinite alternate;
+}
+@keyframes glow {
+    from { box-shadow: 0 0 10px rgba(255,107,51,0.4); }
+    to   { box-shadow: 0 0 25px rgba(255,107,51,0.8); }
+}
+
+/* Floating effect for HoD + avatars */
+.hod-photo, .faculty-avatar img {
+    animation: floaty 5s ease-in-out infinite;
+}
+@keyframes floaty {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-8px); }
+}
+
+/* Neon glow for cards */
+.program-item:hover,
+.faculty-card-inner:hover,
+.alumni-card:hover,
+.achievement-card:hover,
+.video-card:hover {
+    box-shadow: 0 0 20px rgba(255,107,51,0.6), 0 0 40px rgba(246,232,177,0.4);
+}
+
+/* Footer text pulse */
+.footer-bottom {
+    animation: pulse 2.5s infinite;
+}
+@keyframes pulse {
+    0%,100% { opacity: 1; }
+    50%     { opacity: 0.6; }
+}
+.faculty-card-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Make all equal */
+    min-height: 320px; /* adjust as per design */
+}
+.faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    align-items: stretch; /* forces equal height */
+}
+
         :root {
             --primary: #3b1413;
             --primary-dark: #250d0c;
@@ -79,16 +148,27 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             color: var(--primary-dark);
             font-weight: 700;
             line-height: 1.2;
             text-align: center;
         }
 
-        h1 { font-size: clamp(2rem, 5.5vw, 3.5rem); }
-        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
-        h3 { font-size: clamp(1.2rem, 2.8vw, 1.6rem); font-weight: 600; }
+        h1 {
+            font-size: clamp(2rem, 5.5vw, 3.5rem);
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        }
+
+        h3 {
+            font-size: clamp(1.2rem, 2.8vw, 1.6rem);
+            font-weight: 600;
+        }
 
         p {
             font-size: clamp(0.9rem, 1.7vw, 1.1rem);
@@ -126,7 +206,9 @@
             object-fit: cover;
         }
 
-        .logo img:hover { transform: scale(1.1); }
+        .logo img:hover {
+            transform: scale(1.1);
+        }
 
         .nav-list {
             display: flex;
@@ -157,8 +239,13 @@
             transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .nav-link:hover { color: var(--primary); }
-        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
 
         .hamburger {
             display: none;
@@ -191,9 +278,13 @@
             padding: 10px;
         }
 
-        .dropdown-menu.show { display: block; }
+        .dropdown-menu.show {
+            display: block;
+        }
 
-        .dropdown-menu li { padding: 5px 0; }
+        .dropdown-menu li {
+            padding: 5px 0;
+        }
 
         .dropdown-menu a {
             color: var(--text-light);
@@ -203,7 +294,9 @@
             transition: var(--transition);
         }
 
-        .dropdown-menu a:hover { background: var(--bg-light); }
+        .dropdown-menu a:hover {
+            background: var(--bg-light);
+        }
 
         /* Hero */
         .hero {
@@ -253,15 +346,35 @@
         }
 
         @keyframes slide-show {
-            0% { transform: translateX(0); }
-            16.66% { transform: translateX(-16.66%); }
-            33.32% { transform: translateX(-33.32%); }
-            49.98% { transform: translateX(-49.98%); }
-            66.64% { transform: translateX(-66.64%); }
-            83.3% { transform: translateX(-83.3%); }
-            100% { transform: translateX(0); }
+            0% {
+                transform: translateX(0);
+            }
+
+            16.66% {
+                transform: translateX(-16.66%);
+            }
+
+            33.32% {
+                transform: translateX(-33.32%);
+            }
+
+            49.98% {
+                transform: translateX(-49.98%);
+            }
+
+            66.64% {
+                transform: translateX(-66.64%);
+            }
+
+            83.3% {
+                transform: translateX(-83.3%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 3;
@@ -274,7 +387,8 @@
             text-align: center;
         }
 
-        .hero-title, .hero-subtitle {
+        .hero-title,
+        .hero-subtitle {
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             animation: text-fade-in 1s ease-out;
         }
@@ -303,14 +417,32 @@
         }
 
         @keyframes text-fade-in {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         @keyframes text-pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.01); opacity: 0.95; }
-            100% { transform: scale(1); opacity: 1; }
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.01);
+                opacity: 0.95;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         /* Sections */
@@ -387,13 +519,18 @@
             filter: brightness(1);
         }
 
-        .vision-mission-grid, .program-grid {
+        .vision-mission-grid,
+        .program-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .vision-mission-item, .program-item, .faculty-card, .alumni-card, .achievement-card {
+        .vision-mission-item,
+        .program-item,
+        .faculty-card,
+        .alumni-card,
+        .achievement-card {
             background: var(--bg-card);
             padding: 2rem;
             border-radius: var(--radius);
@@ -403,21 +540,33 @@
             text-align: center;
         }
 
-        .vision-mission-item:hover, .program-item:hover, .faculty-card:hover, .alumni-card:hover, .achievement-card:hover {
+        .vision-mission-item:hover,
+        .program-item:hover,
+        .faculty-card:hover,
+        .alumni-card:hover,
+        .achievement-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
         }
 
-        .faculty-grid, .alumni-grid, .gallery-grid, .achievement-grid {
+        .faculty-grid,
+        .alumni-grid,
+        .gallery-grid,
+        .achievement-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2.5rem;
         }
 
-        .faculty-card, .alumni-card, .achievement-card { text-align: center; }
+        .faculty-card,
+        .alumni-card,
+        .achievement-card {
+            text-align: center;
+        }
 
-        .faculty-avatar, .alumni-avatar {
+        .faculty-avatar,
+        .alumni-avatar {
             width: 120px;
             height: 120px;
             border-radius: 50%;
@@ -433,7 +582,8 @@
             overflow: hidden;
         }
 
-        .faculty-avatar img, .alumni-avatar img {
+        .faculty-avatar img,
+        .alumni-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -442,30 +592,34 @@
             filter: brightness(0.95);
         }
 
-        .faculty-avatar:hover img, .alumni-avatar:hover img {
+        .faculty-avatar:hover img,
+        .alumni-avatar:hover img {
             transform: scale(1.1);
             filter: brightness(1);
         }
 
-        .faculty-name, .alumni-name {
+        .faculty-name,
+        .alumni-name {
             font-size: 1.4rem;
             font-weight: 600;
             color: var(--primary-dark);
         }
 
-        .faculty-role, .alumni-role {
+        .faculty-role,
+        .alumni-role {
             color: var(--accent);
             font-size: 1rem;
             font-weight: 500;
             margin-bottom: 1rem;
         }
 
-        .faculty-specialization, .alumni-specialization {
+        .faculty-specialization,
+        .alumni-specialization {
             font-size: 0.95rem;
             color: var(--text-light);
             text-align: center;
         }
-        
+
         .video-showcase {
             padding: clamp(3rem, 7vw, 5rem) 1.5rem;
             background: linear-gradient(135deg, var(--bg-light), rgba(246, 232, 177, 0.3));
@@ -536,163 +690,113 @@
             filter: brightness(1);
         }
 
+        /* --- NEW STYLES --- */
         .faculty-card {
             position: relative;
             overflow: hidden;
             padding: 0;
             cursor: pointer;
+            border: none;
+            box-shadow: none;
+            background: none;
         }
 
-        .faculty-card:hover {
+        .faculty-card-inner {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(59, 20, 19, 0.1);
+        }
+
+        .faculty-card-inner:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
         }
 
-        .faculty-card .faculty-name, .faculty-card .faculty-role {
-            padding: 1rem;
-            background-color: var(--bg-card);
-            transition: var(--transition);
+        .faculty-card .faculty-name,
+        .faculty-card .faculty-role {
+            padding: 0;
         }
 
-        .faculty-card:hover .faculty-name, .faculty-card:hover .faculty-role {
-            background-color: var(--primary-light);
-            color: var(--white);
+        .faculty-card .faculty-popup {
+            display: none;
         }
 
-        .faculty-card:hover .faculty-avatar {
-            transform: none;
-        }
-
-        .faculty-popup {
-            position: absolute;
-            top: 0;
+        /* Modal for Faculty Details */
+        .modal-wrapper {
+            display: none;
+            position: fixed;
+            z-index: 2000;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(59, 20, 19, 0.95);
-            color: var(--white);
-            padding: 2rem;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
             justify-content: center;
             align-items: center;
+            padding: 1rem;
+            animation: fadeInModal 0.3s ease-out;
+        }
+
+        .modal-wrapper.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            max-width: 600px;
+            position: relative;
+            box-shadow: var(--shadow-lg);
             text-align: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 10;
         }
 
-        .faculty-card:hover .faculty-popup {
-            opacity: 1;
-            visibility: visible;
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            color: var(--text-light);
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
         }
 
-        .faculty-popup p {
-            color: var(--white);
-            font-size: 0.9rem;
-            margin: 0.2rem 0;
+        .modal-close:hover {
+            color: var(--primary-dark);
+        }
+
+        .modal-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid var(--accent);
+        }
+
+        .modal-info h3,
+        .modal-info p {
+            color: var(--text);
+            margin: 0.5rem 0;
             text-align: center;
         }
 
-        .faculty-popup a {
-            color: var(--secondary);
+        .modal-info a {
+            display: inline;
+            color: var(--primary-dark);
             text-decoration: underline;
         }
 
-        .faculty-specialization { display: none; }
-        
-        .cta-button {
-            background: var(--cta-button-color);
-            color: var(--white);
-            text-decoration: none;
-            padding: 0.8rem 2rem;
-            border-radius: var(--radius);
-            font-weight: 600;
-            font-size: clamp(0.9rem, 1.6vw, 1rem);
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
+        .modal-info a:hover {
+            color: var(--accent);
         }
 
-        .cta-button:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--gradient-primary);
-            color: var(--white);
-            padding: clamp(3rem, 6vw, 4rem) 1.5rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-section h4 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-section p, .footer-section a {
-            color: var(--white);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        .footer-section a:hover { color: var(--secondary); }
-
-        .newsletter-form {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .newsletter-form input {
-            padding: 0.8rem;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-size: 1rem;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .newsletter-form button {
-            padding: 0.8rem 1.5rem;
-            background: var(--accent);
-            color: var(--white);
-            border: none;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .newsletter-form button:hover { background: var(--accent-light); }
-
-        .footer-bottom {
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            padding-top: 1rem;
-            font-size: 0.9rem;
-        }
-
-        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -704,17 +808,47 @@
             z-index: 2000;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
         }
 
-        .lightbox.active { display: flex; }
+        .lightbox.active {
+            display: flex;
+        }
 
-        .lightbox img {
+        .lightbox-img {
             max-width: 90%;
             max-height: 90%;
             border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
             object-fit: contain;
             border: 3px solid var(--accent);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--white);
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.3s;
+            user-select: none;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox-prev {
+            left: 1rem;
+        }
+
+        .lightbox-next {
+            right: 1rem;
         }
 
         .lightbox-close {
@@ -727,33 +861,40 @@
             transition: var(--transition);
         }
 
-        .lightbox-close:hover { color: var(--accent); }
-
-        /* Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
+        .lightbox-close:hover {
+            color: var(--accent);
         }
 
-        th, td {
-            border: 1px solid var(--text-muted);
-            padding: 0.5rem;
-            text-align: center;
-        }
-
-        th { background: var(--primary-light); color: var(--white); }
+        /* --- END OF NEW STYLES --- */
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .nav-list { gap: 1.5rem; }
-            .hero { min-height: 60vh; padding: clamp(4rem, 12vh, 10rem) 1rem; }
-            .faculty-grid, .alumni-grid, .gallery-grid, .achievement-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-            .about-images img { height: 200px; }
+            .nav-list {
+                gap: 1.5rem;
+            }
+
+            .hero {
+                min-height: 60vh;
+                padding: clamp(4rem, 12vh, 10rem) 1rem;
+            }
+
+            .faculty-grid,
+            .alumni-grid,
+            .gallery-grid,
+            .achievement-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            }
+
+            .about-images img {
+                height: 200px;
+            }
         }
 
         @media (max-width: 768px) {
-            .hamburger { display: block; }
+            .hamburger {
+                display: block;
+            }
+
             .nav-list {
                 display: none;
                 flex-direction: column;
@@ -766,23 +907,60 @@
                 box-shadow: var(--shadow-sm);
                 text-align: center;
             }
-            .nav-list.active { display: flex; }
-            .hero { min-height: 50vh; padding: clamp(3rem, 10vh, 8rem) 1rem; }
-            .hod-photo { width: 100%; max-width: 250px; }
-            .about-images img { width: 100%; height: 180px; }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .hero {
+                min-height: 50vh;
+                padding: clamp(3rem, 10vh, 8rem) 1rem;
+            }
+
+            .hod-photo {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .about-images img {
+                width: 100%;
+                height: 180px;
+            }
         }
 
         @media (max-width: 480px) {
-            .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
-            .cta-form input, .cta-button { font-size: 0.9rem; padding: 0.7rem 1.2rem; }
-            .faculty-grid, .alumni-grid, .gallery-grid, .achievement-grid { grid-template-columns: 1fr; }
-            .about-images img { height: 160px; }
-            .gallery-grid img { height: 180px; }
-            .achievement-card img { height: 180px; }
+            .hero h1 {
+                font-size: clamp(1.8rem, 4vw, 2.5rem);
+            }
+
+            .cta-form input,
+            .cta-button {
+                font-size: 0.9rem;
+                padding: 0.7rem 1.2rem;
+            }
+
+            .faculty-grid,
+            .alumni-grid,
+            .gallery-grid,
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-images img {
+                height: 160px;
+            }
+
+            .gallery-grid img {
+                height: 180px;
+            }
+
+            .achievement-card img {
+                height: 180px;
+            }
         }
-        
+
         /* === NEW ANIMATION STYLES START === */
-        
+
         /* Smooth fade-in on scroll */
         .fade-in {
             opacity: 0;
@@ -805,28 +983,215 @@
             opacity: 1;
             transform: translateX(0);
         }
-        
+
         /* Hero image float animation for depth */
         .hero::before {
             animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(1deg); }
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(1deg);
+            }
         }
-        
+
         /* Card and image hover effects to lift and add shadow */
-        .program-item-link, .program-item, .faculty-card, .alumni-card, .achievement-card, .gallery-grid img, .hod-photo, .about-images img, .video-card {
+        .program-item-link,
+        .program-item,
+        .faculty-card,
+        .alumni-card,
+        .achievement-card,
+        .gallery-grid img,
+        .hod-photo,
+        .about-images img,
+        .video-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .program-item-link:hover, .program-item:hover, .faculty-card:hover, .alumni-card:hover, .achievement-card:hover, .gallery-grid img:hover, .hod-photo:hover, .about-images img:hover, .video-card:hover {
+
+        .program-item-link:hover,
+        .program-item:hover,
+        .faculty-card:hover,
+        .alumni-card:hover,
+        .achievement-card:hover,
+        .gallery-grid img:hover,
+        .hod-photo:hover,
+        .about-images img:hover,
+        .video-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
-        
+
         /* === NEW ANIMATION STYLES END === */
+        /* === FOOTER STYLES === */
+footer {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding: clamp(3rem, 6vw, 4rem) 1.5rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h4 {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.footer-section p,
+.footer-section a {
+    color: var(--white);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    text-align: center;
+}
+
+.footer-section a:hover {
+    color: var(--secondary);
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.newsletter-form input {
+    padding: 0.8rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.newsletter-form button {
+    padding: 0.8rem 1.5rem;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter-form button:hover {
+    background: var(--accent-light);
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 1rem;
+    font-size: 0.9rem;
+}
+.cta-button {
+    background: linear-gradient(135deg, #d32f2f, #ff9800); /* red to golden */
+    color: white;
+    font-weight: 600;
+    padding: 0.8rem 1.6rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
+}
+
+.cta-button:hover {
+    background: linear-gradient(135deg, #ff5722, #ffc107); /* brighter glow */
+    box-shadow: 0 0 20px rgba(255, 152, 0, 0.8), 0 0 40px rgba(211, 47, 47, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+.hero, footer {
+    background: linear-gradient(270deg, #ff6b33, #d32f2f, #ff9800, #ffc107);
+    background-size: 800% 800%;
+    animation: gradientFlow 15s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.hero {
+    background: url("1.jpg") center/cover no-repeat fixed;
+}
+.program-item, .faculty-card-inner, .alumni-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.cta-button:hover::after {
+    content: " ⚡";
+    display: inline-block;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}
+.faculty-card {
+    perspective: 1000px;
+}
+.faculty-card-inner {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+.faculty-card:hover .faculty-card-inner {
+    transform: rotateY(180deg);
+}
+.hero::after {
+    content: "010101100110";
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    font-size: 2rem;
+    color: rgba(255,255,255,0.2);
+    animation: floaty 6s infinite alternate;
+}
+.fade-zoom {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.7s ease;
+}
+.fade-zoom.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+.section h3 {
+    background: linear-gradient(45deg, #d32f2f, #ff9800);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+.section h3 {
+    background: linear-gradient(45deg, #d32f2f, #ff9800);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 152, 0, 0.6), 0 0 20px rgba(211, 47, 47, 0.6);
+}
+.hidden { display: none; }
+.gallery-cover { cursor: pointer; }
+
     </style>
 </head>
 
@@ -855,7 +1220,8 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" role="button" aria-expanded="false">Campus Life ↓</a>
+                        <a href="#" class="nav-link dropdown-toggle" role="button" aria-expanded="false">Campus Life
+                            ↓</a>
                         <ul class="dropdown-menu">
                             <li><a href="#gallery" class="nav-link">Gallery</a></li>
                             <li><a href="#facilities" class="nav-link">Facilities</a></li>
@@ -881,12 +1247,12 @@
 
     <section class="hero">
         <div class="hero-slider">
-            <div class="slider-image"><img src="main (1).jpg" alt="A view of the GMU campus"></div>
-            <div class="slider-image"><img src="main (2).jpg" alt="Students in a computer lab"></div>
-            <div class="slider-image"><img src="main (3).jpg" alt="Students in a lecture hall"></div>
-            <div class="slider-image"><img src="main (7).jpg" alt="A shot of the university library"></div>
-            <div class="slider-image"><img src="main (8).jpg" alt="A group of students smiling on campus"></div>
-            <div class="slider-image"><img src="main (9).jpg" alt="A dynamic shot of the university building"></div>
+            <div class="slider-image"><img src="1.jpg" alt="A view of the GMU campus"></div>
+            <div class="slider-image"><img src="2.jpg" alt="Students in a computer lab"></div>
+            <div class="slider-image"><img src="3.jpg" alt="Students in a lecture hall"></div>
+            <div class="slider-image"><img src="4.jpg" alt="A shot of the university library"></div>
+            <div class="slider-image"><img src="5.jpg" alt="A group of students smiling on campus"></div>
+            <div class="slider-image"><img src="6.jpg" alt="A dynamic shot of the university building"></div>
         </div>
         <div class="hero-content">
             <div class="hero-text-container">
@@ -902,7 +1268,8 @@
             <div class="video-grid">
                 <div class="video-card fade-in">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/ACX9O7zL9nc" title="GMU Campus Preview" frameborder="0"
+                        <iframe src="https://www.youtube.com/embed/ACX9O7zL9nc" title="GMU Campus Preview"
+                            frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen loading="lazy"></iframe>
                     </div>
@@ -924,11 +1291,23 @@
                 <img src="hod.jpg" alt="Dr. Aruna Kumar B T" class="hod-photo fade-in" loading="lazy">
                 <p class="fade-in">
                     Dear Students and Aspirants,
-                    It gives me great pleasure to welcome you to the Undergraduate Program in Cyber and Information Security. In today’s digital era, information is the most valuable asset, and securing it has become a global priority. From critical infrastructure and financial systems to personal data and national defense, the demand for skilled cybersecurity professionals is growing at an unprecedented rate.
-                    Our program is designed to blend strong engineering foundations with specialized knowledge in cyber defense, cryptography, digital forensics, ethical hacking, and security management. With a curriculum that is both industry-oriented and research-driven, we aim to prepare graduates who can face real-world security challenges with confidence and innovation.
-                    At GM University, we emphasize not only technical expertise but also ethical responsibility, problem-solving skills, and lifelong learning—qualities that are essential for cybersecurity professionals in a rapidly changing technological landscape. Students will benefit from state-of-the-art laboratories, hands-on projects, collaborations with industry, and opportunities to engage in internships and certifications aligned with global standards.
-                    We envision our graduates as leaders, innovators, and protectors of the digital world, contributing to a safer cyberspace for individuals, businesses, and nations.
-                    I invite you to join us on this exciting journey of discovery, innovation, and excellence in Cyber and Information Security. Together, let us build a secure digital future.
+                    It gives me great pleasure to welcome you to the Undergraduate Program in Cyber and Information
+                    Security. In today’s digital era, information is the most valuable asset, and securing it has become
+                    a global priority. From critical infrastructure and financial systems to personal data and national
+                    defense, the demand for skilled cybersecurity professionals is growing at an unprecedented rate.
+                    Our program is designed to blend strong engineering foundations with specialized knowledge in cyber
+                    defense, cryptography, digital forensics, ethical hacking, and security management. With a
+                    curriculum that is both industry-oriented and research-driven, we aim to prepare graduates who can
+                    face real-world security challenges with confidence and innovation.
+                    At GM University, we emphasize not only technical expertise but also ethical responsibility,
+                    problem-solving skills, and lifelong learning—qualities that are essential for cybersecurity
+                    professionals in a rapidly changing technological landscape. Students will benefit from
+                    state-of-the-art laboratories, hands-on projects, collaborations with industry, and opportunities to
+                    engage in internships and certifications aligned with global standards.
+                    We envision our graduates as leaders, innovators, and protectors of the digital world, contributing
+                    to a safer cyberspace for individuals, businesses, and nations.
+                    I invite you to join us on this exciting journey of discovery, innovation, and excellence in Cyber
+                    and Information Security. Together, let us build a secure digital future.
                 </p>
                 <p class="fade-in"><strong>Dr. Aruna Kumar B T</strong><br>Head of Department</p>
             </div>
@@ -940,155 +1319,119 @@
                 <a href="cybersecurity-vision-mission.html" class="program-item-link fade-in">
                     <div class="program-item">
                         <h3>Cyber Security</h3>
-                        <p>Learn about the vision and mission of our Cyber Security program, designed to address global digital security challenges.</p>
+                        <p>Learn about the vision and mission of our Cyber Security program, designed to address global
+                            digital security challenges.</p>
                         <span class="cta-button">View Details →</span>
                     </div>
                 </a>
                 <a href="informationsecurity-vision-mission.html" class="program-item-link fade-in">
                     <div class="program-item">
                         <h3>Information Security</h3>
-                        <p>Discover the vision and mission of our Information Security program, focused on safeguarding data and communication systems.</p>
+                        <p>Discover the vision and mission of our Information Security program, focused on safeguarding
+                            data and communication systems.</p>
                         <span class="cta-button">View Details →</span>
                     </div>
                 </a>
             </div>
         </section>
-        
+
         <section class="section fade-in" id="programs">
             <h2 class="section-title">Program Highlights</h2>
             <div class="section-content program-grid">
                 <a href="cybersecurity.html" class="program-item-link fade-in">
                     <div class="program-item">
                         <h3>Cyber Security</h3>
-                        <p>Explore the program designed to equip you with the skills to identify vulnerabilities, mitigate risks, and develop robust security solutions against evolving cyber threats.</p>
+                        <p>Explore the program designed to equip you with the skills to identify vulnerabilities,
+                            mitigate risks, and develop robust security solutions against evolving cyber threats.</p>
                         <span class="cta-button">Learn More →</span>
                     </div>
                 </a>
                 <a href="informationsecurity.html" class="program-item-link fade-in">
                     <div class="program-item">
                         <h3>Information Security</h3>
-                        <p>Learn about the program structured to develop expertise in securing data, applications, and communication systems across organizational and societal contexts.</p>
+                        <p>Learn about the program structured to develop expertise in securing data, applications, and
+                            communication systems across organizational and societal contexts.</p>
                         <span class="cta-button">Learn More →</span>
                     </div>
                 </a>
             </div>
         </section>
-        
+
         <section class="section fade-in" id="faculty">
             <h2 class="section-title">Faculty Excellence</h2>
             <div class="section-content">
                 <div class="faculty-grid">
                     <div class="faculty-card fade-in-left">
-                        <div class="faculty-avatar has-image">
-                            <img src="Picture2.jpg" alt="Dr. Aruna Kumar B T" loading="lazy">
-                        </div>
-                        <div class="faculty-name">Dr. Aruna Kumar B T</div>
-                        <div class="faculty-role">Assistant Professor & HOD</div>
-                        <div class="faculty-popup">
-                            <p><strong>Designation:</strong> Assistant Professor & HOD</p>
-                            <p><strong>Experience:</strong> 19 years</p>
-                            <p><strong>Responsibility:</strong> Head of Department</p>
-                            <p><strong>Contact:</strong> <a href="mailto:hod.cyiy@gmu.ac.in">hod.cyiy@gmu.ac.in</a><br>+91 99452 21208</p>
-                            <p><strong>Qualifications:</strong> B.E., M.Tech, Ph.D.</p>
-                        </div>
+                        <button class="faculty-card-inner" data-faculty-id="aruna">
+                            <div class="faculty-avatar has-image">
+                                <img src="Picture2.jpg" alt="Dr. Aruna Kumar B T" loading="lazy">
+                            </div>
+                            <div class="faculty-name">Dr. Aruna Kumar B T</div>
+                            <div class="faculty-role">Assistant Professor & HOD</div>
+                        </button>
                     </div>
                     <div class="faculty-card fade-in-left">
-                        <div class="faculty-avatar has-image">
-                            <img src="Picture1.jpg" alt="Dr. K Prakash" loading="lazy">
-                        </div>
-                        <div class="faculty-name">Dr. K Prakash</div>
-                        <div class="faculty-role">Professor</div>
-                        <div class="faculty-popup">
-                            <p><strong>Designation:</strong> Professor</p>
-                            <p><strong>Experience:</strong> 26 years</p>
-                            <p><strong>Responsibility:</strong> Professor</p>
-                            <p><strong>Contact:</strong> <a href="mailto:kprakash.cyiy@gmu.ac.in">kprakash.cyiy@gmu.ac.in</a><br>+91 63853 59970</p>
-                            <p><strong>Qualifications:</strong> MCA, M.Phil, Ph.D.</p>
-                        </div>
+                        <button class="faculty-card-inner" data-faculty-id="prakash">
+                            <div class="faculty-avatar has-image">
+                                <img src="Picture1.jpg" alt="Dr. K Prakash" loading="lazy">
+                            </div>
+                            <div class="faculty-name">Dr. K Prakash</div>
+                            <div class="faculty-role">Professor</div>
+                        </button>
                     </div>
                     <div class="faculty-card fade-in-left">
-                        <div class="faculty-avatar has-image">
-                            <img src="Picture3.jpg" alt="Kotreshi S N" loading="lazy">
-                        </div>
-                        <div class="faculty-name">Kotreshi S N</div>
-                        <div class="faculty-role">Assistant Professor</div>
-                        <div class="faculty-popup">
-                            <p><strong>Designation:</strong> Assistant Professor</p>
-                            <p><strong>Experience:</strong> 20 years</p>
-                            <p><strong>Responsibility:</strong> Assistant Professor</p>
-                            <p><strong>Contact:</strong> <a href="mailto:kotreshisn@gmit.ac.in">kotreshisn@gmit.ac.in</a><br>+91 85533 36419</p>
-                            <p><strong>Qualifications:</strong> B.E., M.Tech, (Ph.D.)</p>
-                        </div>
+                        <button class="faculty-card-inner" data-faculty-id="kotreshi">
+                            <div class="faculty-avatar has-image">
+                                <img src="Picture3.jpg" alt="Kotreshi S N" loading="lazy">
+                            </div>
+                            <div class="faculty-name">Kotreshi S N</div>
+                            <div class="faculty-role">Assistant Professor</div>
+                        </button>
                     </div>
                     <div class="faculty-card fade-in-left">
-                        <div class="faculty-avatar has-image">
-                            <img src="Picture4.jpg" alt="Dr. Rachana P G" loading="lazy">
-                        </div>
-                        <div class="faculty-name">Dr. Rachana P G</div>
-                        <div class="faculty-role">Assistant Professor</div>
-                        <div class="faculty-popup">
-                            <p><strong>Designation:</strong> Assistant Professor</p>
-                            <p><strong>Experience:</strong> 4 years</p>
-                            <p><strong>Responsibility:</strong> Assistant Professor</p>
-                            <p><strong>Contact:</strong> <a href="mailto:rachanapg@gmit.ac.in">rachanapg@gmit.ac.in</a><br>+91 63606 01253</p>
-                            <p><strong>Qualifications:</strong> B.E., M.Tech, Ph.D.</p>
-                        </div>
+                        <button class="faculty-card-inner" data-faculty-id="rachana">
+                            <div class="faculty-avatar has-image">
+                                <img src="Picture4.jpg" alt="Dr. Rachana P G" loading="lazy">
+                            </div>
+                            <div class="faculty-name">Dr. Rachana P G</div>
+                            <div class="faculty-role">Assistant Professor</div>
+                        </button>
                     </div>
                     <div class="faculty-card fade-in-left">
-                        <div class="faculty-avatar has-image">
-                            <img src="Picture5.jpg" alt="Kumar S" loading="lazy">
-                        </div>
-                        <div class="faculty-name">Kumar S</div>
-                        <div class="faculty-role">Assistant Professor</div>
-                        <div class="faculty-popup">
-                            <p><strong>Designation:</strong> Assistant Professor</p>
-                            <p><strong>Experience:</strong> 4 years</p>
-                            <p><strong>Responsibility:</strong> Assistant Professor</p>
-                            <p><strong>Contact:</strong> <a href="mailto:kumars.fet.scst.cse@gmu.ac.in">kumars.fet.scst.cse@gmu.ac.in</a><br>+91 99019 04054</p>
-                            <p><strong>Qualifications:</strong> B.E., M.Tech</p>
-                        </div>
+                        <button class="faculty-card-inner" data-faculty-id="kumar">
+                            <div class="faculty-avatar has-image">
+                                <img src="Picture5.jpg" alt="Kumar S" loading="lazy">
+                            </div>
+                            <div class="faculty-name">Kumar S</div>
+                            <div class="faculty-role">Assistant Professor</div>
+                        </button>
                     </div>
                     <div class="faculty-card fade-in-left">
-                        <div class="faculty-avatar has-image">
-                            <img src="Picture6.jpg" alt="Nayana M R" loading="lazy">
-                        </div>
-                        <div class="faculty-name">Nayana M R</div>
-                        <div class="faculty-role">Assistant Professor</div>
-                        <div class="faculty-popup">
-                            <p><strong>Designation:</strong> Assistant Professor</p>
-                            <p><strong>Experience:</strong> 1 year</p>
-                            <p><strong>Responsibility:</strong> Assistant Professor</p>
-                            <p><strong>Contact:</strong> <a href="mailto:nayanamr.fet.scst.cse@gmu.ac.in">nayanamr.fet.scst.cse@gmu.ac.in</a><br>+91 63645 88766</p>
-                            <p><strong>Qualifications:</strong> MCA</p>
-                        </div>
+                        <button class="faculty-card-inner" data-faculty-id="nayana">
+                            <div class="faculty-avatar has-image">
+                                <img src="Picture6.jpg" alt="Nayana M R" loading="lazy">
+                            </div>
+                            <div class="faculty-name">Nayana M R</div>
+                            <div class="faculty-role">Assistant Professor</div>
+                        </button>
                     </div>
                     <div class="faculty-card fade-in-left">
-                        <div class="faculty-avatar has-image">
-                            <img src="Picture7.jpg" alt="Rakshitha G B" loading="lazy">
-                        </div>
-                        <div class="faculty-name">Rakshitha G B</div>
-                        <div class="faculty-role">Tutor</div>
-                        <div class="faculty-popup">
-                            <p><strong>Designation:</strong> Tutor</p>
-                            <p><strong>Experience:</strong> Fresh Graduate</p>
-                            <p><strong>Responsibility:</strong> Tutor</p>
-                            <p><strong>Contact:</strong> <a href="mailto:rakshithagb.fet.scst@gmu.ac.in">rakshithagb.fet.scst@gmu.ac.in</a><br>+91 99804 37345</p>
-                            <p><strong>Qualifications:</strong> B.E.</p>
-                        </div>
+                        <button class="faculty-card-inner" data-faculty-id="rakshitha">
+                            <div class="faculty-avatar has-image">
+                                <img src="Picture7.jpg" alt="Rakshitha G B" loading="lazy">
+                            </div>
+                            <div class="faculty-name">Rakshitha G B</div>
+                            <div class="faculty-role">Tutor</div>
+                        </button>
                     </div>
                     <div class="faculty-card fade-in-left">
-                        <div class="faculty-avatar has-image">
-                            <img src="Picture8.jpg" alt="Swathi A" loading="lazy">
-                        </div>
-                        <div class="faculty-name">Swathi A</div>
-                        <div class="faculty-role">Tutor</div>
-                        <div class="faculty-popup">
-                            <p><strong>Designation:</strong> Tutor</p>
-                            <p><strong>Experience:</strong> Fresh Graduate</p>
-                            <p><strong>Responsibility:</strong> Tutor</p>
-                            <p><strong>Contact:</strong> <a href="mailto:swathia.fet.scst@gmu.ac.in">swathia.fet.scst@gmu.ac.in</a><br>+91 90196 35272</p>
-                            <p><strong>Qualifications:</strong> B.E.</p>
-                        </div>
+                        <button class="faculty-card-inner" data-faculty-id="swathi">
+                            <div class="faculty-avatar has-image">
+                                <img src="Picture8.jpg" alt="Swathi A" loading="lazy">
+                            </div>
+                            <div class="faculty-name">Swathi A</div>
+                            <div class="faculty-role">Tutor</div>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1100,11 +1443,13 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
                     <div class="fade-in" style="padding: 2.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
                         <h3 style="color: var(--primary-dark); margin-bottom: 1.2rem;">Application Process</h3>
-                        <p>Information about the admission process, eligibility criteria, and application deadlines for the B.Tech programs will be available here.</p>
+                        <p>Information about the admission process, eligibility criteria, and application deadlines for
+                            the B.Tech programs will be available here.</p>
                     </div>
                     <div class="fade-in" style="padding: 2.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
                         <h3 style="color: var(--primary-dark); margin-bottom: 1.2rem;">Eligibility Criteria</h3>
-                        <p>Detailed eligibility requirements and entrance exam information for prospective students will be updated here.</p>
+                        <p>Detailed eligibility requirements and entrance exam information for prospective students will
+                            be updated here.</p>
                     </div>
                 </div>
             </div>
@@ -1116,11 +1461,17 @@
                 <div class="achievement-grid">
                     <div class="achievement-card fade-in">
                         <img src="ACHIVEMENT2.jpeg" alt="Ignitron Tech Fest">
-                        <p><b>Abhiram Girish Naik</b> from the Department of Cybersecurity, GM University, secured 2nd place at the National-level Vyoma Hackathon – TechSurge 2K25 in Hyderabad. As part of a talented team, he contributed to building a Generative AI solution for health and well-being, showcasing innovation, technical expertise, and problem-solving skills</p>
+                        <p><b>Abhiram Girish Naik</b> from the Department of Cybersecurity, GM University, secured 2nd
+                            place at the National-level Vyoma Hackathon – TechSurge 2K25 in Hyderabad. As part of a
+                            talented team, he contributed to building a Generative AI solution for health and
+                            well-being, showcasing innovation, technical expertise, and problem-solving skills</p>
                     </div>
                     <div class="achievement-card fade-in">
                         <img src="ACHIVEMENT1.jpg" alt="Cybersecurity Hackathon Award">
-                        <p><b>Sanjana N Patel</b> from the Department of Cybersecurity, GM University, achieved 3rd place at the National-level Research Poster Making Competition under the Jigyasa 2.0 program, organized by the Ministry of Science and Technology and the Ministry of Earth Sciences during IISF at CSIR–CRRI, New Delhi. Her poster highlighted “Green Transport Technologies".</p>
+                        <p><b>Sanjana N Patel</b> from the Department of Cybersecurity, GM University, achieved 3rd
+                            place at the National-level Research Poster Making Competition under the Jigyasa 2.0 program,
+                            organized by the Ministry of Science and Technology and the Ministry of Earth Sciences during
+                            IISF at CSIR–CRRI, New Delhi. Her poster highlighted “Green Transport Technologies".</p>
                     </div>
                 </div>
             </div>
@@ -1129,81 +1480,87 @@
         <section class="section fade-in" id="gallery">
             <h2 class="section-title">Campus Gallery</h2>
             <div class="section-content">
-                <div class="gallery-grid">
-                    <img src="DSC_3109.JPG" alt="Campus Event 1" loading="lazy" class="fade-in">
-                    <img src="DSC_3114.JPG" alt="Campus Event 2" loading="lazy" class="fade-in">
-                    <img src="_AN74460.jpg" alt="Lab Session" loading="lazy" class="fade-in">
-                </div>
-            </div>
+                <div class="gallery-grid" data-gallery="main">
+  <img src="DSC_3109.JPG" alt="Campus Event 1" class="gallery-cover">
+  <img src="DSC_3114.JPG" alt="Campus Event 2" class="hidden">
+  <img src="_AN74460.jpg" alt="Lab Session" class="hidden">
+</div>
+
         </section>
-        
+
         <section class="section fade-in" id="facilities">
             <h2 class="section-title">Facilities</h2>
             <div class="section-content">
-                <div class="gallery-grid">
-                    <img src="lib.jpg" alt="University Library" loading="lazy" class="fade-in">
-                    <img src="lib2.jpg" alt="Another view of the library" loading="lazy" class="fade-in">
-                    <img src="lib3.jpg" alt="Student cafeteria" loading="lazy" class="fade-in">
-                    <img src="cafeteria.jpg" alt="Campus cafeteria" loading="lazy" class="fade-in">
-                </div>
+                <div class="gallery-grid" data-gallery="facilities">
+  <img src="lib.jpg" alt="University Library" class="gallery-cover">
+  <img src="lib2.jpg" alt="Another view of the library" class="hidden">
+  <img src="lib3.jpg" alt="Student cafeteria" class="hidden">
+  <img src="cafeteria.jpg" alt="Campus cafeteria" class="hidden">
+</div>
+
             </div>
         </section>
-        
+
         <section class="section fade-in" id="students">
             <h2 class="section-title">Students</h2>
             <div class="section-content">
-                <div class="gallery-grid">
-                    <img src="s1.jpg" alt="Students on campus" loading="lazy" class="fade-in">
-                    <img src="s2.jpg" alt="Students smiling" loading="lazy" class="fade-in">
-                </div>
+                <div class="gallery-grid" data-gallery="students">
+  <img src="s1.jpg" alt="Students on campus" class="gallery-cover">
+  <img src="s2.jpg" alt="Students smiling" class="hidden">
+</div>
+
             </div>
         </section>
 
         <section class="section fade-in" id="events">
             <h2 class="section-title">Events</h2>
             <div class="section-content">
-                <div class="gallery-grid">
-                    <img src="e1.jpg" alt="Event picture 1" loading="lazy" class="fade-in">
-                    <img src="e2.jpg" alt="Event picture 2" loading="lazy" class="fade-in">
-                    <img src="e3.jpg" alt="Event picture 3" loading="lazy" class="fade-in">
-                    <img src="e4.jpg" alt="Event picture 4" loading="lazy" class="fade-in">
-                    <img src="e5.jpg" alt="Event picture 5" loading="lazy" class="fade-in">
-                </div>
+                <div class="gallery-grid" data-gallery="events">
+  <img src="e1.jpg" alt="Event picture 1" class="gallery-cover">
+  <img src="e2.jpg" alt="Event picture 2" class="hidden">
+  <img src="e3.jpg" alt="Event picture 3" class="hidden">
+  <img src="e4.jpg" alt="Event picture 4" class="hidden">
+  <img src="e5.jpg" alt="Event picture 5" class="hidden">
+</div>
+
             </div>
         </section>
-        
+
         <section class="section fade-in" id="teachers">
             <h2 class="section-title">Teachers</h2>
             <div class="section-content">
-                <div class="gallery-grid">
-                    <img src="f1.jpg" alt="Teacher 1" loading="lazy" class="fade-in">
-                    <img src="f2.jpg" alt="Teacher 2" loading="lazy" class="fade-in">
-                    <img src="f3.jpg" alt="Teacher 3" loading="lazy" class="fade-in">
-                    <img src="f4.jpg" alt="Teacher 4" loading="lazy" class="fade-in">
-                    <img src="f5.jpg" alt="Teacher 5" loading="lazy" class="fade-in">
-                </div>
+                <div class="gallery-grid" data-gallery="teachers">
+  <img src="f1.jpg" alt="Teacher 1" class="gallery-cover">
+  <img src="f2.jpg" alt="Teacher 2" class="hidden">
+  <img src="f3.jpg" alt="Teacher 3" class="hidden">
+  <img src="f4.jpg" alt="Teacher 4" class="hidden">
+  <img src="f5.jpg" alt="Teacher 5" class="hidden">
+</div>
+
             </div>
         </section>
 
         <section class="section fade-in" id="lab">
             <h2 class="section-title">Lab</h2>
             <div class="section-content">
-                <div class="gallery-grid">
-                    <img src="lab1.jpg" alt="Lab" loading="lazy" class="fade-in">
-                    <img src="lab2.jpg" alt="Computer Lab Session" loading="lazy" class="fade-in">
-                    <img src="lab3.jpg" alt="Practical Lab Work" loading="lazy" class="fade-in">
-                </div>
+                <div class="gallery-grid" data-gallery="lab">
+  <img src="lab1.jpg" alt="Lab" class="gallery-cover">
+  <img src="lab2.jpg" alt="Computer Lab Session" class="hidden">
+  <img src="lab3.jpg" alt="Practical Lab Work" class="hidden">
+</div>
+
             </div>
         </section>
 
         <section class="section fade-in" id="sports">
             <h2 class="section-title">Sports</h2>
             <div class="section-content">
-                <div class="gallery-grid">
-                    <img src="sp1.jpg" alt="Sports field" loading="lazy" class="fade-in">
-                    <img src="sp2.jpg" alt="Athletes" loading="lazy" class="fade-in">
-                    <img src="sp3.jpg" alt="Sports event" loading="lazy" class="fade-in">
-                </div>
+                <div class="gallery-grid" data-gallery="sports">
+  <img src="sp1.jpg" alt="Sports field" class="gallery-cover">
+  <img src="sp2.jpg" alt="Athletes" class="hidden">
+  <img src="sp3.jpg" alt="Sports event" class="hidden">
+</div>
+
             </div>
         </section>
 
@@ -1213,65 +1570,80 @@
                 <div class="alumni-grid">
                     <div class="alumni-card fade-in-left">
                         <div class="alumni-avatar has-image" data-initials="AN">
-                            <img src="ABHIRAM.jpg" alt="Abhiram Girish Naik" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='AN'; this.parentElement.classList.remove('has-image');">
+                            <img src="ABHIRAM.jpg" alt="Abhiram Girish Naik" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='AN'; this.parentElement.classList.remove('has-image');">
                         </div>
                         <div class="alumni-name">Abhiram Girish Naik</div>
                         <div class="alumni-specialization">
                             <strong>ID:</strong> U23E01CY001<br>
-                            <strong>Contact:</strong> <a href="mailto:abhiramgirishnaik@gmail.com">abhiramgirishnaik@gmail.com</a><br>
+                            <strong>Contact:</strong> <a
+                                href="mailto:abhiramgirishnaik@gmail.com">abhiramgirishnaik@gmail.com</a><br>
                             <strong>Phone:</strong> +91 63639 62653<br>
-                            <a href="https://www.linkedin.com/in/abhiramgirishnaik/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                            <a href="https://www.linkedin.com/in/abhiramgirishnaik/" target="_blank"
+                                rel="noopener noreferrer">LinkedIn Profile</a>
                         </div>
                     </div>
                     <div class="alumni-card fade-in-left">
                         <div class="alumni-avatar has-image" data-initials="SV">
-                            <img src="sudu.jpg" alt="Sudarshana V D" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='SV'; this.parentElement.classList.remove('has-image');">
+                            <img src="sudu.jpg" alt="Sudarshana V D" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='SV'; this.parentElement.classList.remove('has-image');">
                         </div>
                         <div class="alumni-name">Sudarshana V D</div>
                         <div class="alumni-specialization">
                             <strong>ID:</strong> U23E01CY028<br>
-                            <strong>Contact:</strong> <a href="mailto:sudarshannaikru@gmail.com">sudarshannaikru@gmail.com</a><br>
+                            <strong>Contact:</strong> <a
+                                href="mailto:sudarshannaikru@gmail.com">sudarshannaikru@gmail.com</a><br>
                             <strong>Phone:</strong> +91 93805 93011<br>
-                            <a href="https://www.linkedin.com/in/sudarshana-v-d" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                            <a href="https://www.linkedin.com/in/sudarshana-v-d" target="_blank"
+                                rel="noopener noreferrer">LinkedIn Profile</a>
                         </div>
                     </div>
                     <div class="alumni-card fade-in-left">
                         <div class="alumni-avatar has-image" data-initials="SP">
-                            <img src="sanjana.png" alt="Sanjana N Patel D" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='SP'; this.parentElement.classList.remove('has-image');">
+                            <img src="sanjana.png" alt="Sanjana N Patel D" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='SP'; this.parentElement.classList.remove('has-image');">
                         </div>
                         <div class="alumni-name">Sanjana N Patel D</div>
                         <div class="alumni-role">Student</div>
                         <div class="alumni-specialization">
                             <strong>ID:</strong> U23E01CY025<br>
-                            <strong>Contact:</strong> <a href="mailto:sanjanan1035@gmail.com">sanjanan1035@gmail.com</a><br>
+                            <strong>Contact:</strong> <a
+                                href="mailto:sanjanan1035@gmail.com">sanjanan1035@gmail.com</a><br>
                             <strong>Phone:</strong> +91 95353 57552<br>
-                            <a href="https://www.linkedin.com/in/sanjana-n-patel-d-67b6b6298" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                            <a href="https://www.linkedin.com/in/sanjana-n-patel-d-67b6b6298" target="_blank"
+                                rel="noopener noreferrer">LinkedIn Profile</a>
                         </div>
                     </div>
                     <div class="alumni-card fade-in-left">
                         <div class="alumni-avatar has-image" data-initials="SH">
-                            <img src="sharadha.png" alt="Shraddha Hiremath" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='SH'; this.parentElement.classList.remove('has-image');">
+                            <img src="sharadha.png" alt="Shraddha Hiremath" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='SH'; this.parentElement.classList.remove('has-image');">
                         </div>
                         <div class="alumni-name">Shraddha Hiremath</div>
                         <div class="alumni-role">Student</div>
                         <div class="alumni-specialization">
                             <strong>ID:</strong> U23E01CY027<br>
-                            <strong>Contact:</strong> <a href="mailto:hiremathshraddha01@gmail.com">hiremathshraddha01@gmail.com</a><br>
+                            <strong>Contact:</strong> <a
+                                href="mailto:hiremathshraddha01@gmail.com">hiremathshraddha01@gmail.com</a><br>
                             <strong>Phone:</strong> +91 89046 96780<br>
-                            <a href="https://www.linkedin.com/in/shraddha-hiremath-27b080299" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                            <a href="https://www.linkedin.com/in/shraddha-hiremath-27b080299" target="_blank"
+                                rel="noopener noreferrer">LinkedIn Profile</a>
                         </div>
                     </div>
                     <div class="alumni-card fade-in-left">
                         <div class="alumni-avatar has-image" data-initials="PD">
-                            <img src="prithvi.png" alt="Prithvi Parashuram Davanageri" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='PD'; this.parentElement.classList.remove('has-image');">
+                            <img src="prithvi.png" alt="Prithvi Parashuram Davanageri" loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.textContent='PD'; this.parentElement.classList.remove('has-image');">
                         </div>
                         <div class="alumni-name">Prithvi Parashuram Davanageri</div>
                         <div class="alumni-role">Student</div>
                         <div class="alumni-specialization">
                             <strong>ID:</strong> U23E01IY001<br>
-                            <strong>Contact:</strong> <a href="mailto:prithvirajdavanageri@gmail.com">prithvirajdavanageri@gmail.com</a><br>
+                            <strong>Contact:</strong> <a
+                                href="mailto:prithvirajdavanageri@gmail.com">prithvirajdavanageri@gmail.com</a><br>
                             <strong>Phone:</strong> +91 63620 60834<br>
-                            <a href="https://www.linkedin.com/in/prithviraj-davanageri-a016b9298" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                            <a href="https://www.linkedin.com/in/prithviraj-davanageri-a016b9298" target="_blank"
+                                rel="noopener noreferrer">LinkedIn Profile</a>
                         </div>
                     </div>
                 </div>
@@ -1280,32 +1652,51 @@
     </main>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>GM University</h4>
-                <p>Davanagere, Karnataka, India</p>
-                <p>Phone: +91 8192 233377</p>
-                <p>Email: <a href="mailto:info@gmu.ac.in">info@gmu.ac.in</a></p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <a href="https://gmu.ac.in" target="_blank" rel="noopener noreferrer">GMU Website</a><br>
-                <a href="https://ignitron.gmu.ac.in" target="_blank" rel="noopener noreferrer">Ignitron Tech Fest</a>
-            </div>
-            <div class="footer-section">
-                <h4>Stay Connected</h4>
-                <a href="https://instagram.com/gmu" target="_blank" rel="noopener noreferrer">Instagram</a><br>
-                <a href="https://linkedin.com/company/gmu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>GM University</h4>
+            <p>Davanagere, Karnataka, India</p>
+            <p>Phone: +91 8192 233377</p>
+            <p>Email: <a href="mailto:info@gmu.ac.in">info@gmu.ac.in</a></p>
         </div>
-        <div class="footer-bottom">
-            Crafted with &hearts; for Department of Cybersecurity & Information Security
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <a href="https://gmu.ac.in" target="_blank" rel="noopener noreferrer">GMU Website</a><br>
+            <a href="https://ignitron.gmu.ac.in" target="_blank" rel="noopener noreferrer">Ignitron Tech Fest</a>
         </div>
-    </footer>
+        <div class="footer-section">
+            <h4>Stay Connected</h4>
+            <a href="https://instagram.com/gmu" target="_blank" rel="noopener noreferrer">Instagram</a><br>
+            <a href="https://linkedin.com/company/gmu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        Crafted with &hearts; for Department of Cybersecurity & Information Security
+    </div>
+</footer>
 
-    <div class="lightbox">
+
+    <div class="modal-wrapper" id="faculty-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-info">
+                <img id="modal-photo" src="" alt="Faculty Photo" class="modal-img">
+                <h3 id="modal-name"></h3>
+                <p id="modal-designation"></p>
+                <p id="modal-experience"></p>
+                <p id="modal-responsibility"></p>
+                <p><strong>Contact:</strong> <a id="modal-email" href=""></a><br><span id="modal-phone"></span></p>
+                <p><strong>Qualifications:</strong> <span id="modal-qualifications"></span></p>
+                <a id="modal-link" href="#" target="_blank" class="cta-button" style="margin-top: 1rem;">View Profile →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="lightbox" id="gallery-lightbox">
         <span class="lightbox-close" aria-label="Close lightbox">✖</span>
-        <img src="" alt="Gallery Image">
+        <button class="lightbox-nav lightbox-prev">◀</button>
+        <img src="" alt="Gallery Image" class="lightbox-img">
+        <button class="lightbox-nav lightbox-next">▶</button>
     </div>
 
     <script>
@@ -1319,26 +1710,38 @@
             });
 
             // Dropdown Menu Toggles
-            const dropdowns = document.querySelectorAll('.dropdown');
-            dropdowns.forEach(dropdown => {
-                const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
-                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-                dropdownToggle.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    dropdownMenu.classList.toggle('show');
-                    const isExpanded = dropdownMenu.classList.contains('show');
-                    dropdownToggle.setAttribute('aria-expanded', isExpanded);
-                });
-            });
+            // Dropdown Menu Toggles (FIXED: only one open at a time)
+const dropdowns = document.querySelectorAll('.dropdown');
 
-            window.addEventListener('click', (e) => {
-                if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(dropdown => {
-                        dropdown.querySelector('.dropdown-menu').classList.remove('show');
-                        dropdown.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'false');
-                    });
-                }
-            });
+dropdowns.forEach(dropdown => {
+    const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+    const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+
+    dropdownToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // Close all dropdowns first
+        dropdowns.forEach(d => {
+            d.querySelector('.dropdown-menu').classList.remove('show');
+            d.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'false');
+        });
+
+        // Then open only the clicked one
+        dropdownMenu.classList.add('show');
+        dropdownToggle.setAttribute('aria-expanded', 'true');
+    });
+});
+
+// Close dropdowns if clicked outside
+window.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown')) {
+        dropdowns.forEach(dropdown => {
+            dropdown.querySelector('.dropdown-menu').classList.remove('show');
+            dropdown.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'false');
+        });
+    }
+});
+
 
             // Hero Text Rotator
             const heroTitles = [
@@ -1385,28 +1788,177 @@
                 });
             });
 
-            // Lightbox for Gallery
-            const galleryImages = document.querySelectorAll('.gallery-grid img');
-            const lightbox = document.querySelector('.lightbox');
-            const lightboxImg = lightbox.querySelector('img');
-            const lightboxClose = document.querySelector('.lightbox-close');
+            // Faculty Modal Logic (UPDATED)
+            const facultyData = {
+                'aruna': {
+                    img: 'Picture2.jpg',
+                    name: 'Dr. Aruna Kumar B T',
+                    designation: 'Assistant Professor & HOD',
+                    experience: '19 years',
+                    responsibility: 'Head of Department',
+                    email: 'hod.cyiy@gmu.ac.in',
+                    phone: '+91 99452 21208',
+                    qualifications: 'B.E., M.Tech, Ph.D.',
+                    link: 'https://www.linkedin.com/in/arunakumar-b-t'
+                },
+                'prakash': {
+                    img: 'Picture1.jpg',
+                    name: 'Dr. K Prakash',
+                    designation: 'Professor',
+                    experience: '26 years',
+                    responsibility: 'Professor',
+                    email: 'kprakash.cyiy@gmu.ac.in',
+                    phone: '+91 63853 59970',
+                    qualifications: 'MCA, M.Phil, Ph.D.',
+                    link: 'https://www.linkedin.com/in/k-prakash-profile'
+                },
+                'kotreshi': {
+                    img: 'Picture3.jpg',
+                    name: 'Kotreshi S N',
+                    designation: 'Assistant Professor',
+                    experience: '20 years',
+                    responsibility: 'Assistant Professor',
+                    email: 'kotreshisn@gmit.ac.in',
+                    phone: '+91 85533 36419',
+                    qualifications: 'B.E., M.Tech, (Ph.D.)',
+                    link: 'https://www.linkedin.com/in/kotreshi-s-n'
+                },
+                'rachana': {
+                    img: 'Picture4.jpg',
+                    name: 'Dr. Rachana P G',
+                    designation: 'Assistant Professor',
+                    experience: '4 years',
+                    responsibility: 'Assistant Professor',
+                    email: 'rachanapg@gmit.ac.in',
+                    phone: '+91 63606 01253',
+                    qualifications: 'B.E., M.Tech, Ph.D.',
+                    link: 'https://www.linkedin.com/in/rachana-p-g'
+                },
+                'kumar': {
+                    img: 'Picture5.jpg',
+                    name: 'Kumar S',
+                    designation: 'Assistant Professor',
+                    experience: '4 years',
+                    responsibility: 'Assistant Professor',
+                    email: 'kumars.fet.scst.cse@gmu.ac.in',
+                    phone: '+91 99019 04054',
+                    qualifications: 'B.E., M.Tech',
+                    link: 'https://www.linkedin.com/in/kumar-s-profile'
+                },
+                'nayana': {
+                    img: 'Picture6.jpg',
+                    name: 'Nayana M R',
+                    designation: 'Assistant Professor',
+                    experience: '1 year',
+                    responsibility: 'Assistant Professor',
+                    email: 'nayanamr.fet.scst.cse@gmu.ac.in',
+                    phone: '+91 63645 88766',
+                    qualifications: 'MCA',
+                    link: 'https://www.linkedin.com/in/nayana-m-r'
+                },
+                'rakshitha': {
+                    img: 'Picture7.jpg',
+                    name: 'Rakshitha G B',
+                    designation: 'Tutor',
+                    experience: 'Fresh Graduate',
+                    responsibility: 'Tutor',
+                    email: 'rakshithagb.fet.scst@gmu.ac.in',
+                    phone: '+91 99804 37345',
+                    qualifications: 'B.E.',
+                    link: 'https://www.linkedin.com/in/rakshitha-g-b'
+                },
+                'swathi': {
+                    img: 'Picture8.jpg',
+                    name: 'Swathi A',
+                    designation: 'Tutor',
+                    experience: 'Fresh Graduate',
+                    responsibility: 'Tutor',
+                    email: 'swathia.fet.scst@gmu.ac.in',
+                    phone: '+91 90196 35272',
+                    qualifications: 'B.E.',
+                    link: 'https://www.linkedin.com/in/swathi-a-profile'
+                }
+            };
 
-            galleryImages.forEach(img => {
-                img.addEventListener('click', () => {
-                    lightboxImg.src = img.src;
-                    lightbox.classList.add('active');
+            const facultyCards = document.querySelectorAll('.faculty-card-inner');
+            const modal = document.getElementById('faculty-modal');
+            const modalClose = modal.querySelector('.modal-close');
+            const modalPhoto = document.getElementById('modal-photo');
+            const modalName = document.getElementById('modal-name');
+            const modalDesignation = document.getElementById('modal-designation');
+            const modalExperience = document.getElementById('modal-experience');
+            const modalResponsibility = document.getElementById('modal-responsibility');
+            const modalEmail = document.getElementById('modal-email');
+            const modalPhone = document.getElementById('modal-phone');
+            const modalQualifications = document.getElementById('modal-qualifications');
+            const modalLink = document.getElementById('modal-link');
+
+            facultyCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const facultyId = card.getAttribute('data-faculty-id');
+                    const data = facultyData[facultyId];
+
+                    if (data) {
+                        modalPhoto.src = data.img;
+                        modalName.textContent = data.name;
+                        modalDesignation.textContent = data.designation;
+                        modalExperience.textContent = `Experience: ${data.experience}`;
+                        modalResponsibility.textContent = `Responsibility: ${data.responsibility}`;
+                        modalEmail.href = `mailto:${data.email}`;
+                        modalEmail.textContent = data.email;
+                        modalPhone.textContent = data.phone;
+                        modalQualifications.textContent = data.qualifications;
+                        modalLink.href = data.link;
+
+                        modal.classList.add('active');
+                    }
                 });
             });
 
-            lightboxClose.addEventListener('click', () => {
-                lightbox.classList.remove('active');
-            });
-
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) {
-                    lightbox.classList.remove('active');
+            modalClose.addEventListener('click', () => modal.classList.remove('active'));
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
                 }
             });
+
+            // Lightbox for Gallery (UPDATED)
+            // Lightbox for Galleries (UPDATED for all sections)
+const allGallerySections = document.querySelectorAll('.gallery-grid');
+const lightbox = document.getElementById('gallery-lightbox');
+const lightboxImg = lightbox.querySelector('.lightbox-img');
+const prevBtn = lightbox.querySelector('.lightbox-prev');
+const nextBtn = lightbox.querySelector('.lightbox-next');
+
+let currentImageIndex = 0;
+let currentImageSet = [];
+
+allGallerySections.forEach(gallery => {
+    const cover = gallery.querySelector('.gallery-cover');
+    const images = gallery.querySelectorAll('img');
+
+    cover.addEventListener('click', () => {
+        currentImageSet = Array.from(images).map(img => img.src);
+        currentImageIndex = 0;
+        lightboxImg.src = currentImageSet[currentImageIndex];
+        lightbox.classList.add('active');
+    });
+});
+
+prevBtn.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex - 1 + currentImageSet.length) % currentImageSet.length;
+    lightboxImg.src = currentImageSet[currentImageIndex];
+});
+
+nextBtn.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex + 1) % currentImageSet.length;
+    lightboxImg.src = currentImageSet[currentImageIndex];
+});
+
+document.querySelector('.lightbox-close').addEventListener('click', () => {
+    lightbox.classList.remove('active');
+});
+
 
             // Intersection Observer for Animations
             const observerOptions = {
@@ -1447,5 +1999,22 @@
             token: "633903cc-3cfd-47f1-9518-9177d8ea2ce8",
         });
     </script>
+    <script>
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  if (window.scrollY > 50) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+</script>
+<script>
+   document.getElementById("darkModeToggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+});
+</script>
+
 </body>
+
 </html>
