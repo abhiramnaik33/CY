@@ -1283,6 +1283,110 @@ a, .cta-button {
   box-shadow: 0 0 20px rgba(255, 152, 0, 0.8), 0 0 40px rgba(211, 47, 47, 0.6);
   transform: translateY(-3px) scale(1.05);
 }
+/* Cursor trail + spotlight */
+#cursor-trail { position: fixed; inset: 0; pointer-events: none; z-index: 9999; }
+.cursor-dot {
+  position: absolute; width: 12px; height: 12px; border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  background: radial-gradient(circle, rgba(255,255,255,0.95), rgba(255,152,0,0.8));
+  box-shadow: 0 0 12px rgba(255,152,0,0.8);
+}
+.cursor-spotlight {
+  position: fixed; width: 220px; height: 220px; border-radius: 50%;
+  pointer-events: none; transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255,255,255,0.08), rgba(0,0,0,0.4));
+  mix-blend-mode: screen; z-index: 9998;
+}
+
+/* Particle + Matrix canvases */
+#particle-canvas, #matrix-canvas {
+  position: fixed; left: 0; top: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+#matrix-canvas { bottom: 0; height: 28vh; top: auto; opacity: 0.8; z-index: -1; }
+
+/* Ambient audio toggle */
+.audio-toggle {
+  position: fixed; right: 20px; bottom: 20px; z-index: 10001;
+  background: rgba(0,0,0,0.5); color: #fff; border: none;
+  border-radius: 12px; padding: 8px 12px; cursor: pointer;
+}
+/* Glassmorphism style for cards */
+.achievement-card, .faculty-card-inner, .alumni-card, .program-item {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #ff9800, #ff3d00);
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.8);
+  width: 0%;
+  z-index: 10000;
+}
+/* Glitch effect for titles */
+.glitch {
+  position: relative;
+  color: #fff;
+  font-weight: 900;
+  text-transform: uppercase;
+  animation: glitch-skew 1s infinite linear alternate-reverse;
+}
+
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: transparent;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 red;
+  animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 cyan;
+  animation: glitch-anim2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(42px, 9999px, 44px, 0); }
+  20% { clip: rect(12px, 9999px, 18px, 0); }
+  40% { clip: rect(85px, 9999px, 90px, 0); }
+  60% { clip: rect(30px, 9999px, 36px, 0); }
+  80% { clip: rect(60px, 9999px, 65px, 0); }
+  100% { clip: rect(42px, 9999px, 44px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(12px, 9999px, 18px, 0); }
+  20% { clip: rect(42px, 9999px, 44px, 0); }
+  40% { clip: rect(60px, 9999px, 65px, 0); }
+  60% { clip: rect(85px, 9999px, 90px, 0); }
+  80% { clip: rect(30px, 9999px, 36px, 0); }
+  100% { clip: rect(12px, 9999px, 18px, 0); }
+}
+
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(2deg); }
+  40% { transform: skew(-2deg); }
+  60% { transform: skew(1deg); }
+  80% { transform: skew(-1deg); }
+  100% { transform: skew(0deg); }
+}
 
     </style>
 </head>
@@ -1293,7 +1397,25 @@ a, .cta-button {
   <source src="campus.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+<!-- Ambient audio toggle -->
+<audio id="ambientAudio" loop preload="auto">
+  <source src="ambient.mp3" type="audio/mpeg">
+</audio>
+<button id="audioToggle" aria-pressed="false" class="audio-toggle">🔊</button>
+
+<!-- Cursor trail container -->
+<div id="cursor-trail"></div>
+
+<!-- Particle canvas -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- Matrix rain canvas (behind footer) -->
+<canvas id="matrix-canvas"></canvas>
+
 <div class="video-overlay"></div>
+<div id="progress-bar"></div>
+<h2 class="glitch" data-text="Achievements">Achievements</h2>
+<a href="#" class="cta-button glitch" data-text="View Details">View Details</a>
 
     <header>
         <div class="header-content">
@@ -1798,6 +1920,233 @@ a, .cta-button {
         <img src="" alt="Gallery Image" class="lightbox-img">
         <button class="lightbox-nav lightbox-next">▶</button>
     </div>
+<!-- ===== START: Local Course Chatbot (paste BEFORE </body>) ===== -->
+<style>
+/* Local Chatbot styles (unique IDs to avoid collisions) */
+#local-chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg,#ff9800,#ff3d00);
+  box-shadow: 0 8px 30px rgba(255,152,0,0.45);
+  color: #fff; font-size: 22px; cursor: pointer; z-index: 10050;
+}
+#local-chatbot {
+  position: fixed;
+  right: 20px;
+  bottom: 90px;
+  width: 360px;
+  max-width: calc(100% - 40px);
+  height: 500px;
+  display: none;
+  flex-direction: column;
+  background: rgba(15,15,20,0.9);
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  z-index: 10051;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  overflow: hidden;
+}
+#local-chatbot .chat-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 12px; background:linear-gradient(90deg,#ff9800,#ff3d00);
+  color:#fff; font-weight:700; font-size:14px;
+}
+#local-chatbot .chat-header .close {
+  cursor:pointer; font-weight:900; opacity:0.95;
+}
+#local-chatbot .chat-messages {
+  flex:1; padding:12px; overflow-y:auto; background:linear-gradient(180deg, rgba(0,0,0,0.12), transparent);
+  color:#e9eef6; font-size:13px; line-height:1.4;
+}
+.local-msg { margin:8px 0; padding:8px 10px; border-radius:8px; display:inline-block; max-width:90%; }
+.local-user { background: linear-gradient(90deg,#2b2b2b,#222); color: #ffd9b3; float:right; text-align:right; }
+.local-bot { background: rgba(10,20,10,0.35); color:#bff7c6; text-shadow: 0 0 6px rgba(0,0,0,0.4); float:left; }
+.local-source { display:block; margin-top:6px; font-size:11px; color:#cfe3f6; opacity:0.75; }
+
+#local-chatbot .chat-input {
+  display:flex; gap:8px; padding:10px; border-top:1px solid rgba(255,255,255,0.04);
+  background:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.12));
+}
+#local-chatbot input[type="text"] {
+  flex:1; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.03);
+  background: rgba(255,255,255,0.02); color:#fff; outline:none;
+}
+#local-chatbot button.send {
+  background: linear-gradient(90deg,#ff9800,#ff3d00); border:none; padding:10px 12px; color:#fff;
+  border-radius:10px; cursor:pointer; min-width:56px;
+}
+
+/* small responsive tweak */
+@media (max-width:420px){
+  #local-chatbot { width: 92%; right:4%; left:4%; bottom: 80px; height: 480px; }
+  #local-chat-toggle { right: 14px; bottom: 16px; }
+}
+</style>
+
+<!-- Chatbot HTML -->
+<button id="local-chat-toggle" aria-label="Open chat">💬</button>
+
+<div id="local-chatbot" role="dialog" aria-label="Course Chatbot">
+  <div class="chat-header">
+    <div>🤖 Cyber Mentor — Course Help</div>
+    <div class="close" title="Close">✖</div>
+  </div>
+  <div class="chat-messages" id="local-chat-messages" aria-live="polite"></div>
+  <div class="chat-input">
+    <input id="local-chat-input" type="text" placeholder="Ask about the course (eg. program outcomes, HOD message)"/>
+    <button class="send" id="local-chat-send" aria-label="Send">➤</button>
+  </div>
+</div>
+
+<script>
+/* ===== Course data (extracted from your DOCX) ===== */
+const courseData = {
+  "About Department": "The Department of Cyber Security and Information Security at GM University, Davanagere, Karnataka, was established with the vision of fostering excellence in the rapidly evolving field of digital security. The department offers specialized programs in Cyber Security and Information Security, blending theoretical foundations with hands-on training in cryptography, ethical hacking, digital forensics, network defense, AI in security, and risk management.",
+  "HOD Message": "Dear Students and Aspirants, it gives me great pleasure to welcome you to the Undergraduate Program in Cyber and Information Security. Our program blends strong engineering foundations with specialized knowledge in cyber defense, cryptography, digital forensics, ethical hacking, and security management. We emphasize technical expertise, ethical responsibility, problem-solving, and lifelong learning.",
+  "Cyber Security Program Overview": "The Cyber Security program equips graduates to secure digital infrastructure. With strong foundations in computer science, networking, and cryptography, students learn to identify vulnerabilities, mitigate risks, and build robust defenses. Emphasis is on hands-on training, attack & defense mechanisms, innovation, and ethics. Graduates are prepared for higher education, certifications, and global careers.",
+  "Information Security Program Overview": "The Information Security program develops expertise in securing data, applications, and communication systems. Students study encryption, access control, compliance, governance, and risk management. The program stresses ethics, legal aspects, and hands-on tools for cloud security, forensics, and secure software development. Graduates contribute to secure digital ecosystems globally.",
+  "Vision (Cyber Security)": "Department of Cyber Security will have a transformative impact on society through continual innovation in engineering education, skill development, creativity, and entrepreneurship.",
+  "Vision (Information Security)": "Department of Information Security will have a transformative impact on society through continual innovation in engineering education, skill development, creativity, and entrepreneurship.",
+  "Mission (Cyber Security)": "1. Understand cybersecurity concepts in real-time applications and problem-solving. 2. Design robust tools and applications for secure data management. 3. Apply innovative methods for digital security in automation.",
+  "Mission (Information Security)": "1. Understand information security principles in real-time applications and problem-solving. 2. Design reliable frameworks and solutions for safeguarding information. 3. Apply innovative methods and emerging technologies to enhance information security.",
+  "Program Outcomes (Cyber Security)": "PO1 – Apply mathematics, science, engineering fundamentals, and cybersecurity principles. PO2 – Analyze threats and vulnerabilities. PO3 – Design secure systems and processes. PO4 – Conduct investigations and draw valid conclusions. PO5 – Use modern tools and emerging technologies. PO6 – Assess societal, legal, and cultural issues. PO7 – Understand impact on sustainable digital development. PO8 – Commit to ethics and global standards. PO9 – Work effectively in teams. PO10 – Communicate effectively. PO11 – Apply project management and finance. PO12 – Engage in lifelong learning.",
+  "Program Outcomes (Information Security)": "PO1 – Apply mathematics, science, and information security principles. PO2 – Analyze risks and vulnerabilities. PO3 – Design secure frameworks and systems. PO4 – Conduct investigations and provide valid conclusions. PO5 – Use modern IT tools. PO6 – Assess societal, legal, and cultural issues. PO7 – Promote sustainable and eco-friendly digital practices. PO8 – Commit to ethics and cyber laws. PO9 – Work effectively in teams. PO10 – Communicate effectively. PO11 – Manage projects with financial understanding. PO12 – Lifelong learning.",
+  "Program Educational Objectives (Cyber Security)": "PEO1 – Professional Excellence. PEO2 – Ethical and Social Responsibility. PEO3 – Innovation and Lifelong Learning.",
+  "Program Educational Objectives (Information Security)": "PEO1 – Professional Competence. PEO2 – Ethical and Social Responsibility. PEO3 – Innovation and Lifelong Learning.",
+  "Program Specific Outcomes (Cyber Security)": "PSO1 – Design and manage secure systems. PSO2 – Analyze and mitigate cyber incidents using tools and forensics. PSO3 – Apply ethical hacking and comply with laws and standards.",
+  "Program Specific Outcomes (Information Security)": "PSO1 – Develop secure frameworks and infrastructures. PSO2 – Analyze and mitigate information security incidents. PSO3 – Apply ethical hacking and comply with laws and standards."
+};
+
+/* ===== Utility: simple fuzzy match scoring ===== */
+function scoreMatch(query, text) {
+  // lowercase, split into words longer than 2 chars
+  const tokens = query.toLowerCase().match(/\b[a-z0-9]{3,}\b/g) || [];
+  if (!tokens.length) return 0;
+  const textLower = text.toLowerCase();
+  let score = 0;
+  for (const t of tokens) {
+    if (textLower.includes(t)) score += 2;
+    // count occurrences for more weight
+    const occ = (textLower.match(new RegExp(t, 'g')) || []).length;
+    score += occ;
+  }
+  return score;
+}
+
+/* Map quick keywords to sections for faster hits */
+const shortcutMap = {
+  "about": "About Department",
+  "department": "About Department",
+  "hod": "HOD Message",
+  "message": "HOD Message",
+  "vision": ["Vision (Cyber Security)", "Vision (Information Security)"],
+  "mission": ["Mission (Cyber Security)", "Mission (Information Security)"],
+  "outcome": ["Program Outcomes (Cyber Security)", "Program Outcomes (Information Security)"],
+  "po": ["Program Outcomes (Cyber Security)", "Program Outcomes (Information Security)"],
+  "peo": ["Program Educational Objectives (Cyber Security)", "Program Educational Objectives (Information Security)"],
+  "pso": ["Program Specific Outcomes (Cyber Security)", "Program Specific Outcomes (Information Security)"],
+  "program": ["Cyber Security Program Overview", "Information Security Program Overview"],
+  "cyber": "Cyber Security Program Overview",
+  "information": "Information Security Program Overview",
+  "security": ["Cyber Security Program Overview", "Information Security Program Overview"]
+};
+
+/* ===== Main retrieval: returns best section(s) ===== */
+function retrieveFromCourse(query) {
+  const q = query.trim();
+  if (!q) return {answer: "Please ask a question about the course (e.g. 'What are the program outcomes?')", source: null};
+
+  // 1) check shortcuts
+  const qLower = q.toLowerCase();
+  for (const k of Object.keys(shortcutMap)) {
+    if (qLower.includes(k)) {
+      const mapVal = shortcutMap[k];
+      if (Array.isArray(mapVal)) {
+        // if user asked "vision of cyber" prefer the specific one
+        if (qLower.includes("cyber")) return {answer: courseData["Vision (Cyber Security)"], source: "Vision (Cyber Security)"};
+        if (qLower.includes("information")) return {answer: courseData["Vision (Information Security)"], source: "Vision (Information Security)"};
+        // else return first combined
+        return {answer: mapVal.map(k2 => k2 + ":\n" + (courseData[k2]||"")).join("\n\n"), source: "Multiple sections"};
+      } else {
+        return {answer: courseData[mapVal] || "No data available.", source: mapVal};
+      }
+    }
+  }
+
+  // 2) fuzzy scoring across sections
+  let bestScore = 0, bestKey = null;
+  for (const [key, text] of Object.entries(courseData)) {
+    const s = scoreMatch(q, key + " " + text);
+    if (s > bestScore) { bestScore = s; bestKey = key; }
+  }
+
+  // 3) threshold: if too low, offer suggestions
+  if (bestScore <= 0 || !bestKey) {
+    // fallback: show list of available sections
+    const suggestions = Object.keys(courseData).slice(0,8).join(", ");
+    return {answer: "I couldn't find an exact match. Try asking about: " + suggestions + " (or ask 'list sections').", source: null};
+  }
+
+  return {answer: courseData[bestKey], source: bestKey};
+}
+
+/* ===== UI & Behavior ===== */
+const toggleBtn = document.getElementById('local-chat-toggle');
+const chatbotEl = document.getElementById('local-chatbot');
+const closeEl = chatbotEl.querySelector('.close');
+const msgs = document.getElementById('local-chat-messages');
+const input = document.getElementById('local-chat-input');
+const sendBtn = document.getElementById('local-chat-send');
+
+function addMessage(text, who, source=null) {
+  const p = document.createElement('div');
+  p.className = 'local-msg ' + (who === 'user' ? 'local-user' : 'local-bot');
+  p.innerText = text;
+  msgs.appendChild(p);
+  if (source) {
+    const s = document.createElement('span');
+    s.className = 'local-source';
+    s.innerText = 'Source: ' + source;
+    msgs.appendChild(s);
+  }
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function handleSendLocal() {
+  const q = input.value.trim();
+  if (!q) return;
+  addMessage(q, 'user');
+  input.value = '';
+  // small delay to simulate thinking
+  setTimeout(()=> {
+    const res = retrieveFromCourse(q);
+    addMessage(res.answer, 'bot', res.source);
+  }, 300);
+}
+
+/* button actions */
+toggleBtn.addEventListener('click', () => {
+  chatbotEl.style.display = 'flex';
+  input.focus();
+});
+closeEl.addEventListener('click', () => { chatbotEl.style.display = 'none'; toggleBtn.focus(); });
+
+sendBtn.addEventListener('click', handleSendLocal);
+input.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSendLocal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') chatbotEl.style.display = 'none'; });
+
+/* initial friendly greeting */
+addMessage("Hi! I'm the course assistant. Ask me about the department, vision, missions, program overviews, POs, PEOs, PSOs, etc.", 'bot', 'Course Document');
+
+</script>
+<!-- ===== END: Local Course Chatbot ===== -->
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -2081,25 +2430,6 @@ document.querySelector('.lightbox-close').addEventListener('click', () => {
         });
     </script>
     <script>
-        (function (w, d, s, o, f, js, fjs) {
-            w["botsonic_widget"] = o;
-            w[o] =
-                w[o] ||
-                function () {
-                    (w[o].q = w[o].q || []).push(arguments);
-                };
-            (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
-            js.id = o;
-            js.src = f;
-            js.async = 1;
-            fjs.parentNode.insertBefore(js, fjs);
-        })(window, document, "script", "Botsonic", "https://widget.botsonic.com/CDN/botsonic.min.js");
-        Botsonic("init", {
-            serviceBaseUrl: "https://api-bot.writesonic.com",
-            token: "633903cc-3cfd-47f1-9518-9177d8ea2ce8",
-        });
-    </script>
-    <script>
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
   if (window.scrollY > 50) {
@@ -2112,6 +2442,115 @@ window.addEventListener("scroll", () => {
 <script>
    document.getElementById("darkModeToggle").addEventListener("click", () => {
     document.body.classList.toggle("dark");
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Cursor trail + spotlight ---
+  const trail = document.getElementById("cursor-trail");
+  const spotlight = document.createElement("div");
+  spotlight.className = "cursor-spotlight";
+  document.body.appendChild(spotlight);
+
+  const dots = [];
+  for (let i = 0; i < 8; i++) {
+    const d = document.createElement("div");
+    d.className = "cursor-dot";
+    trail.appendChild(d);
+    dots.push(d);
+  }
+
+  let x = -100, y = -100;
+  window.addEventListener("mousemove", e => {
+    x = e.clientX; y = e.clientY;
+    spotlight.style.left = x + "px";
+    spotlight.style.top = y + "px";
+  });
+
+  function animate() {
+    dots.forEach((dot, i) => {
+      const k = (i + 1) / dots.length;
+      dot.style.left = x + k * 12 + "px";
+      dot.style.top = y + k * 12 + "px";
+      dot.style.opacity = 1 - k * 0.6;
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // --- Particles ---
+  const pc = document.getElementById("particle-canvas");
+  const ctx = pc.getContext("2d");
+  function resize() { pc.width = innerWidth; pc.height = innerHeight; }
+  resize(); window.addEventListener("resize", resize);
+
+  class Particle {
+    reset() {
+      this.x = Math.random() * pc.width;
+      this.y = Math.random() * pc.height;
+      this.vy = -Math.random() * 1.2 - 0.2;
+      this.size = Math.random() * 2 + 1;
+      this.alpha = 0.4 + Math.random() * 0.5;
+    }
+    step() {
+      this.y += this.vy;
+      if (this.y < -10) this.reset();
+    }
+    draw() {
+      ctx.globalAlpha = this.alpha;
+      ctx.fillStyle = "orange";
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  const particles = Array.from({ length: 60 }, () => {
+    const p = new Particle(); p.reset(); return p;
+  });
+
+  function loop() {
+    ctx.clearRect(0, 0, pc.width, pc.height);
+    particles.forEach(p => { p.step(); p.draw(); });
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  // --- Matrix rain (footer) ---
+  const mc = document.getElementById("matrix-canvas");
+  const mctx = mc.getContext("2d");
+  mc.width = innerWidth; mc.height = mc.offsetHeight;
+  const cols = Math.floor(mc.width / 14);
+  const ypos = Array(cols).fill(0);
+  function matrix() {
+    mctx.fillStyle = "rgba(0,0,0,0.2)";
+    mctx.fillRect(0, 0, mc.width, mc.height);
+    mctx.fillStyle = "#0f0"; mctx.font = "14px monospace";
+    ypos.forEach((y, ind) => {
+      const text = Math.random() > 0.5 ? "1" : "0";
+      const x = ind * 14;
+      mctx.fillText(text, x, y);
+      if (y > mc.height + Math.random() * 100) ypos[ind] = 0;
+      else ypos[ind] = y + 14;
+    });
+    requestAnimationFrame(matrix);
+  }
+  matrix();
+
+  // --- Ambient audio toggle ---
+  const audio = document.getElementById("ambientAudio");
+  const toggle = document.getElementById("audioToggle");
+  toggle.addEventListener("click", () => {
+    if (audio.paused) { audio.play(); toggle.textContent = "🔊"; }
+    else { audio.pause(); toggle.textContent = "🔈"; }
+  });
+});
+</script>
+<script>
+window.addEventListener("scroll", () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (scrollTop / height) * 100;
+  document.getElementById("progress-bar").style.width = scrolled + "%";
 });
 </script>
 
