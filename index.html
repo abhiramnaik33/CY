@@ -1191,11 +1191,110 @@ footer {
 }
 .hidden { display: none; }
 .gallery-cover { cursor: pointer; }
+/* Background Drone Video */
+#droneBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.4) saturate(0.7) blur(1px); /* make it light/muted */
+}
+
+/* Dark overlay for readability */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: -1;
+}
+
+/* Keep hero clean (no background applied inside it) */
+.hero {
+  position: relative;
+  background: url("1.jpg") center/cover no-repeat fixed !important;
+  z-index: 1;
+}
+/* Global readable text colors on video background */
+body {
+  color: #d1291d; /* light gray for paragraphs by default */
+}
+
+p, li, span {
+  color: #e0e0e0; /* softer white for content */
+}
+
+/* Headings - give strong contrast */
+h1, h2, h3, .section-title {
+  background: linear-gradient(45deg, #ff9800, #ff3d00); /* orange-red neon */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(0,0,0,0.6); /* make it pop */
+/* Section subtitles or smaller headers */
+h3 {
+  background: linear-gradient(45deg, #00c6ff, #0072ff); /* blue neon for variety */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+  text-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+/* Links and buttons remain accent */
+a, .cta-button {
+  color: #ff6b33;
+}
+
+/* Faculty/Alumni names */
+.faculty-name, .alumni-name {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+/* Achievements text fix */
+.achievement-card p {
+  color: #ffffff; /* pure white */
+  font-weight: 500;
+  text-shadow: 0 0 6px rgba(0,0,0,0.7); /* glow for readability */
+}
+.cta-button {
+  background: linear-gradient(135deg, #d32f2f, #ff9800);
+  color: #fff !important; /* ensure text is white */
+  font-weight: 700;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  text-shadow: 0 0 8px rgba(0,0,0,0.8); /* makes text pop */
+}
+
+.cta-button:hover {
+  background: linear-gradient(135deg, #ff5722, #ffc107);
+  box-shadow: 0 0 20px rgba(255, 152, 0, 0.8), 0 0 40px rgba(211, 47, 47, 0.6);
+  transform: translateY(-3px) scale(1.05);
+}
 
     </style>
 </head>
 
 <body>
+    <!-- Background Drone Video -->
+<video autoplay muted loop playsinline id="droneBg">
+  <source src="campus.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<div class="video-overlay"></div>
+
     <header>
         <div class="header-content">
             <div class="logo">
@@ -1244,6 +1343,7 @@ footer {
             </nav>
         </div>
     </header>
+
 
     <section class="hero">
         <div class="hero-slider">
