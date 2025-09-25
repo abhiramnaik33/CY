@@ -1299,12 +1299,12 @@ a, .cta-button {
   mix-blend-mode: screen; z-index: 9998;
 }
 
-/* Particle + Matrix canvases */
-#particle-canvas, #matrix-canvas {
+/* Particle  */
+#particle-canvas {
   position: fixed; left: 0; top: 0; width: 100%; height: 100%;
   pointer-events: none;
 }
-#matrix-canvas { bottom: 0; height: 28vh; top: auto; opacity: 0.8; z-index: -1; }
+
 
 /* Ambient audio toggle */
 .audio-toggle {
@@ -1409,8 +1409,8 @@ a, .cta-button {
 <!-- Particle canvas -->
 <canvas id="particle-canvas"></canvas>
 
-<!-- Matrix rain canvas (behind footer) -->
-<canvas id="matrix-canvas"></canvas>
+
+
 
 <div class="video-overlay"></div>
 <div id="progress-bar"></div>
@@ -2429,6 +2429,7 @@ document.querySelector('.lightbox-close').addEventListener('click', () => {
             });
         });
     </script>
+   
     <script>
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
@@ -2515,26 +2516,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   loop();
 
-  // --- Matrix rain (footer) ---
-  const mc = document.getElementById("matrix-canvas");
-  const mctx = mc.getContext("2d");
-  mc.width = innerWidth; mc.height = mc.offsetHeight;
-  const cols = Math.floor(mc.width / 14);
-  const ypos = Array(cols).fill(0);
-  function matrix() {
-    mctx.fillStyle = "rgba(0,0,0,0.2)";
-    mctx.fillRect(0, 0, mc.width, mc.height);
-    mctx.fillStyle = "#0f0"; mctx.font = "14px monospace";
-    ypos.forEach((y, ind) => {
-      const text = Math.random() > 0.5 ? "1" : "0";
-      const x = ind * 14;
-      mctx.fillText(text, x, y);
-      if (y > mc.height + Math.random() * 100) ypos[ind] = 0;
-      else ypos[ind] = y + 14;
-    });
-    requestAnimationFrame(matrix);
-  }
-  matrix();
 
   // --- Ambient audio toggle ---
   const audio = document.getElementById("ambientAudio");
