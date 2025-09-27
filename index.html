@@ -1474,6 +1474,53 @@ header {
   from { transform: scale(0.7); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+.course-docs-section {
+  padding: 3rem 2rem;
+  background: #fafafa;
+  border-top: 4px solid #ff9800;
+  border-radius: 12px;
+  max-width: 900px;
+  margin: 2rem auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.course-docs-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #d32f2f;
+}
+
+.course-docs-section p {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #444;
+}
+
+.course-docs-list {
+  list-style: none;
+  padding: 0;
+}
+
+.course-docs-list li {
+  margin: 1rem 0;
+}
+
+.course-docs-list a {
+  display: inline-block;
+  background: linear-gradient(135deg, #d32f2f, #ff9800);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.course-docs-list a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
 
     </style>
 </head>
@@ -1752,6 +1799,7 @@ header {
                     </div>
                 </div>
             </div>
+            
         </section>
 
         <section class="section fade-in" id="admissions">
@@ -1886,6 +1934,23 @@ header {
 
             </div>
         </section>
+<section id="course-documents" class="course-docs-section">
+  <div class="container">
+    <h2>📚 Course Documents</h2>
+    <p>Select a course document to view:</p>
+    <ul class="course-docs-list">
+      <li>
+        <a href="docs/course1.pdf" target="_blank">🔗 Course 1 Syllabus</a>
+      </li>
+      <li>
+        <a href="docs/course2.pdf" target="_blank">🔗 Course 2 Lecture Notes</a>
+      </li>
+      <li>
+        <a href="docs/course3.pdf" target="_blank">🔗 Course 3 Assignments</a>
+      </li>
+    </ul>
+  </div>
+</section>
 
         <section class="section fade-in" id="alumni">
             <h2 class="section-title">Alumni Success Stories</h2>
@@ -2681,7 +2746,45 @@ window.addEventListener('click', function(e){
   }
 });
 </script>
+<script>const facultyData = {
+  prakash: {
+    name: "Dr. K Prakash",
+    role: "Professor",
+    pdf: "pdfs/prakash.pdf"
+  },
+  rachana: {
+    name: "Dr. Rachana P G",
+    role: "Assistant Professor",
+    pdf: "pdfs/rachana.pdf"
+  },
+  nayana: {
+    name: "Nayana M R",
+    role: "Assistant Professor",
+    pdf: "pdfs/nayana.pdf"
+  },
+  swathi: {
+    name: "Swathi A",
+    role: "Tutor",
+    pdf: "pdfs/swati.pdf"
+  }
+};
 
+// Attach event listener to faculty cards
+document.querySelectorAll('.faculty-card-inner').forEach(button => {
+  button.addEventListener('click', function() {
+    const id = this.dataset.facultyId;
+    const faculty = facultyData[id];
+
+    if (faculty) {
+      document.getElementById("modal-name").textContent = faculty.name;
+      document.getElementById("modal-designation").textContent = faculty.role;
+      document.getElementById("modal-link").href = faculty.pdf; // ✅ link to PDF
+    }
+    
+    document.getElementById("faculty-modal").classList.add("active");
+  });
+});
+</script>
 </body>
 
 </html>
